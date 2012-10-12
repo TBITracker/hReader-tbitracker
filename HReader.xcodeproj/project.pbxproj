@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06FD2AF81610BE55004A54C1 /* CameraUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD2AF71610BE55004A54C1 /* CameraUtil.m */; };
+		06FD2AF81610BE55004A54C1 /* CameraUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD2AF71610BE55004A54C1 /* CameraUtil.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		06FD2B071610D6A9004A54C1 /* TBIPages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06FD2B061610D6A9004A54C1 /* TBIPages.storyboard */; };
-		06FD2B0A1610D9AE004A54C1 /* SpeakPictureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD2B091610D9AE004A54C1 /* SpeakPictureType.m */; };
+		06FD2B0A1610D9AE004A54C1 /* SpeakPictureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD2B091610D9AE004A54C1 /* SpeakPictureType.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		06FD2B0C1611D4FA004A54C1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06FD2B0B1611D4FA004A54C1 /* MobileCoreServices.framework */; };
 		3B001D3E157519DB00762FB0 /* InitialSetup_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B001D3D157519DB00762FB0 /* InitialSetup_iPad.storyboard */; };
 		3B001D4315751D0300762FB0 /* HRPeopleSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B001D4215751D0300762FB0 /* HRPeopleSetupViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -167,11 +167,11 @@
 		3BA11FF515C0608200ABB012 /* version-2-images_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FC415C0608200ABB012 /* version-2-images_76.png */; };
 		3BA11FF615C0608200ABB012 /* version-2-images_79.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FC515C0608200ABB012 /* version-2-images_79.png */; };
 		3BA11FF715C0608200ABB012 /* version-2-images_81.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FC615C0608200ABB012 /* version-2-images_81.png */; };
-		3BA11FFA15C0608200ABB012 /* TBITrackerAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA11FCB15C0608200ABB012 /* TBITrackerAppletTile.m */; };
+		3BA11FFA15C0608200ABB012 /* TBITrackerAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA11FCB15C0608200ABB012 /* TBITrackerAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BA11FFB15C0608200ABB012 /* TBITrackerAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FCC15C0608200ABB012 /* TBITrackerAppletTile.xib */; };
-		3BA11FFC15C0608200ABB012 /* TBITrackerDashboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA11FCE15C0608200ABB012 /* TBITrackerDashboard.m */; };
+		3BA11FFC15C0608200ABB012 /* TBITrackerDashboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA11FCE15C0608200ABB012 /* TBITrackerDashboard.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BA11FFD15C0608200ABB012 /* TBITrackerDashboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FCF15C0608200ABB012 /* TBITrackerDashboard.xib */; };
-		3BA11FFE15C0608200ABB012 /* TBITrackerLearn.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA11FD115C0608200ABB012 /* TBITrackerLearn.m */; };
+		3BA11FFE15C0608200ABB012 /* TBITrackerLearn.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA11FD115C0608200ABB012 /* TBITrackerLearn.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BA11FFF15C0608200ABB012 /* TBITrackerLearn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FD215C0608200ABB012 /* TBITrackerLearn.xib */; };
 		3BA3E7DE15595F090095A5CC /* GCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3E7DD15595F090095A5CC /* GCAlertView.m */; };
 		3BA529ED1594AF400011E246 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BA529EC1594AF400011E246 /* libxml2.dylib */; };
@@ -257,9 +257,9 @@
 		94E078C61538A4570051DC01 /* multiple_sclerosis_summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078BF1538A4570051DC01 /* multiple_sclerosis_summary.png */; };
 		94E078C71538A4570051DC01 /* pophealth-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078C01538A4570051DC01 /* pophealth-summary.png */; };
 		94F871F41535D9F60018AF13 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F871F31535D9F60018AF13 /* libz.dylib */; };
-		D834C6C7161B36BD00D1B82D /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D834C6C3161B36BD00D1B82D /* ResultViewController.m */; };
+		D834C6C7161B36BD00D1B82D /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D834C6C3161B36BD00D1B82D /* ResultViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D834C6C8161B36BD00D1B82D /* taskStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D834C6C4161B36BD00D1B82D /* taskStoryboard.storyboard */; };
-		D834C6C9161B36BD00D1B82D /* taskVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D834C6C6161B36BD00D1B82D /* taskVC.m */; };
+		D834C6C9161B36BD00D1B82D /* taskVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D834C6C6161B36BD00D1B82D /* taskVC.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D834C6D6161B36F300D1B82D /* scene1.png in Resources */ = {isa = PBXBuildFile; fileRef = D834C6CB161B36F300D1B82D /* scene1.png */; };
 		D834C6D7161B36F300D1B82D /* scene2.png in Resources */ = {isa = PBXBuildFile; fileRef = D834C6CC161B36F300D1B82D /* scene2.png */; };
 		D834C6D8161B36F300D1B82D /* scene3.png in Resources */ = {isa = PBXBuildFile; fileRef = D834C6CD161B36F300D1B82D /* scene3.png */; };
@@ -273,13 +273,13 @@
 		D834C6E0161B36F300D1B82D /* scene11.png in Resources */ = {isa = PBXBuildFile; fileRef = D834C6D5161B36F300D1B82D /* scene11.png */; };
 		D834C6E3161B370100D1B82D /* learning-grey.png in Resources */ = {isa = PBXBuildFile; fileRef = D834C6E1161B370100D1B82D /* learning-grey.png */; };
 		D834C6E4161B370100D1B82D /* new_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D834C6E2161B370100D1B82D /* new_logo.png */; };
-		D834C6E8161B3BFF00D1B82D /* Stopwatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D834C6E7161B3BFF00D1B82D /* Stopwatch.m */; };
+		D834C6E8161B3BFF00D1B82D /* Stopwatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D834C6E7161B3BFF00D1B82D /* Stopwatch.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D8665A3715FE705F002CD855 /* logo-swoosh.png in Resources */ = {isa = PBXBuildFile; fileRef = D8665A3615FE705F002CD855 /* logo-swoosh.png */; };
 		D8665A3A15FE708C002CD855 /* tbiTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8665A3915FE708C002CD855 /* tbiTest.storyboard */; };
-		D8665A3D15FE70CE002CD855 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8665A3C15FE70CE002CD855 /* TestViewController.m */; };
+		D8665A3D15FE70CE002CD855 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8665A3C15FE70CE002CD855 /* TestViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D8665A4015FE70DA002CD855 /* tbiTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D8665A3F15FE70DA002CD855 /* tbiTest.m */; };
-		D8665A4515FE70FE002CD855 /* PRMQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8665A4215FE70FE002CD855 /* PRMQViewController.m */; };
-		D8665A4615FE70FE002CD855 /* tbiTestMemoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8665A4415FE70FE002CD855 /* tbiTestMemoryViewController.m */; };
+		D8665A4515FE70FE002CD855 /* PRMQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8665A4215FE70FE002CD855 /* PRMQViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		D8665A4615FE70FE002CD855 /* tbiTestMemoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8665A4415FE70FE002CD855 /* tbiTestMemoryViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D8665A50160230D5002CD855 /* buttons-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = D8665A47160230D5002CD855 /* buttons-pressed.png */; };
 		D8665A51160230D5002CD855 /* learning.png in Resources */ = {isa = PBXBuildFile; fileRef = D8665A48160230D5002CD855 /* learning.png */; };
 		D8665A52160230D5002CD855 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D8665A49160230D5002CD855 /* logo.png */; };

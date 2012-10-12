@@ -85,7 +85,6 @@
         thumbsView.frame = rect;
         
         [scrollView addSubview:thumbsView];
-        [thumbsView release];
         
         cx += thumbsView.frame.size.width + 5;
         tot++;
@@ -124,6 +123,7 @@
     
     [controller presentModalViewController: cameraUI animated:YES];
     NSLog(@"YES");
+    
     return YES;
 }
 

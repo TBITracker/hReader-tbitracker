@@ -264,14 +264,4 @@ UIView *topView;
 }
 
 
-- (void)dealloc {
-    NSLog(@"dealloc called");
-    loadOnce = YES;
-    [testLabel release];
-    [displayArea release];
-    [nextButton release];
-    [prevButton release];
-    [progressBar release];
-    [super dealloc];
-}
 @end

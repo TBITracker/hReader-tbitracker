@@ -54,9 +54,6 @@
                                     <action selector="presentTextBox:" destination="7GC-XB-x3Q" eventType="touchUpInside" id="sHB-Zp-bJc"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="oTW-o6-enB">
-                                <rect key="frame" x="811" y="0.0" width="213" height="754"/>
-                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -64,7 +61,6 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="cameraButton" destination="GVb-9S-ueN" id="AX2-Ji-sBr"/>
-                        <outlet property="scrollView" destination="oTW-o6-enB" id="yje-3I-l0C"/>
                         <outlet property="speakButton" destination="VyY-KO-iIM" id="6MN-Lb-5Fz"/>
                         <outlet property="textButton" destination="fEF-6f-sik" id="Ncq-Uh-XwY"/>
                     </connections>
@@ -74,20 +70,6 @@
             <point key="canvasLocation" x="414" y="-555"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="SpeakPictureType" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpeakPictureType.h"/>
-            <relationships>
-                <relationship kind="action" name="launchOpenEars:"/>
-                <relationship kind="action" name="presentCamera:"/>
-                <relationship kind="action" name="presentTextBox:"/>
-                <relationship kind="outlet" name="cameraButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="speakButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="textButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
