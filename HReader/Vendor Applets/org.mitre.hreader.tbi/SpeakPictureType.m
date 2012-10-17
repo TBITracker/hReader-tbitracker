@@ -103,12 +103,35 @@
     //Test if camera is available
     if (([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] == NO)
         || (delegate == nil)
-        || (controller == nil))
+        || (controller == nil)) {
         NSLog(@"%@", delegate);
         NSLog(@"%@",controller);
         NSLog(@"%i", [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]);
-    NSLog(@"NO");
-    return NO;
+        NSLog(@"NO");
+        
+        //Use this image I made up
+        NSArray* possibleURLs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, NO);
+        NSString* appSupportDir = nil;
+        NSString* appDirectory = nil;
+        
+        if ([possibleURLs count] >= 1) {
+            // Use the first directory (if multiple are returned)
+            appSupportDir = [possibleURLs objectAtIndex:0];
+        }
+        
+        // If a valid app support directory exists, add the
+        // app's bundle ID to it to specify the final directory.
+        if (appSupportDir) {
+            NSString* appBundleID = [[NSBundle mainBundle] bundleIdentifier];
+            appDirectory = [appSupportDir stringByAppendingPathComponent:appBundleID];
+        }
+        NSString *filename = [appDirectory stringByAppendingPathComponent:@"cat.jpg"];
+
+        UIImage *catPic = [[UIImage alloc] initWithContentsOfFile:filename];
+        
+        [CameraUtil saveImage:catPic];
+        
+    } else {
     
     UIImagePickerController *cameraUI = [[UIImagePickerController alloc] init];
     cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -123,6 +146,7 @@
     
     [controller presentModalViewController: cameraUI animated:YES];
     NSLog(@"YES");
+    }
     
     return YES;
 }

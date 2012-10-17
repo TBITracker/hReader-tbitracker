@@ -14,10 +14,9 @@
 #import "HRPeopleFeedViewController.h"
 #import "HRAPIClient.h"
 #import "HRPeoplePickerViewController_private.h"
+#import "HRPanelViewController.h"
 
 #import "HRMPatient.h"
-
-#import "SVPanelViewController.h"
 
 #import "GCAlertView.h"
 
@@ -98,30 +97,33 @@
     HRPeopleFeedViewController *controller = [[HRPeopleFeedViewController alloc] initWithHost:host];
     controller.title = title;
     controller.didFinishBlock = ^(NSString *identifier) {
-        [client JSONForPatientWithIdentifier:identifier finishBlock:^(NSDictionary *payload) {
-            if (payload) {
-                NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
-                [context setPersistentStoreCoordinator:[HRAppDelegate persistentStoreCoordinator]];
-                HRMPatient *patient = [HRMPatient instanceInContext:context];
-                [patient populateWithContentsOfDictionary:payload];
-                patient.serverID = identifier;
-                patient.host = host;
-                patient.relationship = [NSNumber numberWithShort:relationship];
-                [context save:nil];
-            }
-            else {
-                NSString *message = [NSString stringWithFormat:
-                                     @"An error occurred while fetching the patient from %@",
-                                     host];
-                [[[UIAlertView alloc]
-                  initWithTitle:@"Error"
-                  message:message
-                  delegate:nil
-                  cancelButtonTitle:@"OK"
-                  otherButtonTitles:nil]
-                 show];
-            }
-        }];
+        [client
+         JSONForPatientWithIdentifier:identifier
+         startBlock:nil
+         finishBlock:^(NSDictionary *payload) {
+             if (payload) {
+                 NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
+                 [context setPersistentStoreCoordinator:[HRAppDelegate persistentStoreCoordinator]];
+                 HRMPatient *patient = [HRMPatient instanceInContext:context];
+                 [patient populateWithContentsOfDictionary:payload];
+                 patient.serverID = identifier;
+                 patient.host = host;
+                 patient.relationship = [NSNumber numberWithShort:relationship];
+                 [context save:nil];
+             }
+             else {
+                 NSString *message = [NSString stringWithFormat:
+                                      @"An error occurred while fetching the patient from %@",
+                                      host];
+                 [[[UIAlertView alloc]
+                   initWithTitle:@"Error"
+                   message:message
+                   delegate:nil
+                   cancelButtonTitle:@"OK"
+                   otherButtonTitles:nil]
+                  show];
+             }
+         }];
         [_popoverController dismissPopoverAnimated:YES];
         if (completion) { completion(); }
     };
@@ -143,7 +145,7 @@
 
 - (void)showMainApplicationInterface {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-    SVPanelViewController *panel = [storyboard instantiateInitialViewController];
+    HRPanelViewController *panel = [storyboard instantiateInitialViewController];
     panel.mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"RootViewController"];
     panel.rightAccessoryViewController = [storyboard instantiateViewControllerWithIdentifier:@"AppletsConfigurationViewController"];
     panel.leftAccessoryViewController = [storyboard instantiateViewControllerWithIdentifier:@"PeoplePickerViewController"];
@@ -158,7 +160,7 @@
 - (void)adjustUserInterfaceForPatients:(BOOL)animated {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"relationship = %d", HRMPatientRelationshipMe];
     void (^animations) (void) = nil;
-    if ([HRMPatient countInContext:[HRAppDelegate managedObjectContext] withPredicate:predicate] == 0) {
+    if ([HRMPatient countInContext:[HRAppDelegate managedObjectContext] predicate:predicate] == 0) {
         self.navigationItem.rightBarButtonItem = nil;
         self.editing = NO;
         animations = ^{
@@ -270,12 +272,7 @@
 }
 
 - (IBAction)viewInMainInterface:(id)sender {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-    SVPanelViewController *panel = [storyboard instantiateInitialViewController];
-    panel.mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"RootViewController"];
-    panel.rightAccessoryViewController = [storyboard instantiateViewControllerWithIdentifier:@"AppletsConfigurationViewController"];
-    panel.leftAccessoryViewController = [storyboard instantiateViewControllerWithIdentifier:@"PeoplePickerViewController"];
-    [self presentViewController:panel animated:YES completion:nil];
+    [self showMainApplicationInterface];
 }
 
 - (void)deleteButtonPress:(UIButton *)button {
@@ -383,7 +380,7 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"relationship = %d", HRMPatientRelationshipSpouse];
-    NSUInteger count = [HRMPatient countInContext:managedObjectContext withPredicate:predicate];
+    NSUInteger count = [HRMPatient countInContext:managedObjectContext predicate:predicate];
     self.spouseButton.enabled = (count == 0);
     [self.gridView reloadData];
     [self adjustUserInterfaceForPatients:YES];

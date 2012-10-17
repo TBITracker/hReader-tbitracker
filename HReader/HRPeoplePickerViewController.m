@@ -10,12 +10,11 @@
 
 #import "HRPeoplePickerViewController_private.h"
 #import "HRAppDelegate.h"
-
 #import "HRMPatient.h"
+#import "HRPanelViewController.h"
 
-#import "SVPanelViewController.h"
-
-NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
+NSString * const HRSelectedPatientDidChangeNotification = @"HRSelectedPatientDidChange";
+NSString * const HRSelectedPatientKey = @"HRSelectedPatient";
 static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
 
 @implementation HRPeoplePickerViewController {
@@ -40,8 +39,11 @@ static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
         [settings setObject:string forKey:HRSelectedPatientURIKey];
         [settings synchronize];
         [[NSNotificationCenter defaultCenter]
-         postNotificationName:HRPatientDidChangeNotification
-         object:self];
+         postNotificationName:HRSelectedPatientDidChangeNotification
+         object:nil
+         userInfo:@{
+             HRSelectedPatientKey : patient
+         }];
     }
 }
 
@@ -188,7 +190,7 @@ static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
                               ]];
     searchResults = [HRMPatient
                      allInContext:managedObjectContext
-                     withPredicate:predicate
+                     predicate:predicate
                      sortDescriptors:descriptors];
     
 }
@@ -232,7 +234,7 @@ static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
     dispatch_after(time, dispatch_get_main_queue(), ^(void){
         selectedPatient = patient;
         [HRPeoplePickerViewController setSelectedPatient:patient];
-        [self.panelViewController hideAccessoryViewControllers:YES];
+        [self.panelViewController showMainViewController:YES];
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     });
 }

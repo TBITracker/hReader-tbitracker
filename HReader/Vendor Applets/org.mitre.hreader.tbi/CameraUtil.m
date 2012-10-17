@@ -34,13 +34,24 @@
     
 }*/
 
-+ (void) saveImage:(UIImage *)image: (NSString*)imgName;
++ (void) saveImage:(UIImage *)image
 {
+    NSString *imgName = [self getRandomFileName];
+    NSLog(@"Name: %@", imgName);
     NSURL *savePath = [[[HRAppletUtilities URLForAppletContainer:@"org.mitre.tbi-tracker"] URLByAppendingPathComponent:@"photos"] URLByAppendingPathComponent:imgName];
     
     [UIImagePNGRepresentation(image)writeToURL:savePath atomically:YES];
     
 }
+
+
++ (NSString*) getRandomFileName
+{
+    char data[30];
+    for (int x=0;x<30;data[x++] = (char)('A' + (arc4random_uniform(26))));
+    return [[NSString alloc] initWithBytes:data length:30 encoding:NSUTF8StringEncoding];
+}
+
 
 + (NSArray*) getAllImages
 {
