@@ -61,7 +61,7 @@ UIView *topView;
                           ]];
         NSLog(@"inside pages");
         [[[pages lastObject] objectForKey:@"ViewController"] setParentView:[self view]];
-        NSLog(@"moving on...");
+        NSLog(@"moving on......");
         for(int i=1; i<16; i++){
             [pages addObject:[[NSMutableDictionary alloc]
                               initWithObjects: [NSArray arrayWithObjects:[NSString stringWithFormat:@"PRMQ Question #%i", i],

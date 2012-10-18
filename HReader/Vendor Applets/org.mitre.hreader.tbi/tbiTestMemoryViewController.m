@@ -25,7 +25,7 @@ UIView *parentView;
     SystemSoundID soundID = 0;
     //NSString* str = [[NSBundle mainBundle] pathForResource:@"Memory_List1" ofType:@"m4a"];
     NSURL* soundFileURL = [[NSBundle mainBundle] URLForResource:@"list_example" withExtension:@"m4a"];
-
+    NSLog(@"url configured: %@", soundFileURL);
     //CFURLRef soundFileURL = (CFURLRef)[NSURL URLWithString:str];
     //NSLog(@"attempting to play soundfile at URL: %@", CFUrlGetString(soundFileURL));
     //NSLog(@"resolved to URL: %@", soundFileURL);
@@ -109,6 +109,11 @@ static void soundComplete(SystemSoundID ssID, void *clientData)
 
 -(void)dismissKeyboard {
     [_memory_word_recall_field1 resignFirstResponder];
+    [_memory_word_recall_field2 resignFirstResponder];
+    [_memory_word_recall_field3 resignFirstResponder];
+    [_memory_word_recall_field4 resignFirstResponder];
+    [_memory_word_recall_field5 resignFirstResponder];
+    
 }
 
 - (void)viewDidLoad
