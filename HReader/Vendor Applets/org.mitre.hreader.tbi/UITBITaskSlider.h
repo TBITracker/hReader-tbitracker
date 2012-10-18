@@ -10,4 +10,6 @@
 
 @interface UITBITaskSlider : UISlider
 
+- (void) appearance;
+
 @end
