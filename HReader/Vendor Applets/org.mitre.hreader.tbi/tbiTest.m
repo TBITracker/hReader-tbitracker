@@ -59,7 +59,9 @@ UIView *topView;
                                    @"ViewController",
                                    nil]
                           ]];
-        
+        NSLog(@"inside pages");
+        [[[pages lastObject] objectForKey:@"ViewController"] setParentView:[self view]];
+        NSLog(@"moving on...");
         for(int i=1; i<16; i++){
             [pages addObject:[[NSMutableDictionary alloc]
                               initWithObjects: [NSArray arrayWithObjects:[NSString stringWithFormat:@"PRMQ Question #%i", i],
@@ -85,6 +87,8 @@ UIView *topView;
         stopwatch = [Stopwatch new];
         [stopwatch start];
         NSLog(@"stopWatch status: %@", stopwatch);
+        
+        [[self taskSlider] appearance];
         
         loadOnce = NO;
     }
@@ -180,12 +184,11 @@ UIView *topView;
     
     [[self displayArea] addSubview:[[[pages objectAtIndex:currentPage] objectForKey:@"ViewController"] view]];
     [[self testLabel] setText:[[pages objectAtIndex:currentPage] objectForKey:@"Name"]];
+    currentVC = [[pages objectAtIndex:currentPage] valueForKey:@"ViewController"];
     if (currentPage == (int)[pages count] - 1) {
         [stopwatch stop];
-        NSLog(@"Stopwatch status: %@", stopwatch);
         //topView = [[[[UIApplication sharedApplication] keyWindow] subviews] lastObject];
         //NSLog(@"topview = %@", topView);
-        currentVC = [[pages objectAtIndex:currentPage] valueForKey:@"ViewController"];
         if ([currentVC isKindOfClass:[ResultViewController class]]) {
             int testScore = 0;
             int prmqScore = 0;
@@ -203,6 +206,11 @@ UIView *topView;
         
     }
     else {
+        /*
+         if ([currentVC isKindOfClass:[tbiTestMemoryViewController class]]){
+            (tbiTestMemoryViewController)[currentVC parentView] = [self view];
+        }
+         */
         [stopwatch checkpoint];
     }
     

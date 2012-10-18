@@ -11,9 +11,13 @@
 #import <AudioToolbox/AudioServices.h>
 #import <AVFoundation/AVAudioPlayer.h>
 
-@interface tbiTestMemoryViewController : TestViewController 
+@interface tbiTestMemoryViewController : TestViewController
 
 - (IBAction) playSound: (id)sender;
+- (void) enableEditing;
+- (IBAction)textFieldDoneEditing:(id)sender;
+- (void) setParentView:(UIView*)view;
+
 
 @property (retain, nonatomic) IBOutlet UITextField *memory_word_recall_field1;
 @property (retain, nonatomic) IBOutlet UITextField *memory_word_recall_field2;
