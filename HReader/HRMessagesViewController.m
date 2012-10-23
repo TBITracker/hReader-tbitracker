@@ -8,15 +8,10 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-#import "HRMPatient.h"
-
 #import "HRMessagesViewController.h"
-#import "HRPatientSwipeControl.h"
+#import "HRMPatient.h"
+#import "HRPanelViewController.h"
 #import "HRPeoplePickerViewController.h"
-
-#import "NSDate+FormattedDate.h"
-
-#import "SVPanelViewController.h"
 
 @interface HRMessagesViewController ()
 - (void)reloadData;
@@ -40,7 +35,7 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter]
      removeObserver:self
-     name:HRPatientDidChangeNotification
+     name:HRSelectedPatientDidChangeNotification
      object:nil];
 }
 
@@ -51,7 +46,7 @@
         [[NSNotificationCenter defaultCenter]
          addObserver:self
          selector:@selector(patientDidChange:)
-         name:HRPatientDidChangeNotification
+         name:HRSelectedPatientDidChangeNotification
          object:nil];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
             [self reloadData];
@@ -129,9 +124,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *message = [self.messagesArray objectAtIndex:indexPath.row];
-    
-    [TestFlight passCheckpoint:[NSString stringWithFormat:@"View Message"]];
-    
     self.subjectLabel.text = [message objectForKey:@"subject"];
     self.bodyLabel.text = [message objectForKey:@"body"];
 }
@@ -155,7 +147,7 @@
     
     NSDictionary *message = [self.messagesArray objectAtIndex:indexPath.row];
     NSTimeInterval interval = [[message objectForKey:@"date"] doubleValue];
-    cell.textLabel.text = [[NSDate dateWithTimeIntervalSince1970:interval] mediumStyleDate];
+    cell.textLabel.text = [[NSDate dateWithTimeIntervalSince1970:interval] hr_mediumStyleDate];
 
     return cell;
 }
