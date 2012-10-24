@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PercentageTracker : NSObject
+@interface PercentageTracker : NSObject {
+    float numerator;
+    float denominator;
+}
 
+- (void)success;
+- (void)failure;
+- (void)reset;
+- (NSString *)result;
 @end

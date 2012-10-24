@@ -8,6 +8,14 @@
 
 #import "TBIUserInput.h"
 
-@interface TBIAudioInput : TBIUserInput
+@interface TBIAudioInput : TBIUserInput {
+    NSURL *audioLocation;
+    //NSString *transcript;
+}
+
+@property (nonatomic, retain) NSURL *audioLocation;
+//@property (nonatomic, retain) NSString *transcript;
+
+- (TBIAudioInput *) initWithAudioLocation:(NSString*) url;
 
 @end

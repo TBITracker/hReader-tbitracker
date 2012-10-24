@@ -8,6 +8,18 @@
 
 #import "TBIAudioInput.h"
 
-@implementation TBIAudioInput
+@implementation TBIAudioInput 
+
+@synthesize audioLocation;
+//@synthesize transcript;
+
+- (TBIAudioInput *) initWithAudioLocation:(NSURL *)url {
+    [super init];
+    if (self){
+        //audioLocation = [NSURL new]; //pretty sure this isn't needed
+        audioLocation = url;
+    }
+    return self;
+}
 
 @end

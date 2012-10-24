@@ -10,4 +10,6 @@
 
 @implementation TBIUserInput
 
+@synthesize summary;
+
 @end

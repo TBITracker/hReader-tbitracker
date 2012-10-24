@@ -10,4 +10,7 @@
 
 @implementation TBIStep
 
+@synthesize userInput;
+@synthesize duration;
+
 @end

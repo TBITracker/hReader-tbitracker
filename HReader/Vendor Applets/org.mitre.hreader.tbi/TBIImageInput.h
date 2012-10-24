@@ -8,6 +8,12 @@
 
 #import "TBIUserInput.h"
 
-@interface TBIImageInput : TBIUserInput
+@interface TBIImageInput : TBIUserInput {
+    NSURL *imageLocation;
+}
+
+@property (nonatomic, retain) NSURL *imageLocation;
+
+- (TBIImageInput *) initWithImageLocation:(NSURL *)url;
 
 @end

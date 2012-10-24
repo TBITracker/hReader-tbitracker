@@ -10,4 +10,14 @@
 
 @implementation TBITextInput
 
+@synthesize text;
+
+- (TBITextInput *) initWithText:(NSString *)textInput {
+    [super init];
+    if (self){
+        text = textInput;
+    }
+    return self;
+}
+
 @end

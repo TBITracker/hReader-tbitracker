@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TBIUserInput.h"
 
-@interface TBIStep : NSObject
+@interface TBIStep : NSObject {
+    TBIUserInput *userInput;
+    NSTimeInterval *duration;
+}
+
+@property (nonatomic, retain) TBIUserInput *userInput;
+@property (nonatomic) NSTimeInterval *duration;
 
 @end

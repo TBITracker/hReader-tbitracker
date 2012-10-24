@@ -8,6 +8,13 @@
 
 #import "TBIUserInput.h"
 
-@interface TBITextInput : TBIUserInput
+@interface TBITextInput : TBIUserInput {
+    NSString *text;
+    //NSString *transcript;
+}
+
+@property (nonatomic, retain) NSString *text;
+
+- (TBITextInput *) initWithText:(NSString*)textInput;
 
 @end

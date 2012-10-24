@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TBIUserInput : NSObject
+@interface TBIUserInput : NSObject {
+    NSString *summary;
+}
+
+@property (nonatomic, retain) NSString *summary;
 
 @end
