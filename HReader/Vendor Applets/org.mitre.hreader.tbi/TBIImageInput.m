@@ -13,8 +13,7 @@
 @synthesize imageLocation;
 
 - (TBIImageInput *) initWithImageLocation:(NSURL *)url {
-    [super init];
-    if (self){
+    if (self = [super init]){
         //imageLocation = [NSURL new]; //pretty sure this isn't needed
         imageLocation = url;
     }

@@ -17,4 +17,10 @@
 @property (nonatomic, retain) TBIUserInput *userInput;
 @property (nonatomic) NSTimeInterval *duration;
 
+-(TBIStep *)initWithText:(NSString*)textInput andDuration:(NSTimeInterval*)durationInput;
+
+-(TBIStep *)initWithImageURL:(NSURL*)imageURL andDuration:(NSTimeInterval*)durationInput;
+
+-(TBIStep *)initWithAudioURL:(NSURL*)audioURL andDuration:(NSTimeInterval*)durationInput;
+
 @end

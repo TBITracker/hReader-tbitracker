@@ -14,8 +14,7 @@
 //@synthesize transcript;
 
 - (TBIAudioInput *) initWithAudioLocation:(NSURL *)url {
-    [super init];
-    if (self){
+    if (self = [super init]){
         //audioLocation = [NSURL new]; //pretty sure this isn't needed
         audioLocation = url;
     }

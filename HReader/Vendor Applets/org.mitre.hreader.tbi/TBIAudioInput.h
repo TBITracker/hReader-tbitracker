@@ -16,6 +16,6 @@
 @property (nonatomic, retain) NSURL *audioLocation;
 //@property (nonatomic, retain) NSString *transcript;
 
-- (TBIAudioInput *) initWithAudioLocation:(NSString*) url;
+- (TBIAudioInput *) initWithAudioLocation:(NSURL *) url;
 
 @end

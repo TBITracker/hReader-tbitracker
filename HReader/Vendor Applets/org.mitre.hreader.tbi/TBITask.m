@@ -11,7 +11,7 @@
 @implementation TBITask
 
 @synthesize name;
-@synthesize duration;
+//@synthesize duration;
 @synthesize steps;
 @synthesize completionPercent;
 
@@ -33,14 +33,24 @@
     }
 }
 
+- (TBIStep *) currentStep {
+    return [steps objectAtIndex:currentStep];
+}
+
 - (TBIStep *) nextStep {
     currentStep += 1;
     if ((int)[steps count] > currentStep) {
         return [steps objectAtIndex:currentStep];
     }
     else {
+        //maybe this should throw an error instead?
+        //or re-return the lastStep?
         return nil;
     }
+}
+
+- (BOOL) isOnLastStep {
+    return ((int)[steps count] == currentStep + 1);
 }
 
 - (TBITask *) init {

@@ -8,8 +8,50 @@
 
 #import "TBIUserInput.h"
 
+#import "TBITextInput.h"
+#import "TBIImageInput.h"
+#import "TBIAudioInput.h"
+
 @implementation TBIUserInput
 
 @synthesize summary;
+
+
+-(TBITextInput *)initWithText:(NSString*)textInput{
+    self = [super init];
+    if(self){
+        TBITextInput *obj = [[TBITextInput alloc] initWithText:textInput];
+        summary = @"";
+        return obj;
+    }
+    else{
+        return nil;
+    }
+}
+
+-(TBIAudioInput *)initWithAudioURL:(NSURL*)audioURL{
+    self = [super init];
+    if(self){
+        TBIAudioInput *obj = [[TBIAudioInput alloc]initWithAudioLocation:audioURL];
+        summary = @"";
+        return obj;
+    }
+    else{
+        return nil;
+    }
+}
+
+-(TBIImageInput *)initWithImageURL:(NSURL*)imageURL{
+    self = [super init];
+    if(self){
+        TBIImageInput *obj = [[TBIImageInput alloc]initWithImageLocation:imageURL];
+        summary = @"";
+        return obj;
+    }
+    else{
+        return nil;
+    }
+}
+
 
 @end

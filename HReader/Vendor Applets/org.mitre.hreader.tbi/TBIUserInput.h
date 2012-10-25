@@ -7,6 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+//#import "TBITextInput.h"
+//#import "TBIImageInput.h"
+//#import "TBIAudioInput.h"
+@class TBITextInput;
+@class TBIImageInput;
+@class TBIAudioInput;
 
 @interface TBIUserInput : NSObject {
     NSString *summary;
@@ -14,4 +20,10 @@
 
 @property (nonatomic, retain) NSString *summary;
 
+//-(NSUserInput *)initWithType:(int)type withData:(id)data;
+
+-(TBITextInput *)initWithText:(NSString*)textInput;
+-(TBIImageInput *)initWithImageURL:(NSURL*)audioURL;
+-(TBIAudioInput *)initWithAudioURL:(NSURL*)imageURL;
+ 
 @end

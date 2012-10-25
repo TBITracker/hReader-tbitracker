@@ -8,6 +8,8 @@
 
 #import "TBIUserInput.h"
 
+//@class TBIUserInput;
+
 @interface TBITextInput : TBIUserInput {
     NSString *text;
     //NSString *transcript;

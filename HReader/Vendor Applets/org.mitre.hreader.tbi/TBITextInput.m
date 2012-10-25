@@ -13,8 +13,7 @@
 @synthesize text;
 
 - (TBITextInput *) initWithText:(NSString *)textInput {
-    [super init];
-    if (self){
+    if (self = [super init]){
         text = textInput;
     }
     return self;

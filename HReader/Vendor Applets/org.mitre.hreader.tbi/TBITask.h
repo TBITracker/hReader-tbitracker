@@ -12,7 +12,7 @@
 
 @interface TBITask : NSObject {
     NSString *name;
-    NSTimeInterval *duration;
+    //NSTimeInterval *duration;
     NSMutableArray *steps;
     PercentageTracker *completionPercent;
     
@@ -22,7 +22,7 @@
 }
 
 @property (nonatomic, retain) NSString *name;
-@property (nonatomic) NSTimeInterval *duration;
+//@property (nonatomic) NSTimeInterval *duration;
 @property (nonatomic, retain) NSMutableArray *steps;
 @property (nonatomic, retain) PercentageTracker *completionPercent;
 
@@ -30,7 +30,9 @@
 - (void) unsuccessfulCompletion;
 
 - (TBIStep *) beginTask;
+- (TBIStep *) currentStep;
 - (TBIStep *) nextStep;
+- (BOOL) isOnLastStep;
 
 
 @end
