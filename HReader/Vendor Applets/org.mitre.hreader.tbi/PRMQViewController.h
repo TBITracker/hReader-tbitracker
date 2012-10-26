@@ -9,12 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "TestViewController.h"
 
-@interface PRMQViewController : TestViewController
+@interface PRMQViewController : TestViewController {
+    NSString* labelText;
+}
     
 @property (retain, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (retain, nonatomic) IBOutlet UILabel *questionText;
 
+@property (retain, nonatomic) NSString *labelText;
+
 -(IBAction) segmentedControlIndexChanged;
 -(IBAction) detectedClick;
+//-(void) prepareText:(NSString*)text;
+
+
 
 @end

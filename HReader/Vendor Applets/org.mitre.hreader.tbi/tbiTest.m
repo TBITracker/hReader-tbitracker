@@ -62,7 +62,8 @@ UIView *topView;
         NSLog(@"inside pages");
         [[[pages lastObject] objectForKey:@"ViewController"] setParentView:[self view]];
         NSLog(@"moving on......");
-        for(int i=1; i<16; i++){
+        /*
+         for(int i=1; i<16; i++){
             [pages addObject:[[NSMutableDictionary alloc]
                               initWithObjects: [NSArray arrayWithObjects:[NSString stringWithFormat:@"PRMQ Question #%i", i],
                                                 [tbiTestStoryboard instantiateViewControllerWithIdentifier:[NSString stringWithFormat:@"prmq%i", i]]
@@ -71,6 +72,26 @@ UIView *topView;
                                        @"ViewController",
                                        nil]
                               ]];
+        }
+        */
+        
+        NSString *questionName;
+        for(int i=1; i<=16; i++){
+            [pages addObject:[[NSMutableDictionary alloc]
+                              initWithObjects: [NSArray arrayWithObjects:[NSString stringWithFormat:@"PRMQ Question #%i", i],
+                                                [tbiTestStoryboard instantiateViewControllerWithIdentifier:[NSString stringWithFormat:@"prmq"]]
+                                                ,nil]
+                              forKeys:[NSArray arrayWithObjects:@"Name",
+                                       @"ViewController",
+                                       nil]
+                              ]];
+        //UILabel* label = [[[pages lastObject] objectForKey:@"ViewController"] questionText];
+            //NSLog(@"label: %@", [[[pages lastObject] objectForKey:@"ViewController"] questionText]);
+            //[[[pages lastObject] objectForKey:@"ViewController"] prepareText:NSLocalizedStringFromTable(@"Question2", @"PRMQQuestions", @"Comment")];
+            questionName = [NSString stringWithFormat:@"Question%i", i];
+            [[[pages lastObject] objectForKey:@"ViewController"] setLabelText:NSLocalizedStringFromTable(questionName, @"PRMQQuestions", @"Comment")];
+            //[[[pages lastObject] objectForKey:@"ViewController"] prepareText:NSLocalizedStringFromTable(questionName, @"PRMQQuestions", @"Comment")];
+
         }
         [pages addObject:[[NSMutableDictionary alloc]
                           initWithObjects: [NSArray arrayWithObjects:@"Results",
@@ -274,11 +295,6 @@ UIView *topView;
 - (void)dealloc {
     NSLog(@"dealloc called");
     loadOnce = YES;
-    [testLabel release];
-    [displayArea release];
-    [nextButton release];
-    [prevButton release];
-    [progressBar release];
     [super dealloc];
 }
 @end
