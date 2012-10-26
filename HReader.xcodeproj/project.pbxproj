@@ -315,6 +315,8 @@
 		DD8BD9E4148D1D660090F729 /* UserImage-1.png in Resources */ = {isa = PBXBuildFile; fileRef = DD8BD9DF148D1D660090F729 /* UserImage-1.png */; };
 		DD8BD9E5148D1D660090F729 /* UserImage-4.png in Resources */ = {isa = PBXBuildFile; fileRef = DD8BD9E0148D1D660090F729 /* UserImage-4.png */; };
 		DD8BD9E6148D1D660090F729 /* UserImage-2.png in Resources */ = {isa = PBXBuildFile; fileRef = DD8BD9E1148D1D660090F729 /* UserImage-2.png */; };
+		EAC680B2163B1FD5003E886D /* TBIDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAC680B0163B1FD5003E886D /* TBIDataModel.xcdatamodeld */; };
+		EAC680B5163B1FFC003E886D /* TBIDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAC680B4163B1FFC003E886D /* TBIDataManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -778,6 +780,9 @@
 		DD8BD9DF148D1D660090F729 /* UserImage-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-1.png"; sourceTree = "<group>"; };
 		DD8BD9E0148D1D660090F729 /* UserImage-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-4.png"; sourceTree = "<group>"; };
 		DD8BD9E1148D1D660090F729 /* UserImage-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-2.png"; sourceTree = "<group>"; };
+		EAC680B1163B1FD5003E886D /* TBIDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TBIDataModel.xcdatamodel; sourceTree = "<group>"; };
+		EAC680B3163B1FFC003E886D /* TBIDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBIDataManager.h; sourceTree = "<group>"; };
+		EAC680B4163B1FFC003E886D /* TBIDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBIDataManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1007,6 +1012,7 @@
 		3BA11FA015C0608200ABB012 /* org.mitre.hreader.tbi */ = {
 			isa = PBXGroup;
 			children = (
+				EAC680AF163B1DD6003E886D /* TBIDataManager */,
 				D834C6E5161B3BDD00D1B82D /* Utilities */,
 				D8665A3E15FE70DA002CD855 /* tbiTest.h */,
 				D8665A3F15FE70DA002CD855 /* tbiTest.m */,
@@ -1247,8 +1253,6 @@
 			isa = PBXGroup;
 			children = (
 				06FD2B0B1611D4FA004A54C1 /* MobileCoreServices.framework */,
-				3BD5F09A15EE772700333320 /* openssl.xcodeproj */,
-				3BD5F09015EE772300333320 /* sqlcipher.xcodeproj */,
 				3BAABBC91636D782009D3543 /* sqlcipher.xcodeproj */,
 				3BAABBC01636D77D009D3543 /* openssl.xcodeproj */,
 				3BD5F08F15EE767200333320 /* README.md */,
@@ -1665,6 +1669,16 @@
 				9452D7F314FC167200021E69 /* HRProviderView.xib */,
 			);
 			name = Doctors;
+			sourceTree = "<group>";
+		};
+		EAC680AF163B1DD6003E886D /* TBIDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				EAC680B0163B1FD5003E886D /* TBIDataModel.xcdatamodeld */,
+				EAC680B3163B1FFC003E886D /* TBIDataManager.h */,
+				EAC680B4163B1FFC003E886D /* TBIDataManager.m */,
+			);
+			name = TBIDataManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2087,6 +2101,8 @@
 				D83676291638699E00C43A27 /* TBIImageInput.m in Sources */,
 				D836762C163869AC00C43A27 /* TBIAudioInput.m in Sources */,
 				D836762F16386D3600C43A27 /* PercentageTracker.m in Sources */,
+				EAC680B2163B1FD5003E886D /* TBIDataModel.xcdatamodeld in Sources */,
+				EAC680B5163B1FFC003E886D /* TBIDataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2232,6 +2248,16 @@
 			);
 			currentVersion = 3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */;
 			path = hReader.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		EAC680B0163B1FD5003E886D /* TBIDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EAC680B1163B1FD5003E886D /* TBIDataModel.xcdatamodel */,
+			);
+			currentVersion = EAC680B1163B1FD5003E886D /* TBIDataModel.xcdatamodel */;
+			path = TBIDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
