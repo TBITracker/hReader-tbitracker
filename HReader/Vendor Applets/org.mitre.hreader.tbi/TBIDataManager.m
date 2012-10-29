@@ -2,7 +2,7 @@
 //  TBIDataManager.m
 //  HReader
 //
-//  Created by Mauer, Dan on 10/26/12.
+//  Created by Mauer, Dan on 10/29/12.
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
