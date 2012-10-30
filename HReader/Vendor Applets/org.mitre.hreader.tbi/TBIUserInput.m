@@ -16,7 +16,19 @@
 
 @synthesize summary;
 
+-(TBIUserInput *)init{
+    return [self initWithSummary:@""];
+}
 
+-(TBIUserInput *)initWithSummary:(NSString *)summaryInput{
+    if(self = [super init]){
+        summary = summaryInput;
+    }
+    return self;
+}
+
+
+/*
 -(TBITextInput *)initWithText:(NSString*)textInput{
     self = [super init];
     if(self){
@@ -52,6 +64,6 @@
         return nil;
     }
 }
-
+*/
 
 @end

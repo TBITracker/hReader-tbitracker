@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "TBIUserInput.h"
+#import "TBITextInput.h"
+#import "TBIImageInput.h"
+#import "TBIAudioInput.h"
 
 @interface TBIStep : NSObject {
     TBIUserInput *userInput;

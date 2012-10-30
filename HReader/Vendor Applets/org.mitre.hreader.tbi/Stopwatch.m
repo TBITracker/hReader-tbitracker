@@ -104,8 +104,4 @@ unsigned int unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCal
     */
 }
 
-- (void) dealloc {
-    [super dealloc];
-}
-
 @end

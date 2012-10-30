@@ -22,8 +22,11 @@
 
 //-(NSUserInput *)initWithType:(int)type withData:(id)data;
 
--(TBITextInput *)initWithText:(NSString*)textInput;
--(TBIImageInput *)initWithImageURL:(NSURL*)audioURL;
--(TBIAudioInput *)initWithAudioURL:(NSURL*)imageURL;
+-(TBIUserInput *)init;
+-(TBIUserInput *)initWithSummary:(NSString *)summaryInput;
+
+//-(TBITextInput *)initWithText:(NSString*)textInput;
+//-(TBIImageInput *)initWithImageURL:(NSURL*)audioURL;
+//-(TBIAudioInput *)initWithAudioURL:(NSURL*)imageURL;
  
 @end

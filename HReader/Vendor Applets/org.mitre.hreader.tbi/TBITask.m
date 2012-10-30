@@ -54,8 +54,7 @@
 }
 
 - (TBITask *) init {
-    [super init];
-    if (self){
+    if (self=[super init]){
         currentStep = 0;
     }
     return self;

@@ -38,8 +38,7 @@
 }
 
 - (PercentageTracker*) init {
-    [super init];
-    if (self){
+    if (self=[super init]){
         [self reset];
     }
     return self;
