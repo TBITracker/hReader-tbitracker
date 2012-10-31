@@ -34,5 +34,21 @@
 - (TBIStep *) nextStep;
 - (BOOL) isOnLastStep;
 
+-(void) addStep:(TBIStep *)step; //adds onto end of array
+-(void) insertStep:(TBIStep *)step AtIndex:(int)i;
+-(void) insertBeforeCurrentStep:(TBIStep *)step; 
+-(void) insertAfterCurrentStep:(TBIStep *)step;
+-(void) removeStepAtIndex:(int)i;
+-(void) replaceStepAtIndex:(int)i withStep:(TBIStep *)step;
+-(void) removeLastObject;
+
+/*
+insertObject:atIndex:
+ removeObjectAtIndex:
+ addObject:
+ removeLastObject
+ replaceObjectAtIndex:withObject:
+*/
+
 
 @end

@@ -19,4 +19,12 @@
     return self;
 }
 
+- (TBITextInput *) initWithText:(NSString *)textInput andSummary:(NSString *)summaryInput {
+    if (self = [super init]){
+        text = textInput;
+        summary = summaryInput;
+    }
+    return self;
+}
+
 @end

@@ -21,4 +21,14 @@
     return self;
 }
 
+- (TBIAudioInput *) initWithAudioLocation:(NSURL *)url andSummary:(NSString *)summaryInput {
+    if (self = [super init]){
+        //audioLocation = [NSURL new]; //pretty sure this isn't needed
+        audioLocation = url;
+        summary = summaryInput; 
+    }
+    return self;
+}
+
+
 @end

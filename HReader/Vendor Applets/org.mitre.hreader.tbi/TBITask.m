@@ -53,6 +53,35 @@
     return ((int)[steps count] == currentStep + 1);
 }
 
+-(void) addStep:(TBIStep *)step{
+    [steps addObject:step];
+}
+
+-(void) insertStep:(TBIStep *)step AtIndex:(int)i{
+    [steps insertObject:step atIndex:i];
+}
+
+-(void) insertBeforeCurrentStep:(TBIStep *)step{
+    [steps insertObject:step atIndex:currentStep];
+    currentStep += 1;
+}
+
+-(void) insertAfterCurrentStep:(TBIStep *)step{
+    [steps insertObject:step atIndex:(currentStep+1)];
+}
+
+-(void) removeStepAtIndex:(int)i{
+    [steps removeObjectAtIndex:i];
+}
+
+-(void) replaceStepAtIndex:(int)i withStep:(TBIStep *)step{
+    [steps replaceObjectAtIndex:i withObject:step];
+}
+
+-(void) removeLastObject{
+    [steps removeLastObject];
+}
+
 - (TBITask *) init {
     if (self=[super init]){
         currentStep = 0;

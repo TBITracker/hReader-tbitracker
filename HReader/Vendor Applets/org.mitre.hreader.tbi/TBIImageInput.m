@@ -20,4 +20,13 @@
     return self;
 }
 
+- (TBIImageInput *) initWithImageLocation:(NSURL *)url andSummary:(NSString *)summaryInput {
+    if (self = [super init]){
+        //imageLocation = [NSURL new]; //pretty sure this isn't needed
+        imageLocation = url;
+        summary = summaryInput;
+    }
+    return self;
+}
+
 @end
