@@ -59,8 +59,11 @@ UIView *topView;
                                    @"ViewController",
                                    nil]
                           ]];
-        
-        for(int i=1; i<16; i++){
+        NSLog(@"inside pages");
+        [[[pages lastObject] objectForKey:@"ViewController"] setParentView:[self view]];
+        NSLog(@"moving on......");
+        /*
+         for(int i=1; i<16; i++){
             [pages addObject:[[NSMutableDictionary alloc]
                               initWithObjects: [NSArray arrayWithObjects:[NSString stringWithFormat:@"PRMQ Question #%i", i],
                                                 [tbiTestStoryboard instantiateViewControllerWithIdentifier:[NSString stringWithFormat:@"prmq%i", i]]
@@ -69,6 +72,26 @@ UIView *topView;
                                        @"ViewController",
                                        nil]
                               ]];
+        }
+        */
+        
+        NSString *questionName;
+        for(int i=1; i<=16; i++){
+            [pages addObject:[[NSMutableDictionary alloc]
+                              initWithObjects: [NSArray arrayWithObjects:[NSString stringWithFormat:@"PRMQ Question #%i", i],
+                                                [tbiTestStoryboard instantiateViewControllerWithIdentifier:[NSString stringWithFormat:@"prmq"]]
+                                                ,nil]
+                              forKeys:[NSArray arrayWithObjects:@"Name",
+                                       @"ViewController",
+                                       nil]
+                              ]];
+        //UILabel* label = [[[pages lastObject] objectForKey:@"ViewController"] questionText];
+            //NSLog(@"label: %@", [[[pages lastObject] objectForKey:@"ViewController"] questionText]);
+            //[[[pages lastObject] objectForKey:@"ViewController"] prepareText:NSLocalizedStringFromTable(@"Question2", @"PRMQQuestions", @"Comment")];
+            questionName = [NSString stringWithFormat:@"Question%i", i];
+            [[[pages lastObject] objectForKey:@"ViewController"] setLabelText:NSLocalizedStringFromTable(questionName, @"PRMQQuestions", @"Comment")];
+            //[[[pages lastObject] objectForKey:@"ViewController"] prepareText:NSLocalizedStringFromTable(questionName, @"PRMQQuestions", @"Comment")];
+
         }
         [pages addObject:[[NSMutableDictionary alloc]
                           initWithObjects: [NSArray arrayWithObjects:@"Results",
@@ -85,6 +108,8 @@ UIView *topView;
         stopwatch = [Stopwatch new];
         [stopwatch start];
         NSLog(@"stopWatch status: %@", stopwatch);
+        
+        [[self taskSlider] appearance];
         
         loadOnce = NO;
     }
@@ -180,16 +205,11 @@ UIView *topView;
     
     [[self displayArea] addSubview:[[[pages objectAtIndex:currentPage] objectForKey:@"ViewController"] view]];
     [[self testLabel] setText:[[pages objectAtIndex:currentPage] objectForKey:@"Name"]];
+    currentVC = [[pages objectAtIndex:currentPage] valueForKey:@"ViewController"];
     if (currentPage == (int)[pages count] - 1) {
-        NSLog(@"This is the results page.");
-        NSLog(@"Stopwatch status: %@", stopwatch);
-        NSLog(@"Stopwatch says: %@", [stopwatch description]);
         [stopwatch stop];
-        NSLog(@"Stopwatch status: %@", stopwatch);
-        NSLog(@"Stopwatch says: %@", [stopwatch description]);
         //topView = [[[[UIApplication sharedApplication] keyWindow] subviews] lastObject];
         //NSLog(@"topview = %@", topView);
-        currentVC = [[pages objectAtIndex:currentPage] valueForKey:@"ViewController"];
         if ([currentVC isKindOfClass:[ResultViewController class]]) {
             int testScore = 0;
             int prmqScore = 0;
@@ -206,8 +226,16 @@ UIView *topView;
         }
         
     }
+    else {
+        /*
+         if ([currentVC isKindOfClass:[tbiTestMemoryViewController class]]){
+            (tbiTestMemoryViewController)[currentVC parentView] = [self view];
+        }
+         */
+        [stopwatch checkpoint];
+    }
     
-    [[self prevButton] setEnabled:YES];
+    //[[self prevButton] setEnabled:YES];
     
     
     
@@ -264,4 +292,9 @@ UIView *topView;
 }
 
 
+- (void)dealloc {
+    NSLog(@"dealloc called");
+    loadOnce = YES;
+    [super dealloc];
+}
 @end

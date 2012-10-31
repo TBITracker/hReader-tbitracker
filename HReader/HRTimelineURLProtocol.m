@@ -31,6 +31,9 @@
 }
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)request {
+    if (![[request HTTPMethod] isEqualToString:@"GET"]) {
+        return NO;
+    }
     NSURL *URL = [request URL];
     if ([URL isFileURL] && [[URL path] isEqualToString:[self timelineJSONPath]]) {
         return YES;
@@ -43,10 +46,9 @@
 }
 
 - (void)startLoading {
-    NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
-    [context performBlock:^{
+    [[HRAppDelegate managedObjectContext] performBlock:^{
         NSURL *URL = [[self request] URL];
-        HRMPatient *patient = [HRPeoplePickerViewController selectedPatientInContext:context];
+        HRMPatient *patient = [HRPeoplePickerViewController selectedPatient];
         
         // load calendar
         static NSCalendar *calendar = nil;

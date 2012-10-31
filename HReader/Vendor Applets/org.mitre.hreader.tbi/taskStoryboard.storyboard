@@ -52,6 +52,16 @@
     <resources>
         <image name="scene1.png" width="2124" height="1596"/>
     </resources>
+    <classes>
+        <class className="taskVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/taskVC.h"/>
+            <relationships>
+                <relationship kind="action" name="nextClicked:"/>
+                <relationship kind="outlet" name="button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="displayArea" candidateClass="UIView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

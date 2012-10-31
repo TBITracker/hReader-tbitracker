@@ -13,6 +13,7 @@
 #import "Stopwatch.h"
 
 #import <QuartzCore/QuartzCore.h> //for debugging only
+#import "UITBITaskSlider.h"
 
 @interface tbiTest : UIViewController
 
@@ -28,5 +29,7 @@
 
 @property (retain, nonatomic) IBOutlet UILabel *finalScoreLabel;
 @property (retain, nonatomic) IBOutlet UILabel *PRMQScoreLabel;
+
+@property (retain, nonatomic) IBOutlet UITBITaskSlider *taskSlider;
 
 @end

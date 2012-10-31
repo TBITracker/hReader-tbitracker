@@ -1,3 +1,4 @@
+
 //
 //  SpeakPictureType.h
 //  HReader

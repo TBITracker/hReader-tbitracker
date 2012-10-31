@@ -8,12 +8,13 @@
 
 #import "HRAppletConfigurationViewController.h"
 #import "HRMPatient.h"
-
-NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigurationDidChange";
+#import "HRPeoplePickerViewController.h"
+#import "HRPanelViewController.h"
 
 @implementation HRAppletConfigurationViewController {
-    NSArray * _installedApplets;
-    NSArray * _availableApplets;
+    NSArray *_installedApplets;
+    NSArray *_availableApplets;
+    HRMPatient *_patient;
 }
 
 #pragma mark - class methods
@@ -48,37 +49,31 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
 - (id)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     if (self) {
-        [[NSNotificationCenter defaultCenter]
+        NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+        [center
          addObserver:self
-         selector:@selector(reloadApplets)
+         selector:@selector(managedObjectContextDidSave)
          name:NSManagedObjectContextDidSaveNotification
+         object:nil];
+        [center
+         addObserver:self
+         selector:@selector(selectedPatientDidChange:)
+         name:HRSelectedPatientDidChangeNotification
          object:nil];
     }
     return self;
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter]
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center
+     removeObserver:self
+     name:HRSelectedPatientDidChangeNotification
+     object:nil];
+    [center
      removeObserver:self
      name:NSManagedObjectContextDidSaveNotification
      object:nil];
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.editing = YES;
-}
-
-- (void)viewDidUnload {
-    _availableApplets = nil;
-    _installedApplets = nil;
-    [super viewDidUnload];
-}
-
-- (void)setPatient:(HRMPatient *)patient {
-    _patient = patient;
-    [self reloadApplets];
-    [self.tableView reloadData];
 }
 
 - (void)reloadApplets {
@@ -87,7 +82,7 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
     _availableApplets = [[HRAppletConfigurationViewController availableApplets] mutableCopy];
     
     // load patient applets
-    NSArray *identifiers = self.patient.applets;
+    NSArray *identifiers = _patient.applets;
     _installedApplets = [NSMutableArray arrayWithCapacity:[identifiers count]];
     [identifiers enumerateObjectsUsingBlock:^(NSString *identifier, NSUInteger index, BOOL *stop) {
         NSDictionary *applet = [HRAppletConfigurationViewController appletWithIdentifier:identifier];
@@ -102,6 +97,37 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
         return [[one objectForKey:@"display_name"] caseInsensitiveCompare:[two objectForKey:@"display_name"]];
     }];
     
+}
+
+- (void)managedObjectContextDidSave {
+    [self reloadApplets];
+    [self.tableView reloadData];
+}
+
+- (void)selectedPatientDidChange:(NSNotification *)notification {
+    _patient = [[notification userInfo] objectForKey:HRSelectedPatientKey];
+    [self reloadApplets];
+    [self.tableView reloadData];
+    self.tableView.contentOffset = CGPointZero;
+}
+
+#pragma mark - view lifecycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.editing = YES;
+    _patient = [(id)self.panelViewController.leftAccessoryViewController selectedPatient];
+    [self reloadApplets];
+    [self.tableView reloadData];
+}
+
+- (void)didReceiveMemoryWarning {
+    if (![self isViewLoaded] && self.view.window == nil) {
+        _patient = nil;
+        _installedApplets = nil;
+        _availableApplets = nil;
+    }
+    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - table view
@@ -126,11 +152,11 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1) {
-        NSMutableArray *array = [self.patient.applets mutableCopy];
+        NSMutableArray *array = [_patient.applets mutableCopy];
         NSDictionary *applet = [_availableApplets objectAtIndex:indexPath.row];
         [array addObject:[applet objectForKey:@"identifier"]];
-        self.patient.applets = array;
-        [[self.patient managedObjectContext] save:nil];
+        _patient.applets = array;
+        [[_patient managedObjectContext] save:nil];
         NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:[_installedApplets indexOfObject:applet] inSection:0];
         [tableView beginUpdates];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -155,7 +181,7 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
     
     // reload model
     NSDictionary *applet;
-    NSMutableArray *array = [self.patient.applets mutableCopy];
+    NSMutableArray *array = [_patient.applets mutableCopy];
     if (editingStyle == UITableViewCellEditingStyleInsert) {
         applet = [_availableApplets objectAtIndex:indexPath.row];
         [array addObject:[applet objectForKey:@"identifier"]];
@@ -164,8 +190,8 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
         applet = [_installedApplets objectAtIndex:indexPath.row];
         [array removeObject:[applet objectForKey:@"identifier"]];
     }
-    self.patient.applets = array;
-    [[self.patient managedObjectContext] save:nil];
+    _patient.applets = array;
+    [[_patient managedObjectContext] save:nil];
     
     // update table view
     NSIndexPath *newIndexPath = nil;
@@ -192,12 +218,12 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
-    NSMutableArray *array = [self.patient.applets mutableCopy];
+    NSMutableArray *array = [_patient.applets mutableCopy];
     NSString *identifier = [array objectAtIndex:sourceIndexPath.row];
     [array removeObjectAtIndex:sourceIndexPath.row];
     [array insertObject:identifier atIndex:destinationIndexPath.row];
-    self.patient.applets = array;
-    [[self.patient managedObjectContext] save:nil];
+    _patient.applets = array;
+    [[_patient managedObjectContext] save:nil];
 }
 
 @end
