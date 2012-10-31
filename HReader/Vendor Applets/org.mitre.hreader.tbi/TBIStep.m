@@ -42,7 +42,7 @@
 -(TBIStep *)initWithText:(NSString *)textInput andDuration:(NSTimeInterval *)durationInput andSummary:(NSString *)summaryInput {
     self = [super init];
     if (self){
-        userInput = [[TBITextInput alloc] initWithText:textInput];
+        userInput = [[TBITextInput alloc] initWithText:textInput andSummary:summaryInput];
         duration = durationInput;
     }
     return self;
@@ -51,7 +51,7 @@
 -(TBIStep *)initWithImageURL:(NSURL *)imageURL andDuration:(NSTimeInterval *)durationInput andSummary:(NSString *)summaryInput{
     self = [super init];
     if (self){
-        userInput = [[TBIImageInput alloc] initWithImageLocation:imageURL];
+        userInput = [[TBIImageInput alloc] initWithImageLocation:imageURL andSummary:summaryInput];
         duration = durationInput;
     }
     return self;
@@ -60,7 +60,7 @@
 -(TBIStep *)initWithAudioURL:(NSURL *)audioURL andDuration:(NSTimeInterval *)durationInput andSummary:(NSString *)summaryInput{
     self = [super init];
     if (self){
-        userInput = [[TBIAudioInput alloc] initWithAudioLocation:audioURL];
+        userInput = [[TBIAudioInput alloc] initWithAudioLocation:audioURL andSummary:summaryInput];
         duration = durationInput;
     }
     return self;
