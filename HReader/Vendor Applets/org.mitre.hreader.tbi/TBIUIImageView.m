@@ -10,6 +10,8 @@
 
 @implementation TBIUIImageView
 
+@synthesize imageName = _imageName;
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

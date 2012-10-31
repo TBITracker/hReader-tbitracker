@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0672AA5E162F32E300A62CCE /* AlertPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 0672AA5D162F32E300A62CCE /* AlertPrompt.m */; };
+		0672AA611635C71E00A62CCE /* TBIUIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0672AA601635C71E00A62CCE /* TBIUIImageView.m */; };
+		0672AA6F1640382300A62CCE /* NibCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0672AA6E1640382300A62CCE /* NibCell.xib */; };
 		06FD2AF81610BE55004A54C1 /* CameraUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD2AF71610BE55004A54C1 /* CameraUtil.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		06FD2B071610D6A9004A54C1 /* TBIPages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06FD2B061610D6A9004A54C1 /* TBIPages.storyboard */; };
 		06FD2B0A1610D9AE004A54C1 /* SpeakPictureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD2B091610D9AE004A54C1 /* SpeakPictureType.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -337,6 +339,9 @@
 /* Begin PBXFileReference section */
 		0672AA5C162F32E300A62CCE /* AlertPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertPrompt.h; sourceTree = "<group>"; };
 		0672AA5D162F32E300A62CCE /* AlertPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertPrompt.m; sourceTree = "<group>"; };
+		0672AA5F1635C71E00A62CCE /* TBIUIImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBIUIImageView.h; sourceTree = "<group>"; };
+		0672AA601635C71E00A62CCE /* TBIUIImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBIUIImageView.m; sourceTree = "<group>"; };
+		0672AA6E1640382300A62CCE /* NibCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibCell.xib; sourceTree = "<group>"; };
 		06FD2AF61610BE55004A54C1 /* CameraUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraUtil.h; sourceTree = "<group>"; };
 		06FD2AF71610BE55004A54C1 /* CameraUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraUtil.m; sourceTree = "<group>"; };
 		06FD2B061610D6A9004A54C1 /* TBIPages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TBIPages.storyboard; sourceTree = "<group>"; };
@@ -773,6 +778,8 @@
 				06FD2AF71610BE55004A54C1 /* CameraUtil.m */,
 				0672AA5C162F32E300A62CCE /* AlertPrompt.h */,
 				0672AA5D162F32E300A62CCE /* AlertPrompt.m */,
+				0672AA5F1635C71E00A62CCE /* TBIUIImageView.h */,
+				0672AA601635C71E00A62CCE /* TBIUIImageView.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -783,6 +790,7 @@
 				06FD2B081610D9AD004A54C1 /* SpeakPictureType.h */,
 				06FD2B091610D9AE004A54C1 /* SpeakPictureType.m */,
 				06FD2B061610D6A9004A54C1 /* TBIPages.storyboard */,
+				0672AA6E1640382300A62CCE /* NibCell.xib */,
 			);
 			name = TaskMaker;
 			sourceTree = "<group>";
@@ -1882,6 +1890,7 @@
 				D834C6E4161B370100D1B82D /* new_logo.png in Resources */,
 				3B1925A91619DDDA0024E9BD /* timeline-angular in Resources */,
 				06FD2B071610D6A9004A54C1 /* TBIPages.storyboard in Resources */,
+				0672AA6F1640382300A62CCE /* NibCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2003,6 +2012,7 @@
 				3B00A7BB16273E2F000BD5F8 /* HRPanelViewController.m in Sources */,
 				3B00A7BE16275004000BD5F8 /* HRContentViewController.m in Sources */,
 				0672AA5E162F32E300A62CCE /* AlertPrompt.m in Sources */,
+				0672AA611635C71E00A62CCE /* TBIUIImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

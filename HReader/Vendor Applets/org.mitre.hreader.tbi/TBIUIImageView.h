@@ -10,4 +10,6 @@
 
 @interface TBIUIImageView : UIImageView
 
+@property (strong, retain) NSURL *imageName;
+
 @end

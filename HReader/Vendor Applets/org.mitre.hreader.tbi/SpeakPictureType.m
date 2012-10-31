@@ -8,17 +8,24 @@
 
 #import "SpeakPictureType.h"
 #import "CameraUtil.h"
+#import "AlertPrompt.h"
+#import "TBIUIImageView.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <MobileCoreServices/UTCoreTypes.h>
 
 @interface SpeakPictureType()
+
 
 @end
 
 
 @implementation SpeakPictureType
 
-@synthesize scrollView;
+@synthesize scrollView, thumbsVisible;
+
+CGRect originalScrollView;
+NSMutableArray *currentlyLoadedLoadedImages;
+float contentXOffsetAtLastUpdate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,13 +35,54 @@
     }
     return self;
 }
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+        NSURL *imgName = [self.allImages objectAtIndex:indexPath.row];
+        NSData *imgdata = [NSData dataWithContentsOfURL:imgName];
+        UIImage *image = [[UIImage alloc] initWithData:imgdata];
+        /*TBIUIImageView *thumbsView = [[TBIUIImageView alloc] initWithImage:image];
+        
+        thumbsView.imageName = imgName;*/
+    
+        UICollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cvCell" forIndexPath:indexPath];
+        
+        //[cell addSubview:thumbsView];
+    UIImageView *imgincell = (UIImageView*)[cell viewWithTag:100];
+    imgincell.image = image;
+    return cell;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    NSLog(@"All images count %d", [self.allImages count]);
+    return [self.allImages count];
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+
+- (IBAction)presentTextBox:(id)sender
+{
+    AlertPrompt *txtBox = [[AlertPrompt alloc] initWithTitle:@"Step" message:@"Type in step informaton" delegate:self cancelButtonTitle:@"Cancel" okButtonTitle:@"Add Step"];
+    [txtBox show];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self setupVerticalScrollView];
+    self.allImages = [CameraUtil getAllImages];
+    NSLog(@"Number of images: %d", self.allImages.count);
+    UINib *cellNib = [UINib nibWithNibName:@"NibCell" bundle:nil];
+    [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"cvCell"];
+    
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+    [flowLayout setItemSize:CGSizeMake(225, 150)];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+    [self.collectionView setCollectionViewLayout:flowLayout];
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,7 +91,50 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) setupVerticalScrollView
+/*-(void)scrollViewDidScroll:(UIScrollView *)scrollViewpass
+{
+    int width = 225;
+    //compare current offset to stored offset
+    if (!contentXOffsetAtLastUpdate)
+    {
+        contentXOffsetAtLastUpdate = scrollView.contentOffset.x;
+    }
+    else {
+        float min;
+        float max;
+        if (fabs(contentXOffsetAtLastUpdate - scrollView.contentOffset.x) > 2*width)
+        {
+            min = (scrollView.contentOffset.x/width) - scrollView.frame.size.width/width;
+            NSLog(@"minimum: %f", min);
+            max = (scrollView.contentOffset.x/width) + 2*(scrollView.frame.size.width/width);
+            NSLog(@"maximum: %f", max);
+            if (min < 0.0)
+            {
+                min = 0;
+            }
+            if (max > allImages.count)
+            {
+                max = allImages.count;
+            }
+            for (NSUInteger i=0; i < currentlyLoadedLoadedImages.count; i++)
+            {
+                NSUInteger imgIndex = [currentlyLoadedLoadedImages objectAtIndex:i];
+                if ( imgIndex > max || imgIndex < min)
+                {
+                    
+                }
+            }
+        }
+    }
+}
+*/
+
+-(void)updateContentsofImageScrollView
+{
+    
+}
+
+- (void) setupHorizontalScrollView
 {
     scrollView.delegate = self;
     
@@ -55,42 +146,102 @@
     scrollView.scrollEnabled = YES;
     scrollView.pagingEnabled = YES;
     
-    NSUInteger nimages = 0;
-    NSInteger tot = 0; //For now 15, need to see what we want
-    CGFloat cx = 0;
+    //CGFloat cx = 4;
     
-    NSArray *allImages = [CameraUtil getAllImages];
+    self.allImages = [CameraUtil getAllImages];
     
-    for (NSString *imgName in allImages)
+    
+   /* NSLog(@"All images: %@", allImages);
+    NSLog(@"Num images: %d", [allImages count]);
+    for (NSURL *imgName in allImages)
     {
         //NSString *imageName = [NSString stringWithFormat:@"image%d.jpg", (nimages + 1)];
         NSLog(@"Image name: %@s", imgName);
-        UIImage *image = [UIImage imageNamed:imgName];
-        if (tot==15)
-        {
-            break;
-        }
-        if (8 == nimages)
-        {
-            nimages = 0;
-        }
-        UIImageView *thumbsView = [[UIImageView alloc] initWithImage:image];
+        NSData *imgdata = [NSData dataWithContentsOfURL:imgName];
+        UIImage *image = [[UIImage alloc] initWithData:imgdata];
+        TBIUIImageView *thumbsView = [[TBIUIImageView alloc] initWithImage:image];
+        
+        thumbsView.imageName = imgName;
         
         CGRect rect = thumbsView.frame;
-        rect.size.height = 40;
-        rect.size.width = 40;
-        rect.origin.x = 0;
-        rect.origin.y = cx;
+        rect.size.height = 150;
+        rect.size.width = 225;
+        rect.origin.x = cx;
+        rect.origin.y = 4;
         
         thumbsView.frame = rect;
+        thumbsView.userInteractionEnabled = YES;
         
         [scrollView addSubview:thumbsView];
+        //Now make it tappable
+        UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc]
+                                                   initWithTarget:self action:@selector(handleSingleSingleTap:)];
+        singleFingerTap.numberOfTapsRequired = 1;
+
+        [thumbsView addGestureRecognizer:singleFingerTap];
+        
+        NSLog(@"imageView.gestureRecognizers: %@", [thumbsView.gestureRecognizers description]);
         
         cx += thumbsView.frame.size.width + 5;
-        tot++;
     }
     //self.pageControl.numberOfPages = nimages;
     [scrollView setContentSize:CGSizeMake(cx, [scrollView bounds].size.height)];
+    self.thumbsVisible = YES;*/
+}
+
+- (IBAction)showHideView:(id)sender
+{
+    NSLog(@"Beginning animation");
+    if (self.thumbsVisible)
+    {
+        [UIView beginAnimations:@"animatePhotosdown" context:NULL];
+        // Assumes the banner view is placed at the bottom of the screen.
+        scrollView.frame = CGRectOffset(scrollView.frame, 0, scrollView.frame.size.height);
+        [UIView commitAnimations];
+        self.thumbsVisible = NO;
+    } else {
+        [UIView beginAnimations:@"animatePhotosup" context:NULL];
+        // Assumes the banner view is placed at the bottom of the screen.
+        scrollView.frame = CGRectOffset(scrollView.frame, 0, -scrollView.frame.size.height);
+        [UIView commitAnimations];
+        self.thumbsVisible = YES;
+    }
+}
+
+
+//When picture is tapped bring it up
+- (IBAction)handleSingleSingleTap:(UIGestureRecognizer *)sender {
+    NSLog(@"I got touched!");
+    //Set up a large imageview over everything else
+    /*CGRect popOver = CGRectMake(0.0, 0.0, 768, 1024);
+    UIView *background = [[UIView alloc] init];
+    background.frame = popOver;
+    [background setBackgroundColor:[UIColor blackColor]];
+    [[[[UIApplication sharedApplication] delegate] window] addSubview:background];
+    //And give it a done button
+    navBar = [[UINavigationBar alloc] init];
+    navItem = [[UINavigationItem alloc] initWithTitle:@"Photo"];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissView:)];
+    navItem.rightBarButtonItem = doneButton;
+    navBar.items = [NSArray arrayWithObject:navItem];
+    [background addSubview:navBar];
+    
+    //Now add uiimageview in the center
+    NSData *imgdata = [NSData dataWithContentsOfURL:((TBIUIImageView*)sender.view).imageName];
+    UIImage *image = [[UIImage alloc] initWithData:imgdata];
+    image = [UIImage imageWithCGImage:image.CGImage scale:image.scale orientation:UIImageOrientationLeft];
+    TBIUIImageView *imageToShow = [[TBIUIImageView alloc] initWithImage:image];
+    [imageToShow setCenter:CGPointMake(CGRectGetMidX([background bounds]), CGRectGetMidY([background bounds]))];
+    [background addSubview:imageToShow];*/
+}
+
+-(IBAction)dismissView:(id)sender
+{
+    NSLog(@"Done clicked!");
+}
+
+-(IBAction)launchOpenEars:(id)sender
+{
 }
 
 -(IBAction)presentCamera:(id)sender
@@ -110,7 +261,7 @@
         NSLog(@"NO");
         
         //Use this image I made up
-        NSArray* possibleURLs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, NO);
+        NSArray* possibleURLs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString* appSupportDir = nil;
         NSString* appDirectory = nil;
         
@@ -126,6 +277,7 @@
             appDirectory = [appSupportDir stringByAppendingPathComponent:appBundleID];
         }
         NSString *filename = [appDirectory stringByAppendingPathComponent:@"cat.jpg"];
+        //NSLog(@"Filename: %@", filename);
 
         UIImage *catPic = [[UIImage alloc] initWithContentsOfFile:filename];
         

@@ -1,13 +1,16 @@
 //
 //  AlertPrompt.h
-//  HReader
+//  Prompt
 //
-//  Created by Kaye, Lindsay M on 10/17/12.
-//  Copyright (c) 2012 MITRE Corporation. All rights reserved.
-//
+//  Created by Jeff LaMarche on 2/26/09.
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 @interface AlertPrompt : UIAlertView
-
+{
+    UITextField *textField;
+}
+@property (nonatomic, retain) UITextField *textField;
+@property (readonly) NSString *enteredText;
+- (id)initWithTitle:(NSString *)title message:(NSString *)message delegate:(id)delegate cancelButtonTitle:(NSString *)cancelButtonTitle okButtonTitle:(NSString *)okButtonTitle;
 @end
