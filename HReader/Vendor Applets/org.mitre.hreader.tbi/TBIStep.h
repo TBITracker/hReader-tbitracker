@@ -26,4 +26,9 @@
 
 -(TBIStep *)initWithAudioURL:(NSURL*)audioURL andDuration:(NSTimeInterval*)durationInput;
 
+-(TBIStep *)initWithText:(NSString*)textInput andDuration:(NSTimeInterval*)durationInput andSummary:(NSString *)summaryInput;
+
+-(TBIStep *)initWithImageURL:(NSURL*)imageURL andDuration:(NSTimeInterval*)durationInput andSummary:(NSString *)summaryInput;
+
+-(TBIStep *)initWithAudioURL:(NSURL*)audioURL andDuration:(NSTimeInterval*)durationInput andSummary:(NSString *)summaryInput;
 @end

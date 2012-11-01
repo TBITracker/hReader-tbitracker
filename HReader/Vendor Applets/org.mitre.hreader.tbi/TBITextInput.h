@@ -18,5 +18,5 @@
 @property (nonatomic, retain) NSString *text;
 
 - (TBITextInput *) initWithText:(NSString*)textInput;
-
+- (TBITextInput *) initWithText:(NSString*)textInput andSummary:(NSString *)summaryInput;
 @end

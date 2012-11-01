@@ -69,10 +69,10 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"viewDidLoad called");
+    //NSLog(@"viewDidLoad called");
     //[self.segmentedControl setEnabled:YES forSegmentAtIndex:4];
     [super viewDidLoad];
-    NSLog(@"Attempting to set %@ to %@", self.questionText, labelText);
+    //NSLog(@"Attempting to set %@ to %@", self.questionText, labelText);
     [self.questionText setText:labelText];
 	// Do any additional setup after loading the view.
     //NSLog(@"my parentVC is: %@", [self parentViewController]); //doesn't work, use delegate instead

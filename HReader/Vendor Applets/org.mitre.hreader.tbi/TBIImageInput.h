@@ -15,5 +15,6 @@
 @property (nonatomic, retain) NSURL *imageLocation;
 
 - (TBIImageInput *) initWithImageLocation:(NSURL *)url;
+- (TBIImageInput *) initWithImageLocation:(NSURL *)url andSummary:(NSString *)summary;
 
 @end
