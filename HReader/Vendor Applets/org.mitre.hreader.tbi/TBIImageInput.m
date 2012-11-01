@@ -29,4 +29,8 @@
     return self;
 }
 
+-(NSString *)description {
+    return [NSString stringWithFormat:@"Image Input: %@", imageLocation];
+}
+
 @end

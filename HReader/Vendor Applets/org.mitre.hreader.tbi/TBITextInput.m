@@ -27,4 +27,9 @@
     return self;
 }
 
+-(NSString *)description {
+    NSString *blurb = [text substringToIndex:30];
+    return [NSString stringWithFormat:@"Text Input: %@", blurb];
+}
+
 @end

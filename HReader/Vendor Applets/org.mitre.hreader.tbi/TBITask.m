@@ -89,4 +89,8 @@
     return self;
 }
 
+- (NSString *) description {
+    return [NSString stringWithFormat:@"%@ (%i steps, %@ success rate", name, [steps count], completionPercent];
+}
+
 @end

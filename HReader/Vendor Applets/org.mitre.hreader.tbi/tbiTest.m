@@ -59,9 +59,7 @@ UIView *topView;
                                    @"ViewController",
                                    nil]
                           ]];
-        NSLog(@"inside pages");
         [[[pages lastObject] objectForKey:@"ViewController"] setParentView:[self view]];
-        NSLog(@"moving on......");
         /*
          for(int i=1; i<16; i++){
             [pages addObject:[[NSMutableDictionary alloc]
@@ -272,7 +270,6 @@ UIView *topView;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {	
-    NSLog(@"Began editing");
     [UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDelegate:self];
 	[UIView setAnimationDuration:0.5];

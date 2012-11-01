@@ -66,4 +66,8 @@
     return self;
 }
 
+- (NSString *) description{
+    return [NSString stringWithFormat:@"%@, lasting %i minutes", userInput, duration];
+}
+
 @end
