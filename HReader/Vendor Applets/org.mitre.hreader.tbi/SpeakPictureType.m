@@ -83,6 +83,8 @@ float contentXOffsetAtLastUpdate;
     [flowLayout setItemSize:CGSizeMake(225, 150)];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     [self.collectionView setCollectionViewLayout:flowLayout];
+    
+    self.thumbsVisible = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -134,7 +136,7 @@ float contentXOffsetAtLastUpdate;
     
 }
 
-- (void) setupHorizontalScrollView
+/*- (void) setupHorizontalScrollView
 {
     scrollView.delegate = self;
     
@@ -149,7 +151,7 @@ float contentXOffsetAtLastUpdate;
     //CGFloat cx = 4;
     
     self.allImages = [CameraUtil getAllImages];
-    
+*/    
     
    /* NSLog(@"All images: %@", allImages);
     NSLog(@"Num images: %d", [allImages count]);
@@ -187,7 +189,7 @@ float contentXOffsetAtLastUpdate;
     //self.pageControl.numberOfPages = nimages;
     [scrollView setContentSize:CGSizeMake(cx, [scrollView bounds].size.height)];
     self.thumbsVisible = YES;*/
-}
+//}
 
 - (IBAction)showHideView:(id)sender
 {
@@ -196,13 +198,13 @@ float contentXOffsetAtLastUpdate;
     {
         [UIView beginAnimations:@"animatePhotosdown" context:NULL];
         // Assumes the banner view is placed at the bottom of the screen.
-        scrollView.frame = CGRectOffset(scrollView.frame, 0, scrollView.frame.size.height);
+       self.collectionView.frame = CGRectOffset(self.collectionView.frame, 0, self.collectionView.frame.size.height);
         [UIView commitAnimations];
         self.thumbsVisible = NO;
     } else {
         [UIView beginAnimations:@"animatePhotosup" context:NULL];
         // Assumes the banner view is placed at the bottom of the screen.
-        scrollView.frame = CGRectOffset(scrollView.frame, 0, -scrollView.frame.size.height);
+        self.collectionView.frame = CGRectOffset(self.collectionView.frame, 0, -self.collectionView.frame.size.height);
         [UIView commitAnimations];
         self.thumbsVisible = YES;
     }

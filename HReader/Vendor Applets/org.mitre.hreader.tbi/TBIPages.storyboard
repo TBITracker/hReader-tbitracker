@@ -69,8 +69,8 @@
                                     <action selector="showHideView:" destination="7GC-XB-x3Q" eventType="touchUpInside" id="4L1-MQ-Ipq"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="kKW-kF-hza">
-                                <rect key="frame" x="0.0" y="590" width="1024" height="324"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="kKW-kF-hza">
+                                <rect key="frame" x="20" y="535" width="984" height="193"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qhe-g4-jPm">
                                     <size key="itemSize" width="257" height="150"/>
@@ -139,6 +139,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SpeakPictureType.h"/>
             <relationships>
                 <relationship kind="action" name="dismissView:"/>
+                <relationship kind="action" name="handleSingleSingleTap:" candidateClass="UIGestureRecognizer"/>
                 <relationship kind="action" name="launchOpenEars:"/>
                 <relationship kind="action" name="presentCamera:"/>
                 <relationship kind="action" name="presentTextBox:"/>
