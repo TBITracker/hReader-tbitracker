@@ -13,13 +13,13 @@
 int currentImage;
 
 - (IBAction) nextClicked: (id)sender{
-    NSLog(@"Next clicked");
+    //NSLog(@"Next clicked");
     currentImage += 1;
-    if (currentImage > 11){
+    if (currentImage > 6){
         [self.navigationController popViewControllerAnimated:YES];
     }
     else{
-        NSString *imageName = [NSString stringWithFormat:@"scene%i", currentImage];
+        NSString *imageName = [NSString stringWithFormat:@"scene%i.jpg", currentImage];
         UIImage *nextImage = [UIImage imageNamed:imageName];
         [[self button] setImage:nextImage forState:0];
     }
@@ -38,7 +38,7 @@ int currentImage;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    currentImage = 1;
+    currentImage = 0;
 	// Do any additional setup after loading the view.
 }
 

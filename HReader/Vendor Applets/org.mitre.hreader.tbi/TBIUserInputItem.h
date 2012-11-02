@@ -14,7 +14,18 @@
 
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) id image;
-@property (nonatomic, retain) NSString * audio;
-@property (nonatomic, retain) UNKNOWN_TYPE summary;
+@property (nonatomic, retain) id audio;
+@property (nonatomic, retain) NSString * summary;
+
+- (void) setNil;
+
+- (TBIUserInputItem *) initWithText:(NSString*)textInput;
+- (TBIUserInputItem *) initWithText:(NSString*)textInput andSummary:(NSString *)summaryInput;
+
+- (TBIUserInputItem *) initWithImage:(id)imageInput;
+- (TBIUserInputItem *) initWithImage:(id)imageInput andSummary:(NSString *)summaryInput;
+
+- (TBIUserInputItem *) initWithAudio:(id)audioInput;
+- (TBIUserInputItem *) initWithAudio:(id)audioInput andSummary:(NSString *)summaryInput;
 
 @end

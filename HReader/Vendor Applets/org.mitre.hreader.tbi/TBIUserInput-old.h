@@ -16,6 +16,9 @@
 
 @interface TBIUserInput : NSObject {
     NSString *summary;
+    //NSString *text;
+    //UIImage* imageLocation;
+    //NSSound* audioLocation;
 }
 
 @property (nonatomic, retain) NSString *summary;

@@ -261,6 +261,14 @@
 		D8225AD81630839D00FD44F1 /* sliderBarGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = D8225AD41630839D00FD44F1 /* sliderBarGreen.png */; };
 		D8225AD91630839D00FD44F1 /* sliderEnd.png in Resources */ = {isa = PBXBuildFile; fileRef = D8225AD51630839D00FD44F1 /* sliderEnd.png */; };
 		D8225ADB163083B800FD44F1 /* list_example.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D8225ADA163083B800FD44F1 /* list_example.m4a */; };
+		D82AD0A21642EBBA002C1A18 /* TBISlideshow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D82AD0A11642EBB9002C1A18 /* TBISlideshow.storyboard */; };
+		D82AD0AB1642EF09002C1A18 /* scene0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D82AD0A41642EF06002C1A18 /* scene0.jpg */; };
+		D82AD0AC1642EF09002C1A18 /* scene1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D82AD0A51642EF06002C1A18 /* scene1.jpg */; };
+		D82AD0AD1642EF09002C1A18 /* scene2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D82AD0A61642EF07002C1A18 /* scene2.jpg */; };
+		D82AD0AE1642EF09002C1A18 /* scene3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D82AD0A71642EF07002C1A18 /* scene3.jpg */; };
+		D82AD0AF1642EF09002C1A18 /* scene4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D82AD0A81642EF07002C1A18 /* scene4.jpg */; };
+		D82AD0B01642EF09002C1A18 /* scene5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D82AD0A91642EF08002C1A18 /* scene5.jpg */; };
+		D82AD0B11642EF09002C1A18 /* scene6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D82AD0AA1642EF09002C1A18 /* scene6.jpg */; };
 		D834C6C7161B36BD00D1B82D /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D834C6C3161B36BD00D1B82D /* ResultViewController.m */; };
 		D834C6C8161B36BD00D1B82D /* taskStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D834C6C4161B36BD00D1B82D /* taskStoryboard.storyboard */; };
 		D834C6C9161B36BD00D1B82D /* taskVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D834C6C6161B36BD00D1B82D /* taskVC.m */; };
@@ -304,6 +312,9 @@
 		D8665A5A16023452002CD855 /* home_background.png in Resources */ = {isa = PBXBuildFile; fileRef = D8665A5916023452002CD855 /* home_background.png */; };
 		D8665A5D16025BB1002CD855 /* Memory_List1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D8665A5C16025BB1002CD855 /* Memory_List1.m4a */; };
 		D8A507371631E3CA00DEFAA1 /* PRMQQuestions.strings in Resources */ = {isa = PBXBuildFile; fileRef = D8A507361631E3CA00DEFAA1 /* PRMQQuestions.strings */; };
+		D8F70A6F1642FE900011985F /* TBIUserInputItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F70A6E1642FE900011985F /* TBIUserInputItem.m */; };
+		D8F70A7216430F450011985F /* TBIAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F70A7116430F450011985F /* TBIAudio.m */; };
+		D8F70A7516430F690011985F /* TBIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F70A7416430F690011985F /* TBIImage.m */; };
 		DD124DAE148D3EF300E23A44 /* Doctor.png in Resources */ = {isa = PBXBuildFile; fileRef = DD124DAD148D3EF300E23A44 /* Doctor.png */; };
 		DD5597C114897DE2006A0D1D /* HRDoctorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5597BF14897DE2006A0D1D /* HRDoctorsViewController.m */; };
 		DD5597C214897DE2006A0D1D /* HRDoctorsViewController_old.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5597C014897DE2006A0D1D /* HRDoctorsViewController_old.xib */; };
@@ -707,6 +718,14 @@
 		D8225AD41630839D00FD44F1 /* sliderBarGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sliderBarGreen.png; sourceTree = "<group>"; };
 		D8225AD51630839D00FD44F1 /* sliderEnd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sliderEnd.png; sourceTree = "<group>"; };
 		D8225ADA163083B800FD44F1 /* list_example.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = list_example.m4a; sourceTree = "<group>"; };
+		D82AD0A11642EBB9002C1A18 /* TBISlideshow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TBISlideshow.storyboard; sourceTree = "<group>"; };
+		D82AD0A41642EF06002C1A18 /* scene0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scene0.jpg; sourceTree = "<group>"; };
+		D82AD0A51642EF06002C1A18 /* scene1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scene1.jpg; sourceTree = "<group>"; };
+		D82AD0A61642EF07002C1A18 /* scene2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scene2.jpg; sourceTree = "<group>"; };
+		D82AD0A71642EF07002C1A18 /* scene3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scene3.jpg; sourceTree = "<group>"; };
+		D82AD0A81642EF07002C1A18 /* scene4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scene4.jpg; sourceTree = "<group>"; };
+		D82AD0A91642EF08002C1A18 /* scene5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scene5.jpg; sourceTree = "<group>"; };
+		D82AD0AA1642EF09002C1A18 /* scene6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scene6.jpg; sourceTree = "<group>"; };
 		D834C6C2161B36BD00D1B82D /* ResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultViewController.h; sourceTree = "<group>"; };
 		D834C6C3161B36BD00D1B82D /* ResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultViewController.m; sourceTree = "<group>"; };
 		D834C6C4161B36BD00D1B82D /* taskStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = taskStoryboard.storyboard; sourceTree = "<group>"; };
@@ -765,6 +784,12 @@
 		D8665A5916023452002CD855 /* home_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_background.png; sourceTree = "<group>"; };
 		D8665A5C16025BB1002CD855 /* Memory_List1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Memory_List1.m4a; sourceTree = "<group>"; };
 		D8A507361631E3CA00DEFAA1 /* PRMQQuestions.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = PRMQQuestions.strings; sourceTree = "<group>"; };
+		D8F70A6D1642FE900011985F /* TBIUserInputItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBIUserInputItem.h; sourceTree = "<group>"; };
+		D8F70A6E1642FE900011985F /* TBIUserInputItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBIUserInputItem.m; sourceTree = "<group>"; };
+		D8F70A7016430F450011985F /* TBIAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBIAudio.h; sourceTree = "<group>"; };
+		D8F70A7116430F450011985F /* TBIAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBIAudio.m; sourceTree = "<group>"; };
+		D8F70A7316430F690011985F /* TBIImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBIImage.h; sourceTree = "<group>"; };
+		D8F70A7416430F690011985F /* TBIImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBIImage.m; sourceTree = "<group>"; };
 		DD124DAD148D3EF300E23A44 /* Doctor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Doctor.png; sourceTree = "<group>"; };
 		DD5597BE14897DE2006A0D1D /* HRDoctorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRDoctorsViewController.h; sourceTree = "<group>"; };
 		DD5597BF14897DE2006A0D1D /* HRDoctorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRDoctorsViewController.m; sourceTree = "<group>"; };
@@ -1032,6 +1057,7 @@
 				D834C6C4161B36BD00D1B82D /* taskStoryboard.storyboard */,
 				D834C6C5161B36BD00D1B82D /* taskVC.h */,
 				D834C6C6161B36BD00D1B82D /* taskVC.m */,
+				D82AD0A11642EBB9002C1A18 /* TBISlideshow.storyboard */,
 				06FD2B0D1612144A004A54C1 /* TaskMaker */,
 				06FD2AF51610BCC4004A54C1 /* Utils */,
 				D8665A5B16025B98002CD855 /* Audio */,
@@ -1538,6 +1564,13 @@
 		D834C6CA161B36DB00D1B82D /* Wireframes */ = {
 			isa = PBXGroup;
 			children = (
+				D82AD0A41642EF06002C1A18 /* scene0.jpg */,
+				D82AD0A51642EF06002C1A18 /* scene1.jpg */,
+				D82AD0A61642EF07002C1A18 /* scene2.jpg */,
+				D82AD0A71642EF07002C1A18 /* scene3.jpg */,
+				D82AD0A81642EF07002C1A18 /* scene4.jpg */,
+				D82AD0A91642EF08002C1A18 /* scene5.jpg */,
+				D82AD0AA1642EF09002C1A18 /* scene6.jpg */,
 				D834C6CB161B36F300D1B82D /* scene1.png */,
 				D834C6CC161B36F300D1B82D /* scene2.png */,
 				D834C6CD161B36F300D1B82D /* scene3.png */,
@@ -1675,6 +1708,12 @@
 			isa = PBXGroup;
 			children = (
 				EAC680B0163B1FD5003E886D /* TBIDataModel.xcdatamodeld */,
+				D8F70A7316430F690011985F /* TBIImage.h */,
+				D8F70A7416430F690011985F /* TBIImage.m */,
+				D8F70A7016430F450011985F /* TBIAudio.h */,
+				D8F70A7116430F450011985F /* TBIAudio.m */,
+				D8F70A6D1642FE900011985F /* TBIUserInputItem.h */,
+				D8F70A6E1642FE900011985F /* TBIUserInputItem.m */,
 				EAC680B3163B1FFC003E886D /* TBIDataManager.h */,
 				EAC680B4163B1FFC003E886D /* TBIDataManager.m */,
 			);
@@ -1972,6 +2011,14 @@
 				D8225AD91630839D00FD44F1 /* sliderEnd.png in Resources */,
 				D8225ADB163083B800FD44F1 /* list_example.m4a in Resources */,
 				D8A507371631E3CA00DEFAA1 /* PRMQQuestions.strings in Resources */,
+				D82AD0A21642EBBA002C1A18 /* TBISlideshow.storyboard in Resources */,
+				D82AD0AB1642EF09002C1A18 /* scene0.jpg in Resources */,
+				D82AD0AC1642EF09002C1A18 /* scene1.jpg in Resources */,
+				D82AD0AD1642EF09002C1A18 /* scene2.jpg in Resources */,
+				D82AD0AE1642EF09002C1A18 /* scene3.jpg in Resources */,
+				D82AD0AF1642EF09002C1A18 /* scene4.jpg in Resources */,
+				D82AD0B01642EF09002C1A18 /* scene5.jpg in Resources */,
+				D82AD0B11642EF09002C1A18 /* scene6.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2103,6 +2150,9 @@
 				D836762F16386D3600C43A27 /* PercentageTracker.m in Sources */,
 				EAC680B2163B1FD5003E886D /* TBIDataModel.xcdatamodeld in Sources */,
 				EAC680B5163B1FFC003E886D /* TBIDataManager.m in Sources */,
+				D8F70A6F1642FE900011985F /* TBIUserInputItem.m in Sources */,
+				D8F70A7216430F450011985F /* TBIAudio.m in Sources */,
+				D8F70A7516430F690011985F /* TBIImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
