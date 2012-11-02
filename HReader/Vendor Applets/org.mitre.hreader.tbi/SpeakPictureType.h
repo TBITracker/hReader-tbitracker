@@ -9,21 +9,32 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SpeakPictureType : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate> {
+@interface SpeakPictureType : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UICollectionViewDataSource> {
     UIImageView * imageView;
+    UINavigationBar *navBar;
+    UINavigationItem *navItem;
 }
 @property (nonatomic, retain) IBOutlet UIButton *cameraButton;
 @property (nonatomic, retain) IBOutlet UIButton * speakButton;
 @property (nonatomic, retain) IBOutlet UIButton * textButton;
+@property (nonatomic, retain) IBOutlet UICollectionView *collectionView;
 
+@property (assign) BOOL thumbsVisible;
+@property (nonatomic, strong) NSArray *allImages;
 @property (nonatomic, retain) IBOutlet UIScrollView * scrollView;
 
-
+- (IBAction) showHideView:(id)sender;
 - (IBAction) launchOpenEars:(id)sender;
 - (IBAction) presentTextBox:(id)sender;
 - (IBAction) presentCamera:(id)sender;
+- (IBAction) dismissView:(id)sender;
 
 - (void)setupverticalScrollView;
 
 - (BOOL) startCameraControllerFromViewController:(UIViewController*)controller usingDelegate: (id <UIImagePickerControllerDelegate, UINavigationControllerDelegate>) delegate;
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView;
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section;
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;
+
 @end

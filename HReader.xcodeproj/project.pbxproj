@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06FD2AF81610BE55004A54C1 /* CameraUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD2AF71610BE55004A54C1 /* CameraUtil.m */; };
+		0672AA5E162F32E300A62CCE /* AlertPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 0672AA5D162F32E300A62CCE /* AlertPrompt.m */; };
+		0672AA611635C71E00A62CCE /* TBIUIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0672AA601635C71E00A62CCE /* TBIUIImageView.m */; };
+		0672AA6F1640382300A62CCE /* NibCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0672AA6E1640382300A62CCE /* NibCell.xib */; };
+		06FD2AF81610BE55004A54C1 /* CameraUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD2AF71610BE55004A54C1 /* CameraUtil.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		06FD2B071610D6A9004A54C1 /* TBIPages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06FD2B061610D6A9004A54C1 /* TBIPages.storyboard */; };
-		06FD2B0A1610D9AE004A54C1 /* SpeakPictureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD2B091610D9AE004A54C1 /* SpeakPictureType.m */; };
+		06FD2B0A1610D9AE004A54C1 /* SpeakPictureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD2B091610D9AE004A54C1 /* SpeakPictureType.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		06FD2B0C1611D4FA004A54C1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06FD2B0B1611D4FA004A54C1 /* MobileCoreServices.framework */; };
 		3B001D3E157519DB00762FB0 /* InitialSetup_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B001D3D157519DB00762FB0 /* InitialSetup_iPad.storyboard */; };
 		3B001D4315751D0300762FB0 /* HRPeopleSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B001D4215751D0300762FB0 /* HRPeopleSetupViewController.m */; };
@@ -256,6 +259,7 @@
 		94E078C61538A4570051DC01 /* multiple_sclerosis_summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078BF1538A4570051DC01 /* multiple_sclerosis_summary.png */; };
 		94E078C71538A4570051DC01 /* pophealth-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078C01538A4570051DC01 /* pophealth-summary.png */; };
 		94F871F41535D9F60018AF13 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F871F31535D9F60018AF13 /* libz.dylib */; };
+		D834C6C7161B36BD00D1B82D /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D834C6C3161B36BD00D1B82D /* ResultViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D8225AD61630839D00FD44F1 /* slider.png in Resources */ = {isa = PBXBuildFile; fileRef = D8225AD21630839D00FD44F1 /* slider.png */; };
 		D8225AD71630839D00FD44F1 /* sliderBar.png in Resources */ = {isa = PBXBuildFile; fileRef = D8225AD31630839D00FD44F1 /* sliderBar.png */; };
 		D8225AD81630839D00FD44F1 /* sliderBarGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = D8225AD41630839D00FD44F1 /* sliderBarGreen.png */; };
@@ -271,7 +275,7 @@
 		D82AD0B11642EF09002C1A18 /* scene6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D82AD0AA1642EF09002C1A18 /* scene6.jpg */; };
 		D834C6C7161B36BD00D1B82D /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D834C6C3161B36BD00D1B82D /* ResultViewController.m */; };
 		D834C6C8161B36BD00D1B82D /* taskStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D834C6C4161B36BD00D1B82D /* taskStoryboard.storyboard */; };
-		D834C6C9161B36BD00D1B82D /* taskVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D834C6C6161B36BD00D1B82D /* taskVC.m */; };
+		D834C6C9161B36BD00D1B82D /* taskVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D834C6C6161B36BD00D1B82D /* taskVC.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D834C6D6161B36F300D1B82D /* scene1.png in Resources */ = {isa = PBXBuildFile; fileRef = D834C6CB161B36F300D1B82D /* scene1.png */; };
 		D834C6D7161B36F300D1B82D /* scene2.png in Resources */ = {isa = PBXBuildFile; fileRef = D834C6CC161B36F300D1B82D /* scene2.png */; };
 		D834C6D8161B36F300D1B82D /* scene3.png in Resources */ = {isa = PBXBuildFile; fileRef = D834C6CD161B36F300D1B82D /* scene3.png */; };
@@ -285,6 +289,7 @@
 		D834C6E0161B36F300D1B82D /* scene11.png in Resources */ = {isa = PBXBuildFile; fileRef = D834C6D5161B36F300D1B82D /* scene11.png */; };
 		D834C6E3161B370100D1B82D /* learning-grey.png in Resources */ = {isa = PBXBuildFile; fileRef = D834C6E1161B370100D1B82D /* learning-grey.png */; };
 		D834C6E4161B370100D1B82D /* new_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D834C6E2161B370100D1B82D /* new_logo.png */; };
+		D834C6E8161B3BFF00D1B82D /* Stopwatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D834C6E7161B3BFF00D1B82D /* Stopwatch.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D834C6E8161B3BFF00D1B82D /* Stopwatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D834C6E7161B3BFF00D1B82D /* Stopwatch.m */; };
 		D83676221638694F00C43A27 /* TBIUserInput.m in Sources */ = {isa = PBXBuildFile; fileRef = D83676211638694F00C43A27 /* TBIUserInput.m */; };
 		D83676261638698C00C43A27 /* TBITextInput.m in Sources */ = {isa = PBXBuildFile; fileRef = D83676251638698C00C43A27 /* TBITextInput.m */; };
@@ -362,6 +367,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0672AA5C162F32E300A62CCE /* AlertPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertPrompt.h; sourceTree = "<group>"; };
+		0672AA5D162F32E300A62CCE /* AlertPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertPrompt.m; sourceTree = "<group>"; };
+		0672AA5F1635C71E00A62CCE /* TBIUIImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBIUIImageView.h; sourceTree = "<group>"; };
+		0672AA601635C71E00A62CCE /* TBIUIImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBIUIImageView.m; sourceTree = "<group>"; };
+		0672AA6E1640382300A62CCE /* NibCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibCell.xib; sourceTree = "<group>"; };
 		06FD2AF61610BE55004A54C1 /* CameraUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraUtil.h; sourceTree = "<group>"; };
 		06FD2AF71610BE55004A54C1 /* CameraUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraUtil.m; sourceTree = "<group>"; };
 		06FD2B061610D6A9004A54C1 /* TBIPages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TBIPages.storyboard; sourceTree = "<group>"; };
@@ -838,6 +848,10 @@
 			children = (
 				06FD2AF61610BE55004A54C1 /* CameraUtil.h */,
 				06FD2AF71610BE55004A54C1 /* CameraUtil.m */,
+				0672AA5C162F32E300A62CCE /* AlertPrompt.h */,
+				0672AA5D162F32E300A62CCE /* AlertPrompt.m */,
+				0672AA5F1635C71E00A62CCE /* TBIUIImageView.h */,
+				0672AA601635C71E00A62CCE /* TBIUIImageView.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -849,6 +863,7 @@
 				06FD2B081610D9AD004A54C1 /* SpeakPictureType.h */,
 				06FD2B091610D9AE004A54C1 /* SpeakPictureType.m */,
 				06FD2B061610D6A9004A54C1 /* TBIPages.storyboard */,
+				0672AA6E1640382300A62CCE /* NibCell.xib */,
 			);
 			name = TaskMaker;
 			sourceTree = "<group>";
@@ -2005,6 +2020,7 @@
 				D834C6E4161B370100D1B82D /* new_logo.png in Resources */,
 				3B1925A91619DDDA0024E9BD /* timeline-angular in Resources */,
 				06FD2B071610D6A9004A54C1 /* TBIPages.storyboard in Resources */,
+				0672AA6F1640382300A62CCE /* NibCell.xib in Resources */,
 				D8225AD61630839D00FD44F1 /* slider.png in Resources */,
 				D8225AD71630839D00FD44F1 /* sliderBar.png in Resources */,
 				D8225AD81630839D00FD44F1 /* sliderBarGreen.png in Resources */,
@@ -2137,6 +2153,8 @@
 				3B00A7B8162730AF000BD5F8 /* HRTabBarController.m in Sources */,
 				3B00A7BB16273E2F000BD5F8 /* HRPanelViewController.m in Sources */,
 				3B00A7BE16275004000BD5F8 /* HRContentViewController.m in Sources */,
+				0672AA5E162F32E300A62CCE /* AlertPrompt.m in Sources */,
+				0672AA611635C71E00A62CCE /* TBIUIImageView.m in Sources */,
 				3B8935E8162D9E0F003750B6 /* CMDActionSheet.m in Sources */,
 				3B8935E9162D9E0F003750B6 /* CMDAlertView.m in Sources */,
 				3B8935EB162D9E0F003750B6 /* NSArray+CMDBlocksKit.m in Sources */,

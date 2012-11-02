@@ -29,7 +29,7 @@ UIView *parentView;
     //CFURLRef soundFileURL = (CFURLRef)[NSURL URLWithString:str];
     //NSLog(@"attempting to play soundfile at URL: %@", CFUrlGetString(soundFileURL));
     //NSLog(@"resolved to URL: %@", soundFileURL);
-    OSStatus errorCode = AudioServicesCreateSystemSoundID((CFURLRef)soundFileURL , &soundID);
+    OSStatus errorCode = AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundFileURL , &soundID);
     if(errorCode != 0){
         NSLog(@"soundfile failed to play with errorcode: %ld", errorCode);
     }
