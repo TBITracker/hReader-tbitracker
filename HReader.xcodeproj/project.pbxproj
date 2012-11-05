@@ -259,7 +259,6 @@
 		94E078C61538A4570051DC01 /* multiple_sclerosis_summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078BF1538A4570051DC01 /* multiple_sclerosis_summary.png */; };
 		94E078C71538A4570051DC01 /* pophealth-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078C01538A4570051DC01 /* pophealth-summary.png */; };
 		94F871F41535D9F60018AF13 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F871F31535D9F60018AF13 /* libz.dylib */; };
-		D834C6C7161B36BD00D1B82D /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D834C6C3161B36BD00D1B82D /* ResultViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D8225AD61630839D00FD44F1 /* slider.png in Resources */ = {isa = PBXBuildFile; fileRef = D8225AD21630839D00FD44F1 /* slider.png */; };
 		D8225AD71630839D00FD44F1 /* sliderBar.png in Resources */ = {isa = PBXBuildFile; fileRef = D8225AD31630839D00FD44F1 /* sliderBar.png */; };
 		D8225AD81630839D00FD44F1 /* sliderBarGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = D8225AD41630839D00FD44F1 /* sliderBarGreen.png */; };
@@ -281,7 +280,6 @@
 		D834C6E0161B36F300D1B82D /* scene11.png in Resources */ = {isa = PBXBuildFile; fileRef = D834C6D5161B36F300D1B82D /* scene11.png */; };
 		D834C6E3161B370100D1B82D /* learning-grey.png in Resources */ = {isa = PBXBuildFile; fileRef = D834C6E1161B370100D1B82D /* learning-grey.png */; };
 		D834C6E4161B370100D1B82D /* new_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D834C6E2161B370100D1B82D /* new_logo.png */; };
-		D834C6E8161B3BFF00D1B82D /* Stopwatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D834C6E7161B3BFF00D1B82D /* Stopwatch.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D834C6E8161B3BFF00D1B82D /* Stopwatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D834C6E7161B3BFF00D1B82D /* Stopwatch.m */; };
 		D83676221638694F00C43A27 /* TBIUserInput.m in Sources */ = {isa = PBXBuildFile; fileRef = D83676211638694F00C43A27 /* TBIUserInput.m */; };
 		D83676261638698C00C43A27 /* TBITextInput.m in Sources */ = {isa = PBXBuildFile; fileRef = D83676251638698C00C43A27 /* TBITextInput.m */; };
@@ -630,7 +628,7 @@
 		9415152114AA3A7B009FF674 /* fail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fail.png; sourceTree = "<group>"; };
 		9415152214AA3A7B009FF674 /* win.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = win.png; sourceTree = "<group>"; };
 		9415152514AA3F9F009FF674 /* question_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question_mark.png; sourceTree = "<group>"; };
-		941DB0A81471B32D00A96B8B /* HReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		941DB0A81471B32D00A96B8B /* hreader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hreader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		941DB0AC1471B32D00A96B8B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		941DB0AE1471B32D00A96B8B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		941DB0B01471B32D00A96B8B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1282,7 +1280,7 @@
 		941DB0A91471B32D00A96B8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				941DB0A81471B32D00A96B8B /* HReader.app */,
+				941DB0A81471B32D00A96B8B /* hreader.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1717,7 +1715,7 @@
 			);
 			name = HReader;
 			productName = HReader;
-			productReference = 941DB0A81471B32D00A96B8B /* HReader.app */;
+			productReference = 941DB0A81471B32D00A96B8B /* hreader.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2202,14 +2200,14 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = HReader/HReader.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lindsay Kaye (H5US6X8TUY)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HReader/HReader-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2/**";
 				INFOPLIST_FILE = "HReader/HReader-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PRODUCT_NAME = hreader;
+				PROVISIONING_PROFILE = "15ED1B42-8F1E-4598-8C40-C791459B94B8";
 				STRIP_INSTALLED_PRODUCT = NO;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
@@ -2221,14 +2219,14 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = HReader/HReader.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: The MITRE Corporation";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lindsay Kaye (H5US6X8TUY)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HReader/HReader-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2/**";
 				INFOPLIST_FILE = "HReader/HReader-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B0CECA52-3D26-4DED-9577-8C98A922800C";
+				PRODUCT_NAME = hreader;
+				PROVISIONING_PROFILE = "15ED1B42-8F1E-4598-8C40-C791459B94B8";
 				STRIP_INSTALLED_PRODUCT = YES;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
