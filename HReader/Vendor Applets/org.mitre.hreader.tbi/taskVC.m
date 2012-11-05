@@ -15,7 +15,7 @@ int currentImage;
 - (IBAction) nextClicked: (id)sender{
     //NSLog(@"Next clicked");
     currentImage += 1;
-    if (currentImage > 18){
+    if (currentImage > 10){
         [self.navigationController popViewControllerAnimated:YES];
     }
     else{
