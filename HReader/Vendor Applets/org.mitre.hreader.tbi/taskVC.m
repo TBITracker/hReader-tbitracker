@@ -13,13 +13,14 @@
 int currentImage;
 
 - (IBAction) nextClicked: (id)sender{
-    NSLog(@"Next clicked");
+    //NSLog(@"Next clicked");
     currentImage += 1;
-    if (currentImage > 11){
+    if (currentImage > 10){
         [self.navigationController popViewControllerAnimated:YES];
     }
     else{
         NSString *imageName = [NSString stringWithFormat:@"scene%i", currentImage];
+        NSLog(@"Attempting to load: %@", imageName);
         UIImage *nextImage = [UIImage imageNamed:imageName];
         [[self button] setImage:nextImage forState:0];
     }

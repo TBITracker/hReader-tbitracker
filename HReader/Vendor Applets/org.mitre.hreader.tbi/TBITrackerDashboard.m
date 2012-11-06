@@ -49,7 +49,8 @@
 }
 
 - (IBAction) taskTap:(id)sender {
-    UIStoryboard *tbiTask = [UIStoryboard storyboardWithName:@"TBIPages" bundle:nil];
+    //UIStoryboard *tbiTask = [UIStoryboard storyboardWithName:@"TBIPages" bundle:nil];
+    UIStoryboard *tbiTask = [UIStoryboard storyboardWithName:@"taskStoryboard" bundle:nil];
     UIViewController *controller = [tbiTask instantiateInitialViewController];
     controller.title = @"Tasks";
     [self.navigationController pushViewController:controller animated:YES];
@@ -59,6 +60,8 @@
     //Note sender is the button
     
     UIStoryboard *tbiTest = [UIStoryboard storyboardWithName:@"tbiTest" bundle:nil];
+    //UIStoryboard *tbiTest = [UIStoryboard storyboardWithName:@"taskStoryboard" bundle:nil];
+    
     UIViewController *controller = [tbiTest instantiateInitialViewController];
     controller.title = @"Self-Assessment";
     [self.navigationController pushViewController:controller animated:YES];
