@@ -9,6 +9,7 @@
 #import "CameraUtil.h"
 #import "HRAppletUtilities.h"
 #import <MobileCoreServices/UTCoreTypes.h>
+#import "TBIDataManager.h"
 
 
 
@@ -66,10 +67,25 @@
 
 + (NSArray*) getAllImages
 {
-    NSError *error;
+    /*NSError *error;
     NSFileManager *fileMgr = [NSFileManager defaultManager];
     NSURL *documentsDirectory = [[HRAppletUtilities URLForAppletContainer:@"org.mitre.tbi-tracker"] URLByAppendingPathComponent:@"photos"];
-    return [fileMgr contentsOfDirectoryAtURL:documentsDirectory includingPropertiesForKeys:nil options:NSDirectoryEnumerationSkipsHiddenFiles error:&error];
+    return [fileMgr contentsOfDirectoryAtURL:documentsDirectory includingPropertiesForKeys:nil options:NSDirectoryEnumerationSkipsHiddenFiles error:&error];*/
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSManagedObjectContext *context = [[TBIDataManager sharedInstance] managedObjectContext];
+    NSLog(@"entity: %@", [NSEntityDescription entityForName:@"TBIImage" inManagedObjectContext:context]);
+    [request setEntity:[NSEntityDescription entityForName:@"TBIImage" inManagedObjectContext:context]];
+    
+    NSError *error = nil;
+    
+    NSMutableArray *allImages = [[context executeFetchRequest:request error:&error] mutableCopy];
+    if (allImages == nil)
+    {
+        NSLog(@"Could not get images");
+    } else {
+        NSLog(@"Images fetched: %d", [allImages count]);
+    }
+    return allImages;
 }
 
 @end

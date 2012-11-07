@@ -14,14 +14,15 @@
     UINavigationBar *navBar;
     UINavigationItem *navItem;
 }
-@property (nonatomic, retain) IBOutlet UIButton *cameraButton;
-@property (nonatomic, retain) IBOutlet UIButton * speakButton;
-@property (nonatomic, retain) IBOutlet UIButton * textButton;
-@property (nonatomic, retain) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong) IBOutlet UIButton *cameraButton;
+@property (nonatomic, strong) IBOutlet UIButton * speakButton;
+@property (nonatomic, strong) IBOutlet UIButton * textButton;
+@property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
 
 @property (assign) BOOL thumbsVisible;
 @property (nonatomic, strong) NSArray *allImages;
-@property (nonatomic, retain) IBOutlet UIScrollView * scrollView;
+@property (nonatomic, strong) IBOutlet UIScrollView * scrollView;
+@property (nonatomic, strong) IBOutlet UIImageView *testImage;
 
 - (IBAction) showHideView:(id)sender;
 - (IBAction) launchOpenEars:(id)sender;

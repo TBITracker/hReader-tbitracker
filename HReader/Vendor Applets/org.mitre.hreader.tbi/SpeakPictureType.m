@@ -12,6 +12,7 @@
 #import "TBIUIImageView.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <MobileCoreServices/UTCoreTypes.h>
+#import "TBIDataManager.h"
 
 @interface SpeakPictureType()
 
@@ -75,6 +76,10 @@ float contentXOffsetAtLastUpdate;
 	// Do any additional setup after loading the view.
     
     self.allImages = [CameraUtil getAllImages];
+    if (self.allImages == nil)
+    {
+        NSLog(@"Could not retrieve images, may not have any");
+    }
     NSLog(@"Number of images: %d", self.allImages.count);
     UINib *cellNib = [UINib nibWithNibName:@"NibCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"cvCell"];
@@ -288,7 +293,8 @@ float contentXOffsetAtLastUpdate;
     } else {
     
     UIImagePickerController *cameraUI = [[UIImagePickerController alloc] init];
-    cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;
+    //cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;
+    [cameraUI setSourceType:UIImagePickerControllerSourceTypeCamera];
     
     //We only want to use a camera not movies
     cameraUI.mediaTypes = [NSArray arrayWithObjects: (NSString *) kUTTypeImage, nil];
@@ -300,9 +306,28 @@ float contentXOffsetAtLastUpdate;
     
     [controller presentModalViewController: cameraUI animated:YES];
     NSLog(@"YES");
+    
     }
     
     return YES;
+}
+
+-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+
+    //Now save it
+    NSManagedObjectContext *context = [[TBIDataManager sharedInstance] managedObjectContext];
+    NSManagedObject *imageSave = [NSEntityDescription insertNewObjectForEntityForName:@"TBIImage" inManagedObjectContext:context];
+    [imageSave setValue:image forKey:@"image"];
+    NSError *error = nil;
+    if (![context save:&error])
+    {
+        NSLog(@"Could not save the image");
+    } else {
+        NSLog(@"Successfully saved image");
+    }
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 /*-(IBAction)useCamera:(id)sender

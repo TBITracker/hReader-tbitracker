@@ -139,7 +139,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SpeakPictureType.h"/>
             <relationships>
                 <relationship kind="action" name="dismissView:"/>
-                <relationship kind="action" name="handleSingleSingleTap:" candidateClass="UIGestureRecognizer"/>
                 <relationship kind="action" name="launchOpenEars:"/>
                 <relationship kind="action" name="presentCamera:"/>
                 <relationship kind="action" name="presentTextBox:"/>
@@ -148,11 +147,15 @@
                 <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="speakButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="testImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="textButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
