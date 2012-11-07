@@ -12,6 +12,6 @@
 
 @interface TBIImage : NSManagedObject
 
-@property (nonatomic, retain) id image;
+@property (nonatomic, retain) UIImage* image;
 
 @end

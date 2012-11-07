@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TBIDataManager.h"
 
 @interface TBITrackerDashboard : UIViewController
 

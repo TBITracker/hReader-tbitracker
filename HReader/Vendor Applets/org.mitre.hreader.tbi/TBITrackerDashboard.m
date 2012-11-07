@@ -33,6 +33,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    //TESTING NSEntityDescription for TBIImage
+    NSManagedObjectContext *ctx = [[TBIDataManager sharedInstance] managedObjectContext];
+    NSEntityDescription *testNED = [NSEntityDescription entityForName:@"TBIImage" inManagedObjectContext:ctx];
+    if (testNED != nil) {
+        NSLog(@"Got entity description: %@", [testNED description]);
+    }
+    
 }
 
 - (void)viewDidUnload
