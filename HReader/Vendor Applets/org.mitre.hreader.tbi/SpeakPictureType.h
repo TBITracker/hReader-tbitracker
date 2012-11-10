@@ -19,16 +19,19 @@
 @property (nonatomic, strong) IBOutlet UIButton * textButton;
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
 
+@property (nonatomic, strong) IBOutlet UIButton *recordButton;
+
 @property (assign) BOOL thumbsVisible;
 @property (nonatomic, strong) NSArray *allImages;
 @property (nonatomic, strong) IBOutlet UIScrollView * scrollView;
 @property (nonatomic, strong) IBOutlet UIImageView *testImage;
 
 - (IBAction) showHideView:(id)sender;
-- (IBAction) launchOpenEars:(id)sender;
+- (IBAction) launchRecord:(id)sender;
 - (IBAction) presentTextBox:(id)sender;
 - (IBAction) presentCamera:(id)sender;
 - (IBAction) dismissView:(id)sender;
+- (IBAction) recordAndSave:(id)sender;
 
 - (void)setupverticalScrollView;
 

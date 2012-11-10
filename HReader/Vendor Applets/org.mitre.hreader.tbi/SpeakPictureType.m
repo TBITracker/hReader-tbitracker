@@ -247,8 +247,21 @@ float contentXOffsetAtLastUpdate;
     NSLog(@"Done clicked!");
 }
 
--(IBAction)launchOpenEars:(id)sender
+-(IBAction)recordAndSave:(id)sender
 {
+    
+}
+
+-(IBAction)launchRecord:(id)sender
+{
+    
+    UIStoryboard *tbiTask = [UIStoryboard storyboardWithName:@"TBIPages" bundle:nil];
+    //UIStoryboard *tbiTask = [UIStoryboard storyboardWithName:@"taskStoryboard" bundle:nil];
+    UIViewController *controller = [tbiTask instantiateViewControllerWithIdentifier:@"RecordAudio"];
+    controller.title = @"Record Audio";
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonItemStyleDone target:self action:@selector(dismissModalViewControllerAnimated:)];
+    self.navigationController.navigationItem.rightBarButtonItem = doneButton;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 -(IBAction)presentCamera:(id)sender
