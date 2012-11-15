@@ -2,31 +2,34 @@
 //  TBITask.m
 //  HReader
 //
-//  Created by Saltzman, Shep on 10/23/12.
+//  Created by Saltzman, Shep on 11/13/12.
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
 #import "TBITask.h"
+#import "TBIStep.h"
+
 
 @implementation TBITask
 
-@synthesize name;
-//@synthesize duration;
-@synthesize steps;
-@synthesize completionPercent;
+@dynamic name;
+@dynamic steps;
+@dynamic successRate;
+
+int currentStep = 0;
 
 - (void) successfulCompletion {
-    [completionPercent success];
+    [self.successRate success];
 }
 
 - (void) unsuccessfulCompletion {
-    [completionPercent failure];
+    [self.successRate failure];
 }
 
 - (TBIStep *) beginTask {
     currentStep = 0;
-    if ([steps count] > 0) {
-        return [steps objectAtIndex:0];
+    if ([self.steps count] > 0) {
+        return [self.steps objectAtIndex:0];
     }
     else {
         return nil;
@@ -34,13 +37,13 @@
 }
 
 - (TBIStep *) currentStep {
-    return [steps objectAtIndex:currentStep];
+    return [self.steps objectAtIndex:currentStep];
 }
 
 - (TBIStep *) nextStep {
     currentStep += 1;
-    if ((int)[steps count] > currentStep) {
-        return [steps objectAtIndex:currentStep];
+    if ((int)[self.steps count] > currentStep) {
+        return [self.steps objectAtIndex:currentStep];
     }
     else {
         //maybe this should throw an error instead?
@@ -50,36 +53,53 @@
 }
 
 - (BOOL) isOnLastStep {
-    return ((int)[steps count] == currentStep + 1);
+    return ((int)[self.steps count] == currentStep + 1);
 }
 
 -(void) addStep:(TBIStep *)step{
-    [steps addObject:step];
+    NSMutableOrderedSet *temp = [NSMutableOrderedSet orderedSetWithOrderedSet:self.steps];
+    [temp addObject:step];
+    self.steps = [NSOrderedSet orderedSetWithOrderedSet:temp];
 }
 
+/*
+ NSMutableOrderedSet *temp = [NSMutableOrderedSet orderedSetWithOrderedSet:self.steps];
+ self.steps = [NSOrderedSet orderedSetWithOrderedSet:temp];
+ */
+
 -(void) insertStep:(TBIStep *)step AtIndex:(int)i{
-    [steps insertObject:step atIndex:i];
+    NSMutableOrderedSet *temp = [NSMutableOrderedSet orderedSetWithOrderedSet:self.steps];
+    [temp insertObject:step atIndex:i];
+    self.steps = [NSOrderedSet orderedSetWithOrderedSet:temp];
+
 }
 
 -(void) insertBeforeCurrentStep:(TBIStep *)step{
-    [steps insertObject:step atIndex:currentStep];
+    NSMutableOrderedSet *temp = [NSMutableOrderedSet orderedSetWithOrderedSet:self.steps];
+    [temp insertObject:step atIndex:currentStep];
+    self.steps = [NSOrderedSet orderedSetWithOrderedSet:temp];
     currentStep += 1;
 }
 
 -(void) insertAfterCurrentStep:(TBIStep *)step{
-    [steps insertObject:step atIndex:(currentStep+1)];
+    NSMutableOrderedSet *temp = [NSMutableOrderedSet orderedSetWithOrderedSet:self.steps];
+    [temp insertObject:step atIndex:(currentStep+1)];
+    self.steps = [NSOrderedSet orderedSetWithOrderedSet:temp];
+
 }
 
 -(void) removeStepAtIndex:(int)i{
-    [steps removeObjectAtIndex:i];
+    NSMutableOrderedSet *temp = [NSMutableOrderedSet orderedSetWithOrderedSet:self.steps];
+    [temp removeObjectAtIndex:i];
+    self.steps = [NSOrderedSet orderedSetWithOrderedSet:temp];
+
 }
 
 -(void) replaceStepAtIndex:(int)i withStep:(TBIStep *)step{
-    [steps replaceObjectAtIndex:i withObject:step];
-}
+    NSMutableOrderedSet *temp = [NSMutableOrderedSet orderedSetWithOrderedSet:self.steps];
+    [temp replaceObjectAtIndex:i withObject:step];
+    self.steps = [NSOrderedSet orderedSetWithOrderedSet:temp];
 
--(void) removeLastObject{
-    [steps removeLastObject];
 }
 
 - (TBITask *) init {
@@ -90,7 +110,7 @@
 }
 
 - (NSString *) description {
-    return [NSString stringWithFormat:@"%@ (%i steps, %@ success rate", name, [steps count], completionPercent];
+    return [NSString stringWithFormat:@"%@ (%i steps, %@ success rate", self.name, [self.steps count], self.successRate];
 }
 
 @end

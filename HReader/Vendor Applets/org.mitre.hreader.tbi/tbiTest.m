@@ -60,6 +60,7 @@ UIView *topView;
                                    nil]
                           ]];
         [[[pages lastObject] objectForKey:@"ViewController"] setParentView:[self view]];
+        
         /*
          for(int i=1; i<16; i++){
             [pages addObject:[[NSMutableDictionary alloc]

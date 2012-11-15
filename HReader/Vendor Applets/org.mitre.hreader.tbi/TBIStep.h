@@ -2,33 +2,30 @@
 //  TBIStep.h
 //  HReader
 //
-//  Created by Saltzman, Shep on 10/23/12.
+//  Created by Saltzman, Shep on 11/13/12.
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "TBIUserInput.h"
-#import "TBITextInput.h"
-#import "TBIImageInput.h"
-#import "TBIAudioInput.h"
+#import <CoreData/CoreData.h>
 
-@interface TBIStep : NSObject {
-    TBIUserInput *userInput;
-    NSTimeInterval *duration;
-}
+@class TBITask, TBIUserInputItem;
 
-@property (nonatomic, retain) TBIUserInput *userInput;
-@property (nonatomic) NSTimeInterval *duration;
+@interface TBIStep : NSManagedObject
 
--(TBIStep *)initWithText:(NSString*)textInput andDuration:(NSTimeInterval*)durationInput;
+@property (nonatomic, retain) NSNumber * duration;
+@property (nonatomic, retain) TBITask *task;
+@property (nonatomic, retain) TBIUserInputItem *userInput;
 
--(TBIStep *)initWithImageURL:(NSURL*)imageURL andDuration:(NSTimeInterval*)durationInput;
+-(TBIStep *)initWithText:(NSString*)textInput andDuration:(NSNumber *)durationInput;
+-(TBIStep *)initWithText:(NSString*)textInput andDuration:(NSNumber *)durationInput andSummary:(NSString *)summaryInput;
 
--(TBIStep *)initWithAudioURL:(NSURL*)audioURL andDuration:(NSTimeInterval*)durationInput;
 
--(TBIStep *)initWithText:(NSString*)textInput andDuration:(NSTimeInterval*)durationInput andSummary:(NSString *)summaryInput;
+-(TBIStep *)initWithImage:(UIImage*)image andDuration:(NSNumber *)durationInput;
+-(TBIStep *)initWithImage:(UIImage*)image andDuration:(NSNumber *)durationInput andSummary:(NSString *)summaryInput;
 
--(TBIStep *)initWithImageURL:(NSURL*)imageURL andDuration:(NSTimeInterval*)durationInput andSummary:(NSString *)summaryInput;
+-(TBIStep *)initWithAudio:(id)audio andDuration:(NSNumber *)durationInput;
+-(TBIStep *)initWithAudio:(id)audio andDuration:(NSNumber *)durationInput andSummary:(NSString *)summaryInput;
 
--(TBIStep *)initWithAudioURL:(NSURL*)audioURL andDuration:(NSTimeInterval*)durationInput andSummary:(NSString *)summaryInput;
+
 @end
