@@ -2,30 +2,31 @@
 //  TBIUserInputItem.h
 //  HReader
 //
-//  Created by Saltzman, Shep on 11/1/12.
+//  Created by Saltzman, Shep on 11/15/12.
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class TBIAudio, TBIImage, TBIStep;
 
 @interface TBIUserInputItem : NSManagedObject
 
-@property (nonatomic, retain) NSString * text;
-@property (nonatomic, retain) id image;
-@property (nonatomic, retain) id audio;
 @property (nonatomic, retain) NSString * summary;
+@property (nonatomic, retain) NSString * text;
+@property (nonatomic, retain) TBIAudio *audio;
+@property (nonatomic, retain) TBIImage *image;
+@property (nonatomic, retain) TBIStep *step;
 
-- (void) setNil;
-
-- (TBIUserInputItem *) initWithText:(NSString*)textInput;
-- (TBIUserInputItem *) initWithText:(NSString*)textInput andSummary:(NSString *)summaryInput;
-
-- (TBIUserInputItem *) initWithImage:(id)imageInput;
-- (TBIUserInputItem *) initWithImage:(id)imageInput andSummary:(NSString *)summaryInput;
-
+- (TBIUserInputItem *) initWithText:(NSString *)textInput;
+- (TBIUserInputItem *) initWithText:(NSString *)textInput andSummary:(NSString *)summaryInput;
 - (TBIUserInputItem *) initWithAudio:(id)audioInput;
 - (TBIUserInputItem *) initWithAudio:(id)audioInput andSummary:(NSString *)summaryInput;
+- (TBIUserInputItem *) initWithImage:(UIImage *)imageInput;
+- (TBIUserInputItem *) initWithImage:(UIImage *)imageInput andSummary:(NSString *)summaryInput;
+
+- (id) getItem;
+//- (UIView *) getView;
 
 @end

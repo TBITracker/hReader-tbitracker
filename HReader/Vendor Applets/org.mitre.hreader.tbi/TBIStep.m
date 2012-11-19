@@ -2,72 +2,82 @@
 //  TBIStep.m
 //  HReader
 //
-//  Created by Saltzman, Shep on 10/23/12.
+//  Created by Saltzman, Shep on 11/13/12.
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
 #import "TBIStep.h"
+#import "TBITask.h"
+#import "TBIUserInputItem.h"
+
+
 @implementation TBIStep
 
-@synthesize userInput;
-@synthesize duration;
+@dynamic duration;
+@dynamic task;
+@dynamic userInput;
 
--(TBIStep *)initWithText:(NSString *)textInput andDuration:(NSTimeInterval *)durationInput {
+-(TBIStep *)initWithText:(NSString *)textInput andDuration:(NSNumber *)durationInput {
     self = [super init];
     if (self){
-        userInput = [[TBITextInput alloc] initWithText:textInput];
-        duration = durationInput;
+        self.userInput = [[TBIUserInputItem alloc] initWithText:textInput];
+        self.duration = durationInput;
     }
     return self;
 }
 
--(TBIStep *)initWithImageURL:(NSURL *)imageURL andDuration:(NSTimeInterval *)durationInput{
+-(TBIStep *)initWithText:(NSString *)textInput andDuration:(NSNumber *)durationInput andSummary:(NSString *)summaryInput {
     self = [super init];
     if (self){
-        userInput = [[TBIImageInput alloc] initWithImageLocation:imageURL];
-        duration = durationInput;
+        self.userInput = [[TBIUserInputItem alloc] initWithText:textInput andSummary:summaryInput];
+        self.duration = durationInput;
     }
     return self;
 }
 
--(TBIStep *)initWithAudioURL:(NSURL *)audioURL andDuration:(NSTimeInterval *)durationInput{
+-(TBIStep *)initWithImage:(UIImage *)image andDuration:(NSNumber *)durationInput{
     self = [super init];
     if (self){
-        userInput = [[TBIAudioInput alloc] initWithAudioLocation:audioURL];
-        duration = durationInput;
+        self.userInput = [[TBIUserInputItem alloc] initWithImage:image];
+        self.duration = durationInput;
     }
     return self;
 }
 
--(TBIStep *)initWithText:(NSString *)textInput andDuration:(NSTimeInterval *)durationInput andSummary:(NSString *)summaryInput {
+-(TBIStep *)initWithImage:(UIImage *)image andDuration:(NSNumber *)durationInput andSummary:(NSString *)summaryInput{
     self = [super init];
     if (self){
-        userInput = [[TBITextInput alloc] initWithText:textInput andSummary:summaryInput];
-        duration = durationInput;
+        self.userInput = [[TBIUserInputItem alloc] initWithImage:image andSummary:summaryInput];
+        self.duration = durationInput;
     }
     return self;
 }
 
--(TBIStep *)initWithImageURL:(NSURL *)imageURL andDuration:(NSTimeInterval *)durationInput andSummary:(NSString *)summaryInput{
+-(TBIStep *)initWithAudio:(id)audio andDuration:(NSNumber *)durationInput{
     self = [super init];
     if (self){
-        userInput = [[TBIImageInput alloc] initWithImageLocation:imageURL andSummary:summaryInput];
-        duration = durationInput;
+        self.userInput = [[TBIUserInputItem alloc] initWithAudio:audio];
+        self.duration = durationInput;
     }
     return self;
 }
 
--(TBIStep *)initWithAudioURL:(NSURL *)audioURL andDuration:(NSTimeInterval *)durationInput andSummary:(NSString *)summaryInput{
+-(TBIStep *)initWithAudio:(id)audio andDuration:(NSNumber *)durationInput andSummary:(NSString *)summaryInput{
     self = [super init];
     if (self){
-        userInput = [[TBIAudioInput alloc] initWithAudioLocation:audioURL andSummary:summaryInput];
-        duration = durationInput;
+        self.userInput = [[TBIUserInputItem alloc] initWithAudio:audio andSummary:summaryInput];
+        self.duration = durationInput;
     }
     return self;
 }
+
+
+
+
 
 - (NSString *) description{
-    return [NSString stringWithFormat:@"%@, lasting %i minutes", userInput, duration];
+    return [NSString stringWithFormat:@"%@, lasting %@ minutes", self.userInput, self.duration];
 }
+
 
 @end

@@ -38,7 +38,7 @@ float contentXOffsetAtLastUpdate;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-        NSManagedObject *imgName = [self.allImages objectAtIndex:indexPath.row];
+        TBIImage *imgName = [self.allImages objectAtIndex:indexPath.row];
 
         /*NSData *imgdata = [NSData dataWithContentsOfURL:imgName];
         UIImage *image = [[UIImage alloc] initWithData:imgdata];

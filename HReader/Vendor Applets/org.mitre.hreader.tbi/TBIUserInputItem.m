@@ -2,70 +2,81 @@
 //  TBIUserInputItem.m
 //  HReader
 //
-//  Created by Saltzman, Shep on 11/1/12.
+//  Created by Saltzman, Shep on 11/15/12.
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
 #import "TBIUserInputItem.h"
+#import "TBIAudio.h"
+#import "TBIImage.h"
+#import "TBIStep.h"
 
 
 @implementation TBIUserInputItem
 
-@dynamic text;
-@dynamic image;
-@dynamic audio;
 @dynamic summary;
+@dynamic text;
+@dynamic audio;
+@dynamic image;
+@dynamic step;
 
-- (void) setNil{
+- (void) reset {
     self.text = nil;
-    self.image = nil;
     self.audio = nil;
-    self.summary = nil;
+    self.image = nil;
 }
 
 - (TBIUserInputItem *) initWithText:(NSString *)textInput {
-    return [self initWithText:textInput andSummary:@""];
+    return [self initWithText:textInput andSummary:@"No summary"];
 }
 
-- (TBIUserInputItem *) initWithText:(NSString *)textInput andSummary:(NSString *)summaryInput {
+- (TBIUserInputItem *) initWithText:(NSString *)textInput andSummary:(NSString *)summaryInput{
     if (self = [super init]){
-        [self setNil];
+        [self reset];
         self.text = textInput;
-        self.summary = summaryInput;
-    }
-    return self;
-}
-
-- (TBIUserInputItem *) initWithImage:(id)imageInput {
-    return [self initWithImage:imageInput andSummary:@""];
-}
-
-- (TBIUserInputItem *) initWithImage:(id)imageInput andSummary:(NSString *)summaryInput{
-    if (self = [super init]){
-        [self setNil];
-        self.image = imageInput;
-        self.summary = summaryInput;
     }
     return self;
 }
 
 - (TBIUserInputItem *) initWithAudio:(id)audioInput {
-    return [self initWithAudio:audioInput andSummary:@""];
+    return [self initWithAudio:audioInput andSummary:@"No summary"];
 }
 
-- (TBIUserInputItem *) initWithAudio:(id)audioInput andSummary:(NSString *)summaryInput{
+- (TBIUserInputItem *) initWithAudio:(id)audioInput andSummary:(NSString *)summaryInput {
     if (self = [super init]){
-        [self setNil];
-        self.image = audioInput;
-        self.summary = summaryInput;
+        [self reset];
+        self.audio = [[TBIAudio alloc] initWithAudio:audioInput];
     }
     return self;
 }
 
+- (TBIUserInputItem *) initWithImage:(UIImage *)imageInput {
+    return [self initWithImage:imageInput andSummary:@"No summary"];
+}
 
--(NSString *)description {
-    //NSString *blurb = [text substringToIndex:30];
-    return [NSString stringWithFormat:@"TBIUserInputItem"];
+- (TBIUserInputItem *) initWithImage:(UIImage *)imageInput andSummary:(NSString *)summaryInput {
+    if (self = [super init]){
+        [self reset];
+        self.image = [[TBIImage alloc] initWithImage:imageInput];
+    }
+    return self;
+}
+
+- (id) getItem {
+    if (self.text != nil){
+        return self.text;
+    }
+    else if (self.audio != nil){
+        return self.audio;
+    }
+    else if (self.image != nil){
+        return self.image;
+    }
+    return nil;
+}
+
+- (NSString *) description {
+    return [NSString stringWithFormat:@"%@ (%@)", [self getItem], self.summary];
 }
 
 @end
