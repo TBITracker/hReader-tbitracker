@@ -38,8 +38,9 @@ float contentXOffsetAtLastUpdate;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-        NSURL *imgName = [self.allImages objectAtIndex:indexPath.row];
-        NSData *imgdata = [NSData dataWithContentsOfURL:imgName];
+        NSManagedObject *imgName = [self.allImages objectAtIndex:indexPath.row];
+
+        /*NSData *imgdata = [NSData dataWithContentsOfURL:imgName];
         UIImage *image = [[UIImage alloc] initWithData:imgdata];
         /*TBIUIImageView *thumbsView = [[TBIUIImageView alloc] initWithImage:image];
         
@@ -48,8 +49,13 @@ float contentXOffsetAtLastUpdate;
         UICollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cvCell" forIndexPath:indexPath];
         
         //[cell addSubview:thumbsView];
-    UIImageView *imgincell = (UIImageView*)[cell viewWithTag:100];
-    imgincell.image = image;
+    /*UIImageView *imgincell = (UIImageView*)[cell viewWithTag:100];
+    imgincell.image = image;*/
+    
+    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [cell setImage:[UIImage imageWithData:[object valueForKey:@"cvCell"]]];
+    
+    return cell;
     return cell;
 }
 
@@ -98,103 +104,11 @@ float contentXOffsetAtLastUpdate;
     // Dispose of any resources that can be recreated.
 }
 
-/*-(void)scrollViewDidScroll:(UIScrollView *)scrollViewpass
-{
-    int width = 225;
-    //compare current offset to stored offset
-    if (!contentXOffsetAtLastUpdate)
-    {
-        contentXOffsetAtLastUpdate = scrollView.contentOffset.x;
-    }
-    else {
-        float min;
-        float max;
-        if (fabs(contentXOffsetAtLastUpdate - scrollView.contentOffset.x) > 2*width)
-        {
-            min = (scrollView.contentOffset.x/width) - scrollView.frame.size.width/width;
-            NSLog(@"minimum: %f", min);
-            max = (scrollView.contentOffset.x/width) + 2*(scrollView.frame.size.width/width);
-            NSLog(@"maximum: %f", max);
-            if (min < 0.0)
-            {
-                min = 0;
-            }
-            if (max > allImages.count)
-            {
-                max = allImages.count;
-            }
-            for (NSUInteger i=0; i < currentlyLoadedLoadedImages.count; i++)
-            {
-                NSUInteger imgIndex = [currentlyLoadedLoadedImages objectAtIndex:i];
-                if ( imgIndex > max || imgIndex < min)
-                {
-                    
-                }
-            }
-        }
-    }
-}
-*/
 
 -(void)updateContentsofImageScrollView
 {
     
 }
-
-/*- (void) setupHorizontalScrollView
-{
-    scrollView.delegate = self;
-    
-    [self.scrollView setBackgroundColor:[UIColor blackColor]];
-    [scrollView setCanCancelContentTouches:NO];
-    
-    scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
-    scrollView.clipsToBounds = NO;
-    scrollView.scrollEnabled = YES;
-    scrollView.pagingEnabled = YES;
-    
-    //CGFloat cx = 4;
-    
-    self.allImages = [CameraUtil getAllImages];
-*/    
-    
-   /* NSLog(@"All images: %@", allImages);
-    NSLog(@"Num images: %d", [allImages count]);
-    for (NSURL *imgName in allImages)
-    {
-        //NSString *imageName = [NSString stringWithFormat:@"image%d.jpg", (nimages + 1)];
-        NSLog(@"Image name: %@s", imgName);
-        NSData *imgdata = [NSData dataWithContentsOfURL:imgName];
-        UIImage *image = [[UIImage alloc] initWithData:imgdata];
-        TBIUIImageView *thumbsView = [[TBIUIImageView alloc] initWithImage:image];
-        
-        thumbsView.imageName = imgName;
-        
-        CGRect rect = thumbsView.frame;
-        rect.size.height = 150;
-        rect.size.width = 225;
-        rect.origin.x = cx;
-        rect.origin.y = 4;
-        
-        thumbsView.frame = rect;
-        thumbsView.userInteractionEnabled = YES;
-        
-        [scrollView addSubview:thumbsView];
-        //Now make it tappable
-        UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc]
-                                                   initWithTarget:self action:@selector(handleSingleSingleTap:)];
-        singleFingerTap.numberOfTapsRequired = 1;
-
-        [thumbsView addGestureRecognizer:singleFingerTap];
-        
-        NSLog(@"imageView.gestureRecognizers: %@", [thumbsView.gestureRecognizers description]);
-        
-        cx += thumbsView.frame.size.width + 5;
-    }
-    //self.pageControl.numberOfPages = nimages;
-    [scrollView setContentSize:CGSizeMake(cx, [scrollView bounds].size.height)];
-    self.thumbsVisible = YES;*/
-//}
 
 - (IBAction)showHideView:(id)sender
 {
