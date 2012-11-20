@@ -8,11 +8,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TBIImage.h"
+#import <AVFoundation/AVFoundation.h>
 
-@interface SpeakPictureType : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UICollectionViewDataSource> {
+@interface SpeakPictureType : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UICollectionViewDataSource, AVAudioRecorderDelegate> {
     UIImageView * imageView;
     UINavigationBar *navBar;
     UINavigationItem *navItem;
+    AVAudioRecorder *audioRecorder;
 }
 @property (nonatomic, strong) IBOutlet UIButton *cameraButton;
 @property (nonatomic, strong) IBOutlet UIButton * speakButton;

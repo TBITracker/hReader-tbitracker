@@ -37,25 +37,23 @@
 
 + (void) saveImage:(UIImage *)image
 {
-    NSError *err;
-    NSString *imgName = [self getRandomFileName];
-    NSURL *photosDir = [[HRAppletUtilities URLForAppletContainer:@"org.mitre.tbi-tracker"] URLByAppendingPathComponent:@"photos"];
-    NSURL *savePath = [photosDir URLByAppendingPathComponent:imgName];
-
-    //NSLog(@"Save path: %@", savePath);
-
-    //Check if photos directory exists
-    NSFileManager *fm = [[NSFileManager alloc]init];
-    if ([photosDir checkResourceIsReachableAndReturnError:&err] == NO)
-         {
-            [fm createDirectoryAtURL:photosDir withIntermediateDirectories:YES attributes:nil error:&err];
-         }
-    
-    BOOL itworked = [UIImageJPEGRepresentation(image, 1.0)writeToURL:savePath atomically:YES];
-    if (!itworked)
-        NSLog(@"Didn't save the file...");
+    NSManagedObjectContext *context = [[TBIDataManager sharedInstance] managedObjectContext];
+    NSManagedObject *imageSave = [NSEntityDescription insertNewObjectForEntityForName:@"TBIImage" inManagedObjectContext:context];
+    [imageSave setValue:image forKey:@"image"];
+    NSError *error = nil;
+    if (![context save:&error])
+    {
+        NSLog(@"Could not save the image");
+    } else {
+        NSLog(@"Successfully saved image");
+    }
+	[self performSelectorOnMainThread:@selector(alertUserThatImageSaved) withObject:nil waitUntilDone:NO];
 }
 
+-(void) alertUserThatImageSaved
+{
+    //dosomething
+}
 
 + (NSString*) getRandomFileName
 {

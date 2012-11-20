@@ -13,6 +13,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <MobileCoreServices/UTCoreTypes.h>
 #import "TBIDataManager.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface SpeakPictureType()
 
@@ -38,13 +39,13 @@ float contentXOffsetAtLastUpdate;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-        TBIImage *imgName = [self.allImages objectAtIndex:indexPath.row];
+        TBIImage *img = (TBIImage *)[self.allImages objectAtIndex:indexPath.row];
 
-        /*NSData *imgdata = [NSData dataWithContentsOfURL:imgName];
-        UIImage *image = [[UIImage alloc] initWithData:imgdata];
-        /*TBIUIImageView *thumbsView = [[TBIUIImageView alloc] initWithImage:image];
+        //NSData *imgdata = [NSData dataWithContentsOfURL:imgName];
+        UIImage *image = [[UIImage alloc] initWithData:img.image];
+        TBIUIImageView *thumbsView = [[TBIUIImageView alloc] initWithImage:image];
         
-        thumbsView.imageName = imgName;*/
+        thumbsView.imageName = img.name;
     
         UICollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cvCell" forIndexPath:indexPath];
         
@@ -52,10 +53,6 @@ float contentXOffsetAtLastUpdate;
     /*UIImageView *imgincell = (UIImageView*)[cell viewWithTag:100];
     imgincell.image = image;*/
     
-    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    [cell setImage:[UIImage imageWithData:[object valueForKey:@"cvCell"]]];
-    
-    return cell;
     return cell;
 }
 
@@ -163,7 +160,7 @@ float contentXOffsetAtLastUpdate;
 
 -(IBAction)recordAndSave:(id)sender
 {
-    
+    audioRecorder = [[AVAudioRecorder alloc] init];
 }
 
 -(IBAction)launchRecord:(id)sender
@@ -244,7 +241,7 @@ float contentXOffsetAtLastUpdate;
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
 
     //Now save it
-    NSManagedObjectContext *context = [[TBIDataManager sharedInstance] managedObjectContext];
+   /* NSManagedObjectContext *context = [[TBIDataManager sharedInstance] managedObjectContext];
     NSManagedObject *imageSave = [NSEntityDescription insertNewObjectForEntityForName:@"TBIImage" inManagedObjectContext:context];
     [imageSave setValue:image forKey:@"image"];
     NSError *error = nil;
@@ -253,8 +250,17 @@ float contentXOffsetAtLastUpdate;
         NSLog(@"Could not save the image");
     } else {
         NSLog(@"Successfully saved image");
-    }
+    }*/
     [self dismissModalViewControllerAnimated:YES];
+    [self performSelectorInBackground:@selector(saveImage:) withObject:image];
+    /*dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+    {
+            [CameraUtil saveImage:image];
+    });*/
+}
+
+- (void) saveImage:(UIImage *)img {
+    [CameraUtil saveImage:img];
 }
 
 /*-(IBAction)useCamera:(id)sender

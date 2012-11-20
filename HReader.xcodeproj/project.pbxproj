@@ -10,6 +10,7 @@
 		0672AA5E162F32E300A62CCE /* AlertPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 0672AA5D162F32E300A62CCE /* AlertPrompt.m */; };
 		0672AA611635C71E00A62CCE /* TBIUIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0672AA601635C71E00A62CCE /* TBIUIImageView.m */; };
 		0672AA6F1640382300A62CCE /* NibCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0672AA6E1640382300A62CCE /* NibCell.xib */; };
+		06F8CAC4165C0F320090C157 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F8CAC3165C0F320090C157 /* AVFoundation.framework */; };
 		06FD2AF81610BE55004A54C1 /* CameraUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD2AF71610BE55004A54C1 /* CameraUtil.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		06FD2B071610D6A9004A54C1 /* TBIPages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06FD2B061610D6A9004A54C1 /* TBIPages.storyboard */; };
 		06FD2B0A1610D9AE004A54C1 /* SpeakPictureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD2B091610D9AE004A54C1 /* SpeakPictureType.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -364,6 +365,7 @@
 		0672AA5F1635C71E00A62CCE /* TBIUIImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBIUIImageView.h; sourceTree = "<group>"; };
 		0672AA601635C71E00A62CCE /* TBIUIImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBIUIImageView.m; sourceTree = "<group>"; };
 		0672AA6E1640382300A62CCE /* NibCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibCell.xib; sourceTree = "<group>"; };
+		06F8CAC3165C0F320090C157 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		06FD2AF61610BE55004A54C1 /* CameraUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraUtil.h; sourceTree = "<group>"; };
 		06FD2AF71610BE55004A54C1 /* CameraUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraUtil.m; sourceTree = "<group>"; };
 		06FD2B061610D6A9004A54C1 /* TBIPages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TBIPages.storyboard; sourceTree = "<group>"; };
@@ -809,6 +811,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06F8CAC4165C0F320090C157 /* AVFoundation.framework in Frameworks */,
 				3BAABBD81636D79F009D3543 /* libsqlcipher.a in Frameworks */,
 				3BAABBD71636D79C009D3543 /* libcrypto.a in Frameworks */,
 				3BA529ED1594AF400011E246 /* libxml2.dylib in Frameworks */,
@@ -1280,6 +1283,7 @@
 		941DB09D1471B32D00A96B8B = {
 			isa = PBXGroup;
 			children = (
+				06F8CAC3165C0F320090C157 /* AVFoundation.framework */,
 				06FD2B0B1611D4FA004A54C1 /* MobileCoreServices.framework */,
 				3BAABBC91636D782009D3543 /* sqlcipher.xcodeproj */,
 				3BAABBC01636D77D009D3543 /* openssl.xcodeproj */,
