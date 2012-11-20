@@ -14,11 +14,13 @@
 
 @dynamic image;
 @dynamic userInput;
-@dynamic name;
+//@dynamic name;
 
 - (TBIImage *) initWithImage:(UIImage *)imageInput {
     if (self=[super init]){
-        self.image = imageInput;
+        NSLog(@"1");
+        [self setImage:imageInput];
+        NSLog(@"2");
     }
     return self;
 }

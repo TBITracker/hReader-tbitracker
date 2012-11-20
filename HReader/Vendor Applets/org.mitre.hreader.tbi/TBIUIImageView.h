@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
 @interface TBIUIImageView : UIImageView
 
-@property (strong, retain) NSURL *imageName;
+@property (strong, retain) NSManagedObjectID *imageName;
 
 @end

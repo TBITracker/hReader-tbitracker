@@ -35,8 +35,11 @@
     // Do any additional setup after loading the view from its nib.
     
     //TESTING NSEntityDescription for TBIImage
+    NSLog(@"attempting to create context");
     NSManagedObjectContext *ctx = [[TBIDataManager sharedInstance] managedObjectContext];
+    NSLog(@"attempting to fetch TBIImage EntityDescription");
     NSEntityDescription *testNED = [NSEntityDescription entityForName:@"TBIImage" inManagedObjectContext:ctx];
+    NSLog(@"attempt did not crash");
     if (testNED != nil) {
         NSLog(@"Got entity description: %@", [testNED description]);
     }

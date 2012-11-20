@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="11G63" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1810" systemVersion="11G56" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="TBIAudio" representedClassName="TBIAudio" syncable="YES">
         <attribute name="audio" attributeType="Transformable" syncable="YES"/>
         <relationship name="userInput" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBIUserInputItem" inverseName="audio" inverseEntity="TBIUserInputItem" syncable="YES"/>
@@ -30,16 +30,12 @@
         <relationship name="image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TBIImage" inverseName="userInput" inverseEntity="TBIImage" syncable="YES"/>
         <relationship name="step" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBIStep" inverseName="userInput" inverseEntity="TBIStep" syncable="YES"/>
     </entity>
-    <entity name="TestItem" representedClassName="TestItem" syncable="YES">
-        <attribute name="testattr" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
     <elements>
         <element name="TBIAudio" positionX="340" positionY="81" width="128" height="75"/>
         <element name="TBIImage" positionX="340" positionY="279" width="128" height="75"/>
+        <element name="TBIPercentageTracker" positionX="-164" positionY="297" width="128" height="90"/>
         <element name="TBIStep" positionX="-36" positionY="153" width="128" height="90"/>
         <element name="TBITask" positionX="-207" positionY="153" width="128" height="90"/>
         <element name="TBIUserInputItem" positionX="133" positionY="150" width="128" height="120"/>
-        <element name="TestItem" positionX="-225" positionY="39" width="128" height="60"/>
-        <element name="TBIPercentageTracker" positionX="-164" positionY="297" width="128" height="90"/>
     </elements>
 </model>

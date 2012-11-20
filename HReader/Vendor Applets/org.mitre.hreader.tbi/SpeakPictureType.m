@@ -39,13 +39,13 @@ float contentXOffsetAtLastUpdate;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-        TBIImage *img = (TBIImage *)[self.allImages objectAtIndex:indexPath.row];
+        TBIImage *img = [[TBIImage alloc ] initWithImage:[self.allImages objectAtIndex:indexPath.row]];
 
         //NSData *imgdata = [NSData dataWithContentsOfURL:imgName];
-        UIImage *image = [[UIImage alloc] initWithData:img.image];
+        UIImage *image = [img getData];
         TBIUIImageView *thumbsView = [[TBIUIImageView alloc] initWithImage:image];
         
-        thumbsView.imageName = img.name;
+        thumbsView.imageName = [img objectID];
     
         UICollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cvCell" forIndexPath:indexPath];
         
