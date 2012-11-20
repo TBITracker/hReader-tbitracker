@@ -64,13 +64,26 @@
 
 - (id) getItem {
     if (self.text != nil){
-        return self.text;
+        return self; //self IS the Item that holds the data...
     }
     else if (self.audio != nil){
         return self.audio;
     }
     else if (self.image != nil){
         return self.image;
+    }
+    return nil;
+}
+
+- (id) getData {
+    if (self.text != nil){
+        return self.text;
+    }
+    else if (self.audio != nil){
+        return [self.audio audio];
+    }
+    else if (self.image != nil){
+        return [self.image image];
     }
     return nil;
 }

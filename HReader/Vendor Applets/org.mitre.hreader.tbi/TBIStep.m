@@ -71,13 +71,12 @@
     return self;
 }
 
-
-
-
-
 - (NSString *) description{
     return [NSString stringWithFormat:@"%@, lasting %@ minutes", self.userInput, self.duration];
 }
 
+- (id) getData{
+    return [self.userInput getData];
+}
 
 @end

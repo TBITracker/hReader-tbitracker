@@ -8,7 +8,8 @@
 
 #import "TBITask.h"
 #import "TBIStep.h"
-
+#import "TBIUserInputItem.h"
+#import "TBIDataManager.h"
 
 @implementation TBITask
 
@@ -111,6 +112,45 @@ int currentStep = 0;
 
 - (NSString *) description {
     return [NSString stringWithFormat:@"%@ (%i steps, %@ success rate", self.name, [self.steps count], self.successRate];
+}
+
++ (NSManagedObjectContext *)newContext{
+    return [[TBIDataManager sharedInstance] managedObjectContext];
+}
+
++ (NSMutableArray *) fetchAllTasksWithContext:(NSManagedObjectContext*)context{
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"TBITask" inManagedObjectContext:context]];
+    
+    NSError *error = nil;
+    
+    NSMutableArray *mutableFetchResults = [[context executeFetchRequest:request error:&error] mutableCopy];
+    if (mutableFetchResults == nil) {
+        NSLog(@"Failed to load Tasks. Error description: %@", [error localizedDescription]);
+    } else {
+        NSLog(@"Fetched %d tasks!", [mutableFetchResults count]);
+    }
+    return mutableFetchResults;
+}
+
+- (NSOrderedSet*)fetchAllStepsWithContext:(NSManagedObjectContext *)context{
+    return self.steps;
+}
+
+- (NSOrderedSet*)fetchAllUserInputItemsWithContext:(NSManagedObjectContext *)context{
+    return [self.steps valueForKey:@"userInput"];
+}
+
+- (NSOrderedSet*)fetchAllInputsWithContext:(NSManagedObject *)context{
+    //makeObjectsPerformSelector only works with a method that returns (void)
+    //NSOrderedSet* inputs = [[self.steps valueForKey:@"userInput"] makeObjectsPerformSelector:@selector(getItem)];
+    NSOrderedSet* inputItems = [self.steps valueForKey:@"userInput"];
+    NSMutableOrderedSet *inputs = [NSMutableOrderedSet alloc];
+    for (TBIUserInputItem *item in inputItems) {
+        [inputs addObject:[item getItem]];
+    }
+    
+    return inputs;
 }
 
 @end

@@ -18,4 +18,6 @@
 
 - (TBIAudio *) initWithAudio:(id)audioInput;
 
+- (id) getData;
+
 @end

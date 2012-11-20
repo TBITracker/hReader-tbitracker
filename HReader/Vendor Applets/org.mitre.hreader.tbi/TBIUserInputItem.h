@@ -26,7 +26,8 @@
 - (TBIUserInputItem *) initWithImage:(UIImage *)imageInput;
 - (TBIUserInputItem *) initWithImage:(UIImage *)imageInput andSummary:(NSString *)summaryInput;
 
-- (id) getItem;
+- (id) getItem; //fetches the corresponding TBI_____ object: TBIImage, TBIAudio or TBIUserInputItem
+- (id) getData; //fetches the underlying data: NSString, id or UIImage
 //- (UIView *) getView;
 
 @end

@@ -2132,9 +2132,6 @@
 				D86570B51652C98700F37044 /* TBIPercentageTracker.m in Sources */,
 				D86570B81652C98700F37044 /* TBIAudio.m in Sources */,
 				D86570BB1652C98700F37044 /* TBIStep.m in Sources */,
-				D8F70A6F1642FE900011985F /* TBIUserInputItem.m in Sources */,
-				D8F70A7216430F450011985F /* TBIAudio.m in Sources */,
-				D8F70A7516430F690011985F /* TBIImage.m in Sources */,
 				3B52170A164817CF00DE676A /* UIApplication+hReaderAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
