@@ -13,7 +13,6 @@
 
 @interface TBIImage : NSManagedObject
 
-@property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) UIImage *image;
 @property (nonatomic, retain) TBIUserInputItem *userInput;
 

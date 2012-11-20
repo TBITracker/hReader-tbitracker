@@ -36,10 +36,10 @@
     <elements>
         <element name="TBIAudio" positionX="340" positionY="81" width="128" height="75"/>
         <element name="TBIImage" positionX="340" positionY="279" width="128" height="75"/>
+        <element name="TBIPercentageTracker" positionX="-164" positionY="297" width="128" height="90"/>
         <element name="TBIStep" positionX="-36" positionY="153" width="128" height="90"/>
         <element name="TBITask" positionX="-207" positionY="153" width="128" height="90"/>
         <element name="TBIUserInputItem" positionX="133" positionY="150" width="128" height="120"/>
         <element name="TestItem" positionX="-225" positionY="39" width="128" height="60"/>
-        <element name="TBIPercentageTracker" positionX="-164" positionY="297" width="128" height="90"/>
     </elements>
 </model>

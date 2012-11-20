@@ -14,7 +14,6 @@
 
 @dynamic image;
 @dynamic userInput;
-@dynamic name;
 
 - (TBIImage *) initWithImage:(UIImage *)imageInput {
     if (self=[super init]){
