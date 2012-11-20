@@ -133,24 +133,36 @@ int currentStep = 0;
     return mutableFetchResults;
 }
 
-- (NSOrderedSet*)fetchAllStepsWithContext:(NSManagedObjectContext *)context{
+- (NSOrderedSet*)fetchAllSteps{
     return self.steps;
 }
 
-- (NSOrderedSet*)fetchAllUserInputItemsWithContext:(NSManagedObjectContext *)context{
+- (NSOrderedSet*)fetchAllUserInputItems{
     return [self.steps valueForKey:@"userInput"];
 }
 
-- (NSOrderedSet*)fetchAllInputsWithContext:(NSManagedObject *)context{
+- (NSOrderedSet*)fetchAllInputs{
     //makeObjectsPerformSelector only works with a method that returns (void)
     //NSOrderedSet* inputs = [[self.steps valueForKey:@"userInput"] makeObjectsPerformSelector:@selector(getItem)];
-    NSOrderedSet* inputItems = [self.steps valueForKey:@"userInput"];
+    NSOrderedSet* inputItems = [self fetchAllUserInputItems];
+    
     NSMutableOrderedSet *inputs = [NSMutableOrderedSet alloc];
     for (TBIUserInputItem *item in inputItems) {
         [inputs addObject:[item getItem]];
     }
     
     return inputs;
+}
+
+- (NSOrderedSet*)fetchAllData{
+    NSOrderedSet* inputItems = [self fetchAllUserInputItems];
+    
+    NSMutableOrderedSet *dataSet = [NSMutableOrderedSet alloc];
+    for (TBIUserInputItem *item in inputItems) {
+        [dataSet addObject:[item getData]];
+    }
+    
+    return dataSet;
 }
 
 @end

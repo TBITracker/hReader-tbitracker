@@ -44,7 +44,8 @@
 + (NSManagedObjectContext*)newContext;
 + (NSMutableArray *) fetchAllTasksWithContext:(NSManagedObjectContext*)context;
 
-- (NSMutableArray *) fetchAllStepsWithContext:(NSManagedObjectContext*)context;
-- (NSOrderedSet*)fetchAllUserInputItemsWithContext:(NSManagedObject *)context;
-- (NSOrderedSet*)fetchAllInputsWithContext:(NSManagedObject *)context;
+- (NSMutableArray *)fetchAllSteps;
+- (NSOrderedSet*)fetchAllUserInputItems;
+- (NSOrderedSet*)fetchAllInputs;
+- (NSOrderedSet*)fetchAllData;
 @end
