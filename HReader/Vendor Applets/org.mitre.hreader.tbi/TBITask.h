@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "TBIPercentageTracker.h"
 
-@class TBIStep;
+@class TBIPercentageTracker, TBIStep;
 
 @interface TBITask : NSManagedObject
 
@@ -21,10 +21,16 @@
 
 @interface TBITask (CoreDataGeneratedAccessors)
 
+- (void)insertObject:(TBIStep *)value inStepsAtIndex:(NSUInteger)idx;
+- (void)removeObjectFromStepsAtIndex:(NSUInteger)idx;
+- (void)insertSteps:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
+- (void)removeStepsAtIndexes:(NSIndexSet *)indexes;
+- (void)replaceObjectInStepsAtIndex:(NSUInteger)idx withObject:(TBIStep *)value;
+- (void)replaceStepsAtIndexes:(NSIndexSet *)indexes withSteps:(NSArray *)values;
 - (void)addStepsObject:(TBIStep *)value;
 - (void)removeStepsObject:(TBIStep *)value;
-- (void)addSteps:(NSSet *)values;
-- (void)removeSteps:(NSSet *)values;
+- (void)addSteps:(NSOrderedSet *)values;
+- (void)removeSteps:(NSOrderedSet *)values;
 
 - (void)   successfulCompletion;
 - (void) unsuccessfulCompletion;

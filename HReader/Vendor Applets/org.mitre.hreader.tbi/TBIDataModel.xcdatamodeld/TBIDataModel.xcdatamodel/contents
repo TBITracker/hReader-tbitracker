@@ -20,7 +20,7 @@
     </entity>
     <entity name="TBITask" representedClassName="TBITask" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="steps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TBIStep" inverseName="task" inverseEntity="TBIStep" syncable="YES"/>
+        <relationship name="steps" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TBIStep" inverseName="task" inverseEntity="TBIStep" syncable="YES"/>
         <relationship name="successRate" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBIPercentageTracker" inverseName="task" inverseEntity="TBIPercentageTracker" syncable="YES"/>
     </entity>
     <entity name="TBIUserInputItem" representedClassName="TBIUserInputItem" syncable="YES">
