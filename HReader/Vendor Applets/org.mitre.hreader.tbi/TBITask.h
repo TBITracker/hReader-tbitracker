@@ -41,4 +41,11 @@
 -(void) removeStepAtIndex:(int)i;
 -(void) replaceStepAtIndex:(int)i withStep:(TBIStep *)step;
 
++ (NSManagedObjectContext*)newContext;
++ (NSMutableArray *) fetchAllTasksWithContext:(NSManagedObjectContext*)context;
+
+- (NSMutableArray *)fetchAllSteps;
+- (NSOrderedSet*)fetchAllUserInputItems;
+- (NSOrderedSet*)fetchAllInputs;
+- (NSOrderedSet*)fetchAllData;
 @end

@@ -22,5 +22,8 @@
     return self;
 }
 
+- (id) getData{
+    return self.audio;
+}
 
 @end

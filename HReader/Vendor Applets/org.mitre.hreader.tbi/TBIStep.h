@@ -20,12 +20,12 @@
 -(TBIStep *)initWithText:(NSString*)textInput andDuration:(NSNumber *)durationInput;
 -(TBIStep *)initWithText:(NSString*)textInput andDuration:(NSNumber *)durationInput andSummary:(NSString *)summaryInput;
 
-
 -(TBIStep *)initWithImage:(UIImage*)image andDuration:(NSNumber *)durationInput;
 -(TBIStep *)initWithImage:(UIImage*)image andDuration:(NSNumber *)durationInput andSummary:(NSString *)summaryInput;
 
 -(TBIStep *)initWithAudio:(id)audio andDuration:(NSNumber *)durationInput;
 -(TBIStep *)initWithAudio:(id)audio andDuration:(NSNumber *)durationInput andSummary:(NSString *)summaryInput;
 
+- (id) getData;
 
 @end
