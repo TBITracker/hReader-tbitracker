@@ -39,15 +39,24 @@ float contentXOffsetAtLastUpdate;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-        TBIImage *img = [[TBIImage alloc ] initWithImage:[self.allImages objectAtIndex:indexPath.row]];
+    NSManagedObjectContext *context = [[TBIDataManager sharedInstance] managedObjectContext];
+    //TBIImage *img = [[TBIImage alloc] initWithImage:[self.allImages objectAtIndex:indexPath.row] andContext:context];
 
-        //NSData *imgdata = [NSData dataWithContentsOfURL:imgName];
-        UIImage *image = [img getData];
-        TBIUIImageView *thumbsView = [[TBIUIImageView alloc] initWithImage:image];
-        
-        thumbsView.imageName = [img objectID];
+    NSManagedObject *img = [NSEntityDescription insertNewObjectForEntityForName:@"TBIImage" inManagedObjectContext:context];
+    [img setValue:[self.allImages objectAtIndex:indexPath.row] forKey:@"image"];
     
-        UICollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cvCell" forIndexPath:indexPath];
+    //NSData *imgdata = [NSData dataWithContentsOfURL:imgName];
+    TBIImage *imageStruct = [self.allImages objectAtIndex:indexPath.row];
+    UIImage *image = [imageStruct getData];//get the image data
+    NSLog(@"image set to: %@ (%@)", image, [image class]);
+    //TBIUIImageView *thumbsView = [[TBIUIImageView alloc] initWithImage:image];
+    TBIUIImageView *thumbsView = [[TBIUIImageView alloc] init];
+    [thumbsView setImage:image];
+    [thumbsView setImageName:[img objectID]];
+        
+    //thumbsView.imageName = [img objectID];
+    
+    UICollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cvCell" forIndexPath:indexPath];
         
         //[cell addSubview:thumbsView];
     /*UIImageView *imgincell = (UIImageView*)[cell viewWithTag:100];

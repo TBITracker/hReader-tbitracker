@@ -17,9 +17,11 @@
 @property (nonatomic, retain) UIImage *image;
 @property (nonatomic, retain) TBIUserInputItem *userInput;
 
-- (TBIImage *) initWithImage:(UIImage *)imageInput;
+- (TBIImage *) initWithImage:(UIImage *)imageInput andContext:(NSManagedObjectContext*)context;
+
+//- (void) setImage:(UIImage *)image;
 
 - (UIImage *) getData;
-- (void)setImage:(UIImage *)imageInput;
+//- (void)setImage:(UIImage *)imageInput;
 
 @end

@@ -57,7 +57,7 @@
 - (TBIUserInputItem *) initWithImage:(UIImage *)imageInput andSummary:(NSString *)summaryInput {
     if (self = [super init]){
         [self reset];
-        self.image = [[TBIImage alloc] initWithImage:imageInput];
+        //self.image = [[TBIImage alloc] initWithImage:imageInput]; //FIX THIS
     }
     return self;
 }

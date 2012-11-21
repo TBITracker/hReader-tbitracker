@@ -16,13 +16,12 @@
 @dynamic userInput;
 //@dynamic name;
 
-- (TBIImage *) initWithImage:(UIImage *)imageInput {
-    if (self=[super init]){
-        NSLog(@"1");
-        [self setImage:imageInput];
-        NSLog(@"2");
-    }
-    return self;
+- (TBIImage *) initWithImage:(UIImage *)imageInput andContext:(NSManagedObjectContext *)context{
+    TBIImage *item = (TBIImage*)[NSEntityDescription insertNewObjectForEntityForName:@"TBIImage" inManagedObjectContext:context];
+    item.image = imageInput;
+    
+    return item;
+
 }
 
 -(UIImage *) getData{
