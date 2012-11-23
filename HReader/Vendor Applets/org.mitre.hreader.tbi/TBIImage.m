@@ -17,7 +17,7 @@
 
 + (TBIImage *) generateWithImage:(NSString *)imageInput andContext:(NSManagedObjectContext *)context{
     TBIImage *newImageObject = (TBIImage *)[NSEntityDescription insertNewObjectForEntityForName:@"TBIImage" inManagedObjectContext:context];
-    [newImageObject setValue:imageInput forKey:@"text"];
+    [newImageObject setValue:imageInput forKey:@"image"];
 
     NSError *error = nil;
     [context save:&error];
