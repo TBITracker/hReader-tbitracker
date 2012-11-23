@@ -16,4 +16,8 @@
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) TBIUserInputItem *userinput;
 
++ (TBIText *) generateWithText:(NSString *)textInput andContext:(NSManagedObjectContext *)context;
+
+- (NSString *) getData;
+
 @end

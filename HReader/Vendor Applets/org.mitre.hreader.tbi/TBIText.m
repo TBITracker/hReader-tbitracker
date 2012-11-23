@@ -15,4 +15,18 @@
 @dynamic text;
 @dynamic userinput;
 
+
+ + (TBIText *) generateWithText:(NSString *)textInput andContext:(NSManagedObjectContext *)context{
+     TBIText *newTextObject = (TBIText *)[NSEntityDescription insertNewObjectForEntityForName:@"TBIText" inManagedObjectContext:context];
+     [newTextObject setValue:textInput forKey:@"text"];
+     
+     NSError *error = nil;
+     [context save:&error];
+     return newTextObject;
+ }
+
+- (NSString *) getData {
+    return self.text;
+}
+
 @end

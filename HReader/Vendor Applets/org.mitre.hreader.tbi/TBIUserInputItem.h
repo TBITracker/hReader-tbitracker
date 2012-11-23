@@ -9,25 +9,48 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class TBIAudio, TBIImage, TBIStep;
+@class TBIAudio, TBIImage, TBIText, TBIStep;
 
 @interface TBIUserInputItem : NSManagedObject
 
-@property (nonatomic, retain) NSString * summary;
-@property (nonatomic, retain) NSString * text;
+@property (nonatomic, retain) NSString *summary;
+@property (nonatomic, retain) TBIText *text;
 @property (nonatomic, retain) TBIAudio *audio;
 @property (nonatomic, retain) TBIImage *image;
-@property (nonatomic, retain) TBIStep *step;
+@property (nonatomic, retain) TBIStep  *step;
 
+/*
 - (TBIUserInputItem *) initWithText:(NSString *)textInput;
 - (TBIUserInputItem *) initWithText:(NSString *)textInput andSummary:(NSString *)summaryInput;
 - (TBIUserInputItem *) initWithAudio:(id)audioInput;
 - (TBIUserInputItem *) initWithAudio:(id)audioInput andSummary:(NSString *)summaryInput;
 - (TBIUserInputItem *) initWithImage:(UIImage *)imageInput;
 - (TBIUserInputItem *) initWithImage:(UIImage *)imageInput andSummary:(NSString *)summaryInput;
+*/
 
-- (id) getItem; //fetches the corresponding TBI_____ object: TBIImage, TBIAudio or TBIUserInputItem
-- (id) getData; //fetches the underlying data: NSString, id or UIImage
++ (TBIUserInputItem *) generateWithContext:(NSManagedObjectContext *)context;
+
+//Audio Initializers. You may provide either raw audio data or a TBIAudioObject, as well as an optional summary.
++ (TBIUserInputItem *) generateWithAudio:(id)audioInput andContext:(NSManagedObjectContext *)context;
++ (TBIUserInputItem *) generateWithAudio:(id)audioInput andSummary:(NSString*)summary andContext:(NSManagedObjectContext *)context;
++ (TBIUserInputItem *) generateWithAudioObject:(TBIAudio *)audioObject andContext:(NSManagedObjectContext *)context;
++ (TBIUserInputItem *) generateWithAudioObject:(TBIAudio *)audioObject andSummary:(NSString*)summary andContext:(NSManagedObjectContext *)context;
+
+//Image Initializers. You may provide either the raw UIImage or a TBIImageObject, as well as an optional summary.
++ (TBIUserInputItem *) generateWithImage:(UIImage *)imageInput andContext:(NSManagedObjectContext *)context;
++ (TBIUserInputItem *) generateWithImage:(UIImage *)imageInput andSummary:(NSString*)summary andContext:(NSManagedObjectContext *)context;
++ (TBIUserInputItem *) generateWithImageObject:(TBIImage *)imageObject andContext:(NSManagedObjectContext *)context;
++ (TBIUserInputItem *) generateWithImageObject:(TBIImage *)imageObject andSummary:(NSString*)summary andContext:(NSManagedObjectContext *)context;
+
+//Text Initializers. You may provide either the raw NSString or a TBITextObject, as well as an optional summary.
++ (TBIUserInputItem *) generateWithText:(NSString *)textInput andContext:(NSManagedObjectContext *)context;
++ (TBIUserInputItem *) generateWithText:(NSString *)textInput andSummary:(NSString*)summary andContext:(NSManagedObjectContext *)context;
++ (TBIUserInputItem *) generateWithTextObject:(TBIText *)textObject andContext:(NSManagedObjectContext *)context;
++ (TBIUserInputItem *) generateWithTextObject:(TBIText *)textObject andSummary:(NSString*)summary andContext:(NSManagedObjectContext *)context;
+
+
+- (id) getItem; //fetches the corresponding TBI_____ object: TBIAudio, TBIImage or TBIText
+- (id) getData; //fetches the underlying data:  id, UIImage or NSString
 //- (UIView *) getView;
 
 @end

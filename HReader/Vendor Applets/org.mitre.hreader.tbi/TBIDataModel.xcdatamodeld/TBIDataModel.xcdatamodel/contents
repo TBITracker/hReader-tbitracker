@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1810" systemVersion="11G56" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="11G63" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="TBIAudio" representedClassName="TBIAudio" syncable="YES">
         <attribute name="audio" attributeType="Transformable" syncable="YES"/>
-        <relationship name="userInput" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBIUserInputItem" inverseName="audio" inverseEntity="TBIUserInputItem" syncable="YES"/>
+        <relationship name="userinput" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBIUserInputItem" inverseName="audio" inverseEntity="TBIUserInputItem" syncable="YES"/>
     </entity>
     <entity name="TBIImage" representedClassName="TBIImage" syncable="YES">
         <attribute name="image" attributeType="Transformable" syncable="YES"/>
-        <relationship name="userInput" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBIUserInputItem" inverseName="image" inverseEntity="TBIUserInputItem" syncable="YES"/>
+        <relationship name="userinput" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBIUserInputItem" inverseName="image" inverseEntity="TBIUserInputItem" syncable="YES"/>
     </entity>
     <entity name="TBIPercentageTracker" representedClassName="TBIPercentageTracker" syncable="YES">
         <attribute name="denominator" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -16,19 +16,23 @@
     <entity name="TBIStep" representedClassName="TBIStep" syncable="YES">
         <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <relationship name="task" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBITask" inverseName="steps" inverseEntity="TBITask" syncable="YES"/>
-        <relationship name="userInput" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="TBIUserInputItem" inverseName="step" inverseEntity="TBIUserInputItem" syncable="YES"/>
+        <relationship name="userinput" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="TBIUserInputItem" inverseName="step" inverseEntity="TBIUserInputItem" syncable="YES"/>
     </entity>
     <entity name="TBITask" representedClassName="TBITask" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="steps" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TBIStep" inverseName="task" inverseEntity="TBIStep" syncable="YES"/>
         <relationship name="successRate" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBIPercentageTracker" inverseName="task" inverseEntity="TBIPercentageTracker" syncable="YES"/>
     </entity>
+    <entity name="TBIText" representedClassName="TBIText" syncable="YES">
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="userinput" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBIUserInputItem" inverseName="text" inverseEntity="TBIUserInputItem" syncable="YES"/>
+    </entity>
     <entity name="TBIUserInputItem" representedClassName="TBIUserInputItem" syncable="YES">
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="audio" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBIAudio" inverseName="userInput" inverseEntity="TBIAudio" syncable="YES"/>
-        <relationship name="image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TBIImage" inverseName="userInput" inverseEntity="TBIImage" syncable="YES"/>
-        <relationship name="step" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBIStep" inverseName="userInput" inverseEntity="TBIStep" syncable="YES"/>
+        <relationship name="audio" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBIAudio" inverseName="userinput" inverseEntity="TBIAudio" syncable="YES"/>
+        <relationship name="image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TBIImage" inverseName="userinput" inverseEntity="TBIImage" syncable="YES"/>
+        <relationship name="step" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBIStep" inverseName="userinput" inverseEntity="TBIStep" syncable="YES"/>
+        <relationship name="text" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TBIText" inverseName="userinput" inverseEntity="TBIText" syncable="YES"/>
     </entity>
     <elements>
         <element name="TBIAudio" positionX="340" positionY="81" width="128" height="75"/>
@@ -37,5 +41,6 @@
         <element name="TBIStep" positionX="-36" positionY="153" width="128" height="90"/>
         <element name="TBITask" positionX="-207" positionY="153" width="128" height="90"/>
         <element name="TBIUserInputItem" positionX="133" positionY="150" width="128" height="120"/>
+        <element name="TBIText" positionX="160" positionY="192" width="128" height="75"/>
     </elements>
 </model>

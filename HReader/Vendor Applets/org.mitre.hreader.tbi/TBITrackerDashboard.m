@@ -7,6 +7,7 @@
 //
 
 #import "TBITrackerDashboard.h"
+#import "DataTester.h"
 
 @implementation TBITrackerDashboard
 
@@ -43,7 +44,12 @@
     if (testNED != nil) {
         NSLog(@"Got entity description: %@", [testNED description]);
     }
-    
+    /*
+    [DataTester makeNewTextObject];
+    [DataTester makeNewTextObject];
+    [DataTester fetchAllTBITextObjects];
+     */
+    [DataTester generateDataWithContext:ctx];
 }
 
 - (void)viewDidUnload

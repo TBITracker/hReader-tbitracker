@@ -14,10 +14,11 @@
 @interface TBIAudio : NSManagedObject
 
 @property (nonatomic, retain) id audio;
-@property (nonatomic, retain) TBIUserInputItem *userInput;
+@property (nonatomic, retain) TBIUserInputItem *userinput;
 
-- (TBIAudio *) initWithAudio:(id)audioInput;
+//- (TBIAudio *) initWithAudio:(id)audioInput;
 
++ (TBIAudio *) generateWithAudio:(NSString *)audioInput andContext:(NSManagedObjectContext *)context;
 - (id) getData;
 
 @end

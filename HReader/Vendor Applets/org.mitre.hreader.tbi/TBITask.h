@@ -21,16 +21,7 @@
 
 @interface TBITask (CoreDataGeneratedAccessors)
 
-- (void)insertObject:(TBIStep *)value inStepsAtIndex:(NSUInteger)idx;
-- (void)removeObjectFromStepsAtIndex:(NSUInteger)idx;
-- (void)insertSteps:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
-- (void)removeStepsAtIndexes:(NSIndexSet *)indexes;
-- (void)replaceObjectInStepsAtIndex:(NSUInteger)idx withObject:(TBIStep *)value;
-- (void)replaceStepsAtIndexes:(NSIndexSet *)indexes withSteps:(NSArray *)values;
-- (void)addStepsObject:(TBIStep *)value;
-- (void)removeStepsObject:(TBIStep *)value;
-- (void)addSteps:(NSOrderedSet *)values;
-- (void)removeSteps:(NSOrderedSet *)values;
++ (TBITask *) generateWithName:(NSString *)name andContext:(NSManagedObjectContext *)context;
 
 - (void)   successfulCompletion;
 - (void) unsuccessfulCompletion;
@@ -47,6 +38,7 @@
 -(void) removeStepAtIndex:(int)i;
 -(void) replaceStepAtIndex:(int)i withStep:(TBIStep *)step;
 
+
 + (NSManagedObjectContext*)newContext;
 + (NSMutableArray *) fetchAllTasksWithContext:(NSManagedObjectContext*)context;
 
@@ -54,4 +46,17 @@
 - (NSOrderedSet*)fetchAllUserInputItems;
 - (NSOrderedSet*)fetchAllInputs;
 - (NSOrderedSet*)fetchAllData;
+
+/*
+ - (void)insertObject:(TBIStep *)value inStepsAtIndex:(NSUInteger)idx;
+ - (void)removeObjectFromStepsAtIndex:(NSUInteger)idx;
+ - (void)insertSteps:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
+ - (void)removeStepsAtIndexes:(NSIndexSet *)indexes;
+ - (void)replaceObjectInStepsAtIndex:(NSUInteger)idx withObject:(TBIStep *)value;
+ - (void)replaceStepsAtIndexes:(NSIndexSet *)indexes withSteps:(NSArray *)values;
+ - (void)addStepsObject:(TBIStep *)value;
+ - (void)removeStepsObject:(TBIStep *)value;
+ - (void)addSteps:(NSOrderedSet *)values;
+ - (void)removeSteps:(NSOrderedSet *)values;
+ */
 @end

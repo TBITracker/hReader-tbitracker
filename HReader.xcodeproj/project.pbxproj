@@ -265,6 +265,8 @@
 		94E078C61538A4570051DC01 /* multiple_sclerosis_summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078BF1538A4570051DC01 /* multiple_sclerosis_summary.png */; };
 		94E078C71538A4570051DC01 /* pophealth-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078C01538A4570051DC01 /* pophealth-summary.png */; };
 		94F871F41535D9F60018AF13 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F871F31535D9F60018AF13 /* libz.dylib */; };
+		D803BBD4165D4EA6008C0321 /* DataTester.m in Sources */ = {isa = PBXBuildFile; fileRef = D803BBD3165D4EA6008C0321 /* DataTester.m */; };
+		D803BBD7165D6201008C0321 /* TBIText.m in Sources */ = {isa = PBXBuildFile; fileRef = D803BBD6165D6200008C0321 /* TBIText.m */; };
 		D8225AD61630839D00FD44F1 /* slider.png in Resources */ = {isa = PBXBuildFile; fileRef = D8225AD21630839D00FD44F1 /* slider.png */; };
 		D8225AD71630839D00FD44F1 /* sliderBar.png in Resources */ = {isa = PBXBuildFile; fileRef = D8225AD31630839D00FD44F1 /* sliderBar.png */; };
 		D8225AD81630839D00FD44F1 /* sliderBarGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = D8225AD41630839D00FD44F1 /* sliderBarGreen.png */; };
@@ -723,6 +725,10 @@
 		94E078C01538A4570051DC01 /* pophealth-summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pophealth-summary.png"; sourceTree = "<group>"; };
 		94F871F31535D9F60018AF13 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C3390522155D536B00E77EBF /* HReaderConfig.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HReaderConfig.xcconfig; sourceTree = "<group>"; };
+		D803BBD2165D4EA6008C0321 /* DataTester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataTester.h; sourceTree = "<group>"; };
+		D803BBD3165D4EA6008C0321 /* DataTester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataTester.m; sourceTree = "<group>"; };
+		D803BBD5165D6200008C0321 /* TBIText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBIText.h; sourceTree = "<group>"; };
+		D803BBD6165D6200008C0321 /* TBIText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBIText.m; sourceTree = "<group>"; };
 		D8225AD21630839D00FD44F1 /* slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slider.png; sourceTree = "<group>"; };
 		D8225AD31630839D00FD44F1 /* sliderBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sliderBar.png; sourceTree = "<group>"; };
 		D8225AD41630839D00FD44F1 /* sliderBarGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sliderBarGreen.png; sourceTree = "<group>"; };
@@ -1569,6 +1575,15 @@
 			name = "Passcode Warning";
 			sourceTree = "<group>";
 		};
+		D803BBD0165D4E62008C0321 /* DataModel Test Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D803BBD2165D4EA6008C0321 /* DataTester.h */,
+				D803BBD3165D4EA6008C0321 /* DataTester.m */,
+			);
+			name = "DataModel Test Utilities";
+			sourceTree = "<group>";
+		};
 		D834C6CA161B36DB00D1B82D /* Wireframes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1701,8 +1716,11 @@
 				D86570B71652C98700F37044 /* TBIAudio.m */,
 				D86570AA1652C98500F37044 /* TBIImage.h */,
 				D86570AB1652C98500F37044 /* TBIImage.m */,
+				D803BBD5165D6200008C0321 /* TBIText.h */,
+				D803BBD6165D6200008C0321 /* TBIText.m */,
 				D86570B31652C98700F37044 /* TBIPercentageTracker.h */,
 				D86570B41652C98700F37044 /* TBIPercentageTracker.m */,
+				D803BBD0165D4E62008C0321 /* DataModel Test Utilities */,
 			);
 			name = TBIDataManager;
 			sourceTree = "<group>";
@@ -2137,6 +2155,8 @@
 				D86570B81652C98700F37044 /* TBIAudio.m in Sources */,
 				D86570BB1652C98700F37044 /* TBIStep.m in Sources */,
 				3B52170A164817CF00DE676A /* UIApplication+hReaderAdditions.m in Sources */,
+				D803BBD4165D4EA6008C0321 /* DataTester.m in Sources */,
+				D803BBD7165D6201008C0321 /* TBIText.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

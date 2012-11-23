@@ -19,6 +19,15 @@
 
 int currentStep = 0;
 
++ (TBITask *) generateWithName:(NSString *)name andContext:(NSManagedObjectContext *)context{
+    TBITask *newTask = (TBITask *)[NSEntityDescription insertNewObjectForEntityForName:@"TBITask" inManagedObjectContext:context];
+    [newTask setValue:name forKey:@"name"];
+    
+    NSError *error = nil;
+    [context save:&error];
+    return newTask;
+}
+
 - (void) successfulCompletion {
     [self.successRate success];
 }
@@ -62,11 +71,6 @@ int currentStep = 0;
     [temp addObject:step];
     self.steps = [NSOrderedSet orderedSetWithOrderedSet:temp];
 }
-
-/*
- NSMutableOrderedSet *temp = [NSMutableOrderedSet orderedSetWithOrderedSet:self.steps];
- self.steps = [NSOrderedSet orderedSetWithOrderedSet:temp];
- */
 
 -(void) insertStep:(TBIStep *)step AtIndex:(int)i{
     NSMutableOrderedSet *temp = [NSMutableOrderedSet orderedSetWithOrderedSet:self.steps];
@@ -138,7 +142,7 @@ int currentStep = 0;
 }
 
 - (NSOrderedSet*)fetchAllUserInputItems{
-    return [self.steps valueForKey:@"userInput"];
+    return [self.steps valueForKey:@"userinput"];
 }
 
 - (NSOrderedSet*)fetchAllInputs{
@@ -157,7 +161,7 @@ int currentStep = 0;
 - (NSOrderedSet*)fetchAllData{
     NSOrderedSet* inputItems = [self fetchAllUserInputItems];
     
-    NSMutableOrderedSet *dataSet = [NSMutableOrderedSet alloc];
+    NSMutableOrderedSet *dataSet = [NSMutableOrderedSet new];
     for (TBIUserInputItem *item in inputItems) {
         [dataSet addObject:[item getData]];
     }

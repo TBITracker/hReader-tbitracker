@@ -15,12 +15,11 @@
 
 //@property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) UIImage *image;
-@property (nonatomic, retain) TBIUserInputItem *userInput;
+@property (nonatomic, retain) TBIUserInputItem *userinput;
 
-- (TBIImage *) initWithImage:(UIImage *)imageInput andContext:(NSManagedObjectContext*)context;
+//- (TBIImage *) initWithImage:(UIImage *)imageInput andContext:(NSManagedObjectContext*)context;
 
-//- (void) setImage:(UIImage *)image;
-
++ (TBIImage *) generateWithImage:(NSString *)imageInput andContext:(NSManagedObjectContext *)context;
 - (UIImage *) getData;
 //- (void)setImage:(UIImage *)imageInput;
 

@@ -13,15 +13,25 @@
 @implementation TBIImage
 
 @dynamic image;
-@dynamic userInput;
+@dynamic userinput;
 //@dynamic name;
 
+/*
 - (TBIImage *) initWithImage:(UIImage *)imageInput andContext:(NSManagedObjectContext *)context{
     TBIImage *item = (TBIImage*)[NSEntityDescription insertNewObjectForEntityForName:@"TBIImage" inManagedObjectContext:context];
     item.image = imageInput;
     
     return item;
+}
+*/
 
++ (TBIImage *) generateWithImage:(NSString *)imageInput andContext:(NSManagedObjectContext *)context{
+    TBIImage *newImageObject = (TBIImage *)[NSEntityDescription insertNewObjectForEntityForName:@"TBIImage" inManagedObjectContext:context];
+    [newImageObject setValue:imageInput forKey:@"text"];
+
+    NSError *error = nil;
+    [context save:&error];
+    return newImageObject;
 }
 
 -(UIImage *) getData{

@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface DataTester : NSObject
+
++ (BOOL) generateRandomTextObject;
++ (void) makeNewTextObject;
++ (NSMutableArray *) fetchAllTBITextObjects;
+
++ (void) generateDataWithContext:(NSManagedObjectContext *)context;
 
 @end
