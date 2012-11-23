@@ -27,51 +27,6 @@
     self.image = nil;
 }
 
-/*
-- (TBIUserInputItem *) initWithText:(NSString *)textInput {
-    return [self initWithText:textInput andSummary:@"No summary"];
-}
-
-- (TBIUserInputItem *) initWithText:(NSString *)textInput andSummary:(NSString *)summaryInput{
-    if (self = [super init]){
-        [self reset];
-        //self.text = [[TBIText alloc] initWithText:textInput];
-    }
-    return self;
-}
-
-- (TBIUserInputItem *) initWithAudio:(id)audioInput {
-    return [self initWithAudio:audioInput andSummary:@"No summary"];
-}
-
-- (TBIUserInputItem *) initWithAudio:(id)audioInput andSummary:(NSString *)summaryInput {
-    if (self = [super init]){
-        [self reset];
-        self.audio = [[TBIAudio alloc] initWithAudio:audioInput];
-    }
-    return self;
-}
-
-- (TBIUserInputItem *) initWithImage:(UIImage *)imageInput {
-    return [self initWithImage:imageInput andSummary:@"No summary"];
-}
-
-- (TBIUserInputItem *) initWithImage:(UIImage *)imageInput andSummary:(NSString *)summaryInput {
-    if (self = [super init]){
-        [self reset];
-        //self.image = [[TBIImage alloc] initWithImage:imageInput]; //FIX THIS
-    }
-    return self;
-}
-*/
-
-/*
- + (TBIUserInputItem *) generateWithText:(NSString *)textInput andContext:(NSManagedObjectContext *)context{
- TBIUserInputItem *newTextObject = (TBIUserInputItem *)[NSEntityDescription insertNewObjectForEntityForName:@"TBIUserInputItem" inManagedObjectContext:context];
- [newTextObject setValue:textInput forKey:@"text"];
- return newTextObject;
- }
- */
 
 + (TBIUserInputItem *) generateWithContext:(NSManagedObjectContext *)context{
     TBIUserInputItem *newInputObject = (TBIUserInputItem *)[NSEntityDescription insertNewObjectForEntityForName:@"TBIUserInputItem" inManagedObjectContext:context];
@@ -147,35 +102,6 @@
     [context save:&error];
     return newInputObject;
 }
-
-/*
-+ (TBIUserInputItem *) generateWithImage:(UIImage *)imageInput andContext:(NSManagedObjectContext *)context{
-    return [TBIUserInputItem generateWithImage:imageInput andSummary:@"" andContext:context];
-}
-+ (TBIUserInputItem *) generateWithImage:(UIImage *)imageInput andSummary:(NSString*) andContext:(NSManagedObjectContext *)context{
-    TBIUserInputItem *newInputObject = (TBIUserInputItem *)[NSEntityDescription insertNewObjectForEntityForName:@"TBIUserInputItem" inManagedObjectContext:context];
-    TBIImage *newImageObject = (TBIImage *)[NSEntityDescription insertNewObjectForEntityForName:@"TBIImage" inManagedObjectContext:context];
-    [newImageObject setValue:imageInput forKey:@"image"];
-    [newInputObject setValue:newImageObject forKey:@"image"];
-    NSError *error = nil;
-    [context save:&error];
-    return newInputObject;
-}
-
-+ (TBIUserInputItem *) generateWithAudio:(id)audioInput andContext:(NSManagedObjectContext *)context{
-    return [TBIUserInputItem generateWithAudio:audioInput andSummary:@"" andContext:context];
-}
-
-+ (TBIUserInputItem *) generateWithAudio:(id)audioInput andSummary:(NSString*) andContext:(NSManagedObjectContext *)context{
-    TBIUserInputItem *newInputObject = (TBIUserInputItem *)[NSEntityDescription insertNewObjectForEntityForName:@"TBIUserInputItem" inManagedObjectContext:context];
-    TBIAudio *newAudioObject = (TBIAudio *)[NSEntityDescription insertNewObjectForEntityForName:@"TBIAudio" inManagedObjectContext:context];
-    [newAudioObject setValue:imageInput forKey:@"audio"];
-    NSError *error = nil;
-    [context save:&error];
-    return newInputObject;
-}
- */
-
 
 - (id) getItem {
     if (self.text != nil){

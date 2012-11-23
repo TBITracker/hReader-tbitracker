@@ -15,15 +15,6 @@
 @dynamic audio;
 @dynamic userinput;
 
-/*
-- (TBIAudio *)initWithAudio:(id)audioInput{
-    if (self=[super init]){
-        self.audio = audioInput;
-    }
-    return self;
-}
- */
-
 + (TBIAudio *) generateWithAudio:(NSString *)audioInput andContext:(NSManagedObjectContext *)context{
     TBIAudio *newAudioObject = (TBIAudio *)[NSEntityDescription insertNewObjectForEntityForName:@"TBIAudio" inManagedObjectContext:context];
     [newAudioObject setValue:audioInput forKey:@"audio"];

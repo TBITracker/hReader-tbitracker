@@ -14,16 +14,6 @@
 
 @dynamic image;
 @dynamic userinput;
-//@dynamic name;
-
-/*
-- (TBIImage *) initWithImage:(UIImage *)imageInput andContext:(NSManagedObjectContext *)context{
-    TBIImage *item = (TBIImage*)[NSEntityDescription insertNewObjectForEntityForName:@"TBIImage" inManagedObjectContext:context];
-    item.image = imageInput;
-    
-    return item;
-}
-*/
 
 + (TBIImage *) generateWithImage:(NSString *)imageInput andContext:(NSManagedObjectContext *)context{
     TBIImage *newImageObject = (TBIImage *)[NSEntityDescription insertNewObjectForEntityForName:@"TBIImage" inManagedObjectContext:context];

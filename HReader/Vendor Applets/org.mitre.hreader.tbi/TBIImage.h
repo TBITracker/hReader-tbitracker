@@ -13,14 +13,10 @@
 
 @interface TBIImage : NSManagedObject
 
-//@property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) UIImage *image;
 @property (nonatomic, retain) TBIUserInputItem *userinput;
 
-//- (TBIImage *) initWithImage:(UIImage *)imageInput andContext:(NSManagedObjectContext*)context;
-
 + (TBIImage *) generateWithImage:(NSString *)imageInput andContext:(NSManagedObjectContext *)context;
 - (UIImage *) getData;
-//- (void)setImage:(UIImage *)imageInput;
 
 @end

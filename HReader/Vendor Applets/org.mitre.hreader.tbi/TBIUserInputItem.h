@@ -19,15 +19,6 @@
 @property (nonatomic, retain) TBIImage *image;
 @property (nonatomic, retain) TBIStep  *step;
 
-/*
-- (TBIUserInputItem *) initWithText:(NSString *)textInput;
-- (TBIUserInputItem *) initWithText:(NSString *)textInput andSummary:(NSString *)summaryInput;
-- (TBIUserInputItem *) initWithAudio:(id)audioInput;
-- (TBIUserInputItem *) initWithAudio:(id)audioInput andSummary:(NSString *)summaryInput;
-- (TBIUserInputItem *) initWithImage:(UIImage *)imageInput;
-- (TBIUserInputItem *) initWithImage:(UIImage *)imageInput andSummary:(NSString *)summaryInput;
-*/
-
 + (TBIUserInputItem *) generateWithContext:(NSManagedObjectContext *)context;
 
 //Audio Initializers. You may provide either raw audio data or a TBIAudioObject, as well as an optional summary.

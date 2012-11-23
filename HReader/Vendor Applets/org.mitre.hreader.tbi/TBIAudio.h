@@ -16,8 +16,6 @@
 @property (nonatomic, retain) id audio;
 @property (nonatomic, retain) TBIUserInputItem *userinput;
 
-//- (TBIAudio *) initWithAudio:(id)audioInput;
-
 + (TBIAudio *) generateWithAudio:(NSString *)audioInput andContext:(NSManagedObjectContext *)context;
 - (id) getData;
 
