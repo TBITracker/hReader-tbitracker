@@ -42,10 +42,11 @@
 + (NSManagedObjectContext*)newContext;
 + (NSMutableArray *) fetchAllTasksWithContext:(NSManagedObjectContext*)context;
 
-- (NSMutableArray *)fetchAllSteps;
-- (NSOrderedSet*)fetchAllUserInputItems;
-- (NSOrderedSet*)fetchAllInputs;
-- (NSOrderedSet*)fetchAllData;
+//fetch all the data associated with a Task
+- (NSMutableArray *)fetchAllSteps; //equivalent to [task steps]
+- (NSOrderedSet*)fetchAllUserInputItems; //transforms each step into its associated TBIUserInputItem
+- (NSOrderedSet*)fetchAllInputs; //transforms each TBIUserInputItem into its associated TBIAudio/TBIImage/TBIText
+- (NSOrderedSet*)fetchAllData; //transform each TBIAudio/TBIImage/TBIText into its associated id/UIImage/NSString (probably not useful)
 
 /*
  - (void)insertObject:(TBIStep *)value inStepsAtIndex:(NSUInteger)idx;

@@ -129,7 +129,20 @@
     return nil;
 }
 
+- (void) setAudio:(TBIAudio *)audio{
+    [self reset];
+    self.audio = audio;
+}
 
+- (void) setImage:(TBIImage *)image{
+    [self reset];
+    self.image = image;
+}
+
+- (void) setText:(TBIText *)text{
+    [self reset];
+    self.text = text;
+}
 
 - (NSString *) description {
     return [NSString stringWithFormat:@"%@", [self getData]];
