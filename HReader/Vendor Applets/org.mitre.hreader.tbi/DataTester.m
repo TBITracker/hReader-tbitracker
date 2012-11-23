@@ -78,21 +78,27 @@ static NSManagedObjectContext *context;
     //Confirm that the connection between the Step and the Task is bi-directional
     NSLog(@"Step's task is: %@", [step task]);
     
-    //Add a new userInputItem -- it is automatically added to the end thanks to Step's generation method
-    userInputItem = [TBIUserInputItem generateWithText:[DataTester getRandomString] andSummary:@"summary goes here" andContext:context];
-    step = [TBIStep generateWithTask:task andUserInputItem:userInputItem andDuration:[NSNumber numberWithInt:13] andContext:context];
-    NSLog(@"New step added. Task list is now: %@", [task steps]);
-    
     //Add a new userInputItem and make it the first one in the list
     userInputItem = [TBIUserInputItem generateWithText:[DataTester getRandomString] andSummary:@"summary goes here" andContext:context];
     step = [TBIStep generateWithUserInputItem:userInputItem andDuration:[NSNumber numberWithInt:13] andContext:context];
+    NSManagedObjectID *stepID = [step objectID];
     [task insertStep:step AtIndex:0];
     NSLog(@"New step added. Task list is now: %@", [task steps]);
+    
+    //alter the property of an item by walking down to it and then calling the appropriate set____: method
+    [ (TBIText *)[[[[task steps] objectAtIndex:0] userinput] getItem] setText:@"First Item"];
+    NSLog(@"getting data from first element: %@", [[[[task steps] objectAtIndex:1] userinput] getData]);
+    
+    //fetch an object directly from the database given its ID
+    NSManagedObject *fetchedStep = [context existingObjectWithID:stepID error:nil];
+    NSLog(@"fetched object: %@", fetchedStep);
     
     //From a task, fetch all of its Steps, or all of their raw data
     NSLog(@"Testing FetchAllSteps: %@", [task fetchAllSteps]);
     NSLog(@"Testing FetchAllData: %@", [task fetchAllData]);
     
+     [context save:nil];
+     
 }
 
 + (NSString*) getRandomString

@@ -17,8 +17,6 @@
 @property (nonatomic, retain) TBITask *task;
 @property (nonatomic, retain) TBIUserInputItem *userinput;
 
-
-
 + (TBIStep *) generateWithContext:(NSManagedObjectContext *)context;
 
 //Use this method only if you need to add the new Step somewhere other than the end of the Task's list. 
