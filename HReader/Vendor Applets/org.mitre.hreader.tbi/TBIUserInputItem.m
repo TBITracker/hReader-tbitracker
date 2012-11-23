@@ -129,21 +129,26 @@
     return nil;
 }
 
+//these cause infinite loops...
+/*
 - (void) setAudio:(TBIAudio *)audio{
-    [self reset];
+    self.text = nil;
+    self.image = nil;
     self.audio = audio;
 }
 
 - (void) setImage:(TBIImage *)image{
-    [self reset];
+    self.text = nil;
+    self.audio = nil;
     self.image = image;
 }
 
 - (void) setText:(TBIText *)text{
-    [self reset];
+    self.image = nil;
+    self.audio = nil;
     self.text = text;
 }
-
+*/
 - (NSString *) description {
     return [NSString stringWithFormat:@"%@", [self getData]];
 }
