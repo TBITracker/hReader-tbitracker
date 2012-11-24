@@ -39,9 +39,12 @@
 + (TBIUserInputItem *) generateWithTextObject:(TBIText *)textObject andContext:(NSManagedObjectContext *)context;
 + (TBIUserInputItem *) generateWithTextObject:(TBIText *)textObject andSummary:(NSString*)summary andContext:(NSManagedObjectContext *)context;
 
-
 - (id) getItem; //fetches the corresponding TBI_____ object: TBIAudio, TBIImage or TBIText
 - (id) getData; //fetches the underlying data:  id, UIImage or NSString
 //- (UIView *) getView;
+
+- (void) setAudio:(id)audio;
+- (void) setImage:(UIImage *)image;
+- (void) setText:(NSString *)text;
 
 @end

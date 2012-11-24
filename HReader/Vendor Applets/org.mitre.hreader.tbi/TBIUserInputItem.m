@@ -129,26 +129,55 @@
     return nil;
 }
 
-//these cause infinite loops...
-/*
+
 - (void) setAudio:(TBIAudio *)audio{
-    self.text = nil;
-    self.image = nil;
-    self.audio = audio;
+    [self willChangeValueForKey:@"audio"];
+    [self setPrimitiveValue:audio forKey:@"audio"];
+    [self didChangeValueForKey:@"audio"];
+
+    [self willChangeValueForKey:@"image"];
+    [self setPrimitiveValue:nil forKey:@"image"];
+    [self didChangeValueForKey:@"image"];
+
+    [self willChangeValueForKey:@"text"];
+    [self setPrimitiveValue:nil forKey:@"text"];
+    [self didChangeValueForKey:@"text"];
 }
 
 - (void) setImage:(TBIImage *)image{
-    self.text = nil;
-    self.audio = nil;
-    self.image = image;
+    [self willChangeValueForKey:@"audio"];
+    [self setPrimitiveValue:nil forKey:@"audio"];
+    [self didChangeValueForKey:@"audio"];
+    
+    [self willChangeValueForKey:@"image"];
+    [self setPrimitiveValue:image forKey:@"image"];
+    [self didChangeValueForKey:@"image"];
+    
+    [self willChangeValueForKey:@"text"];
+    [self setPrimitiveValue:nil forKey:@"text"];
+    [self didChangeValueForKey:@"text"];
 }
 
 - (void) setText:(TBIText *)text{
-    self.image = nil;
-    self.audio = nil;
-    self.text = text;
+    [self willChangeValueForKey:@"audio"];
+    [self setPrimitiveValue:nil forKey:@"audio"];
+    [self didChangeValueForKey:@"audio"];
+    
+    [self willChangeValueForKey:@"image"];
+    [self setPrimitiveValue:nil forKey:@"image"];
+    [self didChangeValueForKey:@"image"];
+    
+    [self willChangeValueForKey:@"text"];
+    [self setPrimitiveValue:text forKey:@"text"];
+    [self didChangeValueForKey:@"text"];
+}
+
+/*
+- (void) setFoo:(NSObject *)inFoo {
+
 }
 */
+
 - (NSString *) description {
     return [NSString stringWithFormat:@"%@", [self getData]];
 }
