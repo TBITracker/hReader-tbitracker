@@ -28,6 +28,7 @@
 CGRect originalScrollView;
 NSMutableArray *currentlyLoadedLoadedImages;
 float contentXOffsetAtLastUpdate;
+bool isRecording;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -102,6 +103,7 @@ float contentXOffsetAtLastUpdate;
     [self.collectionView setCollectionViewLayout:flowLayout];
     
     self.thumbsVisible = YES;
+    isRecording = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -169,7 +171,43 @@ float contentXOffsetAtLastUpdate;
 
 -(IBAction)recordAndSave:(id)sender
 {
-    audioRecorder = [[AVAudioRecorder alloc] init];
+    if (isRecording)
+    {
+        isRecording = NO;
+        NSLog(@"stopRecording");
+        [audioRecorder stop];
+        NSLog(@"stopped");
+    } else {
+        isRecording = YES;
+        AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+        [audioSession setCategory:AVAudioSessionCategoryRecord error:nil];
+        
+        NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc] init];
+        
+        [recordSetting setValue :[NSNumber numberWithInt:kAudioFormatLinearPCM] forKey:AVFormatIDKey];
+        [recordSetting setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey];
+        [recordSetting setValue:[NSNumber numberWithInt: 2] forKey:AVNumberOfChannelsKey];
+        
+        [recordSetting setValue :[NSNumber numberWithInt:16] forKey:AVLinearPCMBitDepthKey];
+        [recordSetting setValue :[NSNumber numberWithBool:NO] forKey:AVLinearPCMIsBigEndianKey];
+        [recordSetting setValue :[NSNumber numberWithBool:NO] forKey:AVLinearPCMIsFloatKey];
+        
+        NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/recordTest.caf", [[NSBundle mainBundle] resourcePath]]];
+        
+        //audioRecorder = [[AVAudioRecorder alloc] initWithURL:soundFileURL
+        //                                                        settings:recordSettings
+         //                                                              error:&error];
+        NSError *error = nil;
+        
+        if ([audioRecorder prepareToRecord] == YES){
+            [audioRecorder record];
+        }else {
+            int errorCode = CFSwapInt32HostToBig ([error code]);
+            NSLog(@"Error: %@ [%4.4s])" , [error localizedDescription], (char*)&errorCode);
+            
+        }
+        NSLog(@"recording");
+    }
 }
 
 -(IBAction)launchRecord:(id)sender

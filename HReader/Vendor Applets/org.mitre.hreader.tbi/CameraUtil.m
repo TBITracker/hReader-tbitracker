@@ -47,7 +47,7 @@
     } else {
         NSLog(@"Successfully saved image");
     }
-	[self performSelectorOnMainThread:@selector(alertUserThatImageSaved) withObject:nil waitUntilDone:NO];
+	//[self performSelectorOnMainThread:@selector(alertUserThatImageSaved) withObject:nil waitUntilDone:NO];
 }
 
 
