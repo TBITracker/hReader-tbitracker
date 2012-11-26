@@ -37,7 +37,7 @@
 
 + (void) saveImage:(UIImage *)image
 {
-    NSManagedObjectContext *context = [[TBIDataManager sharedInstance] managedObjectContext];
+    /*NSManagedObjectContext *context = [[TBIDataManager sharedInstance] managedObjectContext];
     NSManagedObject *imageSave = [NSEntityDescription insertNewObjectForEntityForName:@"TBIImage" inManagedObjectContext:context];
     [imageSave setValue:image forKey:@"image"];
     NSError *error = nil;
@@ -47,6 +47,8 @@
     } else {
         NSLog(@"Successfully saved image");
     }
+    */
+    [TBIImage generateWithImage:(NSString *)imageInput andContext:(NSManagedObjectContext *)context;
 	[self performSelectorOnMainThread:@selector(alertUserThatImageSaved) withObject:nil waitUntilDone:NO];
 }
 

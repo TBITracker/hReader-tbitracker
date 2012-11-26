@@ -15,7 +15,7 @@
 @dynamic audio;
 @dynamic userinput;
 
-+ (TBIAudio *) generateWithAudio:(NSString *)audioInput andContext:(NSManagedObjectContext *)context{
++ (TBIAudio *) generateWithAudio:(id)audioInput andContext:(NSManagedObjectContext *)context{
     TBIAudio *newAudioObject = (TBIAudio *)[NSEntityDescription insertNewObjectForEntityForName:@"TBIAudio" inManagedObjectContext:context];
     [newAudioObject setValue:audioInput forKey:@"audio"];
     
@@ -24,7 +24,7 @@
     return newAudioObject;
 }
 
-- (id) getData{
+- (id) getData {
     return self.audio;
 }
 
