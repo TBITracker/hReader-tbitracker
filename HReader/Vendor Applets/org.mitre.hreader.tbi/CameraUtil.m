@@ -10,6 +10,7 @@
 #import "HRAppletUtilities.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 #import "TBIDataManager.h"
+#import "TBIImage.h"
 
 
 
@@ -37,7 +38,8 @@
 
 + (void) saveImage:(UIImage *)image
 {
-    /*NSManagedObjectContext *context = [[TBIDataManager sharedInstance] managedObjectContext];
+    NSManagedObjectContext *context = [[TBIDataManager sharedInstance] managedObjectContext];
+    /*
     NSManagedObject *imageSave = [NSEntityDescription insertNewObjectForEntityForName:@"TBIImage" inManagedObjectContext:context];
     [imageSave setValue:image forKey:@"image"];
     NSError *error = nil;
@@ -48,7 +50,7 @@
         NSLog(@"Successfully saved image");
     }
     */
-    [TBIImage generateWithImage:(NSString *)imageInput andContext:(NSManagedObjectContext *)context;
+    [TBIImage generateWithImage:image andContext:context];
 	[self performSelectorOnMainThread:@selector(alertUserThatImageSaved) withObject:nil waitUntilDone:NO];
 }
 

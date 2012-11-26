@@ -129,7 +129,7 @@
     return nil;
 }
 
-
+/*
 - (void) setAudio:(TBIAudio *)audio{
     [self willChangeValueForKey:@"audio"];
     [self setPrimitiveValue:audio forKey:@"audio"];
@@ -170,11 +170,6 @@
     [self willChangeValueForKey:@"text"];
     [self setPrimitiveValue:text forKey:@"text"];
     [self didChangeValueForKey:@"text"];
-}
-
-/*
-- (void) setFoo:(NSObject *)inFoo {
-
 }
 */
 

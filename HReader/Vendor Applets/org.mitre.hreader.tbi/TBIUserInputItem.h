@@ -43,8 +43,10 @@
 - (id) getData; //fetches the underlying data:  id, UIImage or NSString
 //- (UIView *) getView;
 
+/*
 - (void) setAudio:(id)audio;
 - (void) setImage:(UIImage *)image;
 - (void) setText:(NSString *)text;
+*/
 
 @end
