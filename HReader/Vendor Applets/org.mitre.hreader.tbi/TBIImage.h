@@ -16,7 +16,7 @@
 @property (nonatomic, retain) UIImage *image;
 @property (nonatomic, retain) TBIUserInputItem *userinput;
 
-+ (TBIImage *) generateWithImage:(NSString *)imageInput andContext:(NSManagedObjectContext *)context;
++ (TBIImage *) generateWithImage:(UIImage *)imageInput andContext:(NSManagedObjectContext *)context;
 - (UIImage *) getData;
 
 @end
