@@ -40,28 +40,18 @@ bool isRecording;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSManagedObjectContext *context = [[TBIDataManager sharedInstance] managedObjectContext];
-    //TBIImage *img = [[TBIImage alloc] initWithImage:[self.allImages objectAtIndex:indexPath.row] andContext:context];
-
-    NSManagedObject *img = [NSEntityDescription insertNewObjectForEntityForName:@"TBIImage" inManagedObjectContext:context];
-    [img setValue:[self.allImages objectAtIndex:indexPath.row] forKey:@"image"];
-    
-    //NSData *imgdata = [NSData dataWithContentsOfURL:imgName];
     TBIImage *imageStruct = [self.allImages objectAtIndex:indexPath.row];
     UIImage *image = [imageStruct getData];//get the image data
     NSLog(@"image set to: %@ (%@)", image, [image class]);
     //TBIUIImageView *thumbsView = [[TBIUIImageView alloc] initWithImage:image];
-    TBIUIImageView *thumbsView = [[TBIUIImageView alloc] init];
-    [thumbsView setImage:image];
-    [thumbsView setImageName:[img objectID]];
-        
-    //thumbsView.imageName = [img objectID];
+    //[thumbsView setImage:image];
     
     UICollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cvCell" forIndexPath:indexPath];
         
-        //[cell addSubview:thumbsView];
-    /*UIImageView *imgincell = (UIImageView*)[cell viewWithTag:100];
-    imgincell.image = image;*/
+    //[cell addSubview:thumbsView];
+    
+    UIImageView *imgincell = (UIImageView*)[cell viewWithTag:100];
+    imgincell.image = image;
     
     return cell;
 }
@@ -93,17 +83,19 @@ bool isRecording;
     {
         NSLog(@"Could not retrieve images, may not have any");
     }
-    NSLog(@"Number of images: %d", self.allImages.count);
-    UINib *cellNib = [UINib nibWithNibName:@"NibCell" bundle:nil];
-    [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"cvCell"];
-    
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
     [flowLayout setItemSize:CGSizeMake(225, 150)];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     [self.collectionView setCollectionViewLayout:flowLayout];
     
+    NSLog(@"Number of images: %d", self.allImages.count);
+    UINib *cellNib = [UINib nibWithNibName:@"NibCell" bundle:nil];
+    [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"cvCell"];
+    
+    
     self.thumbsVisible = YES;
     isRecording = NO;
+    
 }
 
 - (void)didReceiveMemoryWarning
