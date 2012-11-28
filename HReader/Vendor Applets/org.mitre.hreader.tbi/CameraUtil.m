@@ -12,7 +12,7 @@
 #import "TBIDataManager.h"
 #import "TBIImage.h"
 
-
+static NSManagedObjectContext *my_context;
 
 @implementation CameraUtil
 
@@ -38,7 +38,8 @@
 
 + (void) saveImage:(UIImage *)image
 {
-    NSManagedObjectContext *context = [[TBIDataManager sharedInstance] managedObjectContext];
+    NSLog(@"Save image called with: %@", image);
+    //NSManagedObjectContext *context = [[TBIDataManager sharedInstance] managedObjectContext];
     /*
     NSManagedObject *imageSave = [NSEntityDescription insertNewObjectForEntityForName:@"TBIImage" inManagedObjectContext:context];
     [imageSave setValue:image forKey:@"image"];
@@ -50,8 +51,10 @@
         NSLog(@"Successfully saved image");
     }
     */
-    [TBIImage generateWithImage:image andContext:context];
-	[self performSelectorOnMainThread:@selector(alertUserThatImageSaved) withObject:nil waitUntilDone:NO];
+    TBIImage *tbiimage = [TBIImage generateWithImage:image andContext:my_context];
+    NSLog(@"TBIImage: %@", tbiimage);
+    NSLog(@"TBIImage fetch: %@", [self getAllImages]);
+	//[self performSelectorOnMainThread:@selector(alertUserThatImageSaved) withObject:nil waitUntilDone:NO];
 }
 
 
@@ -76,7 +79,30 @@
     NSURL *documentsDirectory = [[HRAppletUtilities URLForAppletContainer:@"org.mitre.tbi-tracker"] URLByAppendingPathComponent:@"photos"];
     return [fileMgr contentsOfDirectoryAtURL:documentsDirectory includingPropertiesForKeys:nil options:NSDirectoryEnumerationSkipsHiddenFiles error:&error];*/
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    NSManagedObjectContext *context = [[TBIDataManager sharedInstance] managedObjectContext];
+    //NSManagedObjectContext *context = [[TBIDataManager sharedInstance] managedObjectContext];
+    NSLog(@"entity: %@", [NSEntityDescription entityForName:@"TBIImage" inManagedObjectContext:my_context]);
+    [request setEntity:[NSEntityDescription entityForName:@"TBIImage" inManagedObjectContext:my_context]];
+    
+    NSError *error = nil;
+    
+    NSMutableArray *allImages = [[my_context executeFetchRequest:request error:&error] mutableCopy];
+    if (allImages == nil)
+    {
+        NSLog(@"Could not get images");
+    } else {
+        NSLog(@"Images fetched: %d", [allImages count]);
+    }
+    return allImages;
+}
+
++ (NSArray*) getAllImagesWithContext:(NSManagedObjectContext *)context
+{
+    /*NSError *error;
+     NSFileManager *fileMgr = [NSFileManager defaultManager];
+     NSURL *documentsDirectory = [[HRAppletUtilities URLForAppletContainer:@"org.mitre.tbi-tracker"] URLByAppendingPathComponent:@"photos"];
+     return [fileMgr contentsOfDirectoryAtURL:documentsDirectory includingPropertiesForKeys:nil options:NSDirectoryEnumerationSkipsHiddenFiles error:&error];*/
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    //NSManagedObjectContext *context = [[TBIDataManager sharedInstance] managedObjectContext];
     NSLog(@"entity: %@", [NSEntityDescription entityForName:@"TBIImage" inManagedObjectContext:context]);
     [request setEntity:[NSEntityDescription entityForName:@"TBIImage" inManagedObjectContext:context]];
     
@@ -90,6 +116,14 @@
         NSLog(@"Images fetched: %d", [allImages count]);
     }
     return allImages;
+}
+
++(void) initialize {
+    //NSLog(@"initializing . Context = %@", context);
+    if (!my_context) {
+        my_context = [[TBIDataManager sharedInstance] managedObjectContext];
+    }
+    NSLog(@"initialiation cameraUtil. Context = %@", my_context);
 }
 
 @end
