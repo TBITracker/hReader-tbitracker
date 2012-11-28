@@ -17,4 +17,6 @@
 
 + (void) generateDataWithContext:(NSManagedObjectContext *)context;
 
++ (void) saveImageWithContext:(NSManagedObjectContext *)context;
+
 @end

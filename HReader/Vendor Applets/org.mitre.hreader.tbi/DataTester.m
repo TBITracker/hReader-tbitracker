@@ -12,6 +12,7 @@
 #import "TBITask.h"
 #import "TBIStep.h"
 #import "TBIText.h"
+#import "TBIImage.h"
 #import "TBIUserInputItem.h"
 
 static NSManagedObjectContext *context;
@@ -111,6 +112,29 @@ static NSManagedObjectContext *context;
 + (NSNumber *) getRandomNumber {
     int i = arc4random_uniform(10)+1;
     return [NSNumber numberWithInt:i];
+}
+
++ (void) saveImageWithContext:(NSManagedObjectContext *)context {
+    UIImage *myImage = [UIImage imageNamed:@"scene1"];
+    TBIImage *myTBIImage = [TBIImage generateWithImage:myImage andContext:context];
+    UIImage *myImage2 = [UIImage imageNamed:@"scene2"];
+    TBIImage *myTBIImage2 = [TBIImage generateWithImage:myImage2 andContext:context];
+    NSLog(@"Adding TBIImages: %@ and %@", myTBIImage, myTBIImage2);
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"TBIImage" inManagedObjectContext:context]];
+    
+    NSError *error = nil;
+    
+    NSMutableArray *allImages = [[context executeFetchRequest:request error:&error] mutableCopy];
+    if (allImages == nil)
+    {
+        NSLog(@"Could not get images");
+    } else {
+        NSLog(@"Images fetched: %d", [allImages count]);
+    }
+
+    
 }
 
 +(void) initialize {
